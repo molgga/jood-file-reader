@@ -1,9 +1,32 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["polyfills"],{
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/a-function.js":
-/*!******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/a-function.js ***!
-  \******************************************************************************************************************************************/
+/***/ "../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js":
+/*!*******************************************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ***!
+  \*******************************************************************************************************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/proposals/reflect-metadata */ "../../node_modules/core-js/proposals/reflect-metadata.js");
+/* harmony import */ var core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0__);
+/**
+ * @license
+ * Copyright Google Inc. All Rights Reserved.
+ *
+ * Use of this source code is governed by an MIT-style license that can be
+ * found in the LICENSE file at https://angular.io/license
+ */
+
+
+
+/***/ }),
+
+/***/ "../../node_modules/core-js/internals/a-function.js":
+/*!***********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/a-function.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -16,14 +39,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/a-possible-prototype.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/a-possible-prototype.js ***!
-  \****************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/a-possible-prototype.js":
+/*!*********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/a-possible-prototype.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
 
 module.exports = function (it) {
   if (!isObject(it) && it !== null) {
@@ -34,10 +57,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-instance.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-instance.js ***!
-  \*******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/an-instance.js":
+/*!************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/an-instance.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -50,14 +73,14 @@ module.exports = function (it, Constructor, name) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/an-object.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/an-object.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
 
 module.exports = function (it) {
   if (!isObject(it)) {
@@ -68,16 +91,16 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-includes.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-includes.js ***!
-  \**********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/array-includes.js":
+/*!***************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/array-includes.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-indexed-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-length.js");
-var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-absolute-index.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "../../node_modules/core-js/internals/to-indexed-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "../../node_modules/core-js/internals/to-length.js");
+var toAbsoluteIndex = __webpack_require__(/*! ../internals/to-absolute-index */ "../../node_modules/core-js/internals/to-absolute-index.js");
 
 // `Array.prototype.{ indexOf, includes }` methods implementation
 var createMethod = function (IS_INCLUDES) {
@@ -111,18 +134,18 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-iteration.js":
-/*!***********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-iteration.js ***!
-  \***********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/array-iteration.js":
+/*!****************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/array-iteration.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/function-bind-context.js");
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/indexed-object.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-object.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-length.js");
-var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-species-create.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "../../node_modules/core-js/internals/function-bind-context.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "../../node_modules/core-js/internals/indexed-object.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "../../node_modules/core-js/internals/to-object.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "../../node_modules/core-js/internals/to-length.js");
+var arraySpeciesCreate = __webpack_require__(/*! ../internals/array-species-create */ "../../node_modules/core-js/internals/array-species-create.js");
 
 var push = [].push;
 
@@ -187,16 +210,16 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-species-create.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-species-create.js ***!
-  \****************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/array-species-create.js":
+/*!*********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/array-species-create.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var isArray = __webpack_require__(/*! ../internals/is-array */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-array.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var isArray = __webpack_require__(/*! ../internals/is-array */ "../../node_modules/core-js/internals/is-array.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -218,14 +241,14 @@ module.exports = function (originalArray, length) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/call-with-safe-iteration-closing.js":
-/*!****************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
-  \****************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/call-with-safe-iteration-closing.js":
+/*!*********************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/call-with-safe-iteration-closing.js ***!
+  \*********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 // call something on iterator step with safe closing on error
 module.exports = function (iterator, fn, value, ENTRIES) {
@@ -242,14 +265,14 @@ module.exports = function (iterator, fn, value, ENTRIES) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/check-correctness-of-iteration.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/check-correctness-of-iteration.js ***!
-  \**************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/check-correctness-of-iteration.js":
+/*!*******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/check-correctness-of-iteration.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var SAFE_CLOSING = false;
@@ -291,10 +314,10 @@ module.exports = function (exec, SKIP_CLOSING) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof-raw.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof-raw.js ***!
-  \*******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/classof-raw.js":
+/*!************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/classof-raw.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -307,16 +330,16 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof.js":
-/*!***************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof.js ***!
-  \***************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/classof.js":
+/*!********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/classof.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-string-tag-support.js");
-var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof-raw.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
+var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "../../node_modules/core-js/internals/to-string-tag-support.js");
+var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "../../node_modules/core-js/internals/classof-raw.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 // ES3 wrong here
@@ -344,26 +367,26 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-strong.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-strong.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/collection-strong.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/collection-strong.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js").f;
-var create = __webpack_require__(/*! ../internals/object-create */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-create.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine-all.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/function-bind-context.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-instance.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterate.js");
-var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/define-iterator.js");
-var setSpecies = __webpack_require__(/*! ../internals/set-species */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-species.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
-var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-metadata.js").fastKey;
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-state.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js").f;
+var create = __webpack_require__(/*! ../internals/object-create */ "../../node_modules/core-js/internals/object-create.js");
+var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "../../node_modules/core-js/internals/redefine-all.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "../../node_modules/core-js/internals/function-bind-context.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "../../node_modules/core-js/internals/an-instance.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/core-js/internals/iterate.js");
+var defineIterator = __webpack_require__(/*! ../internals/define-iterator */ "../../node_modules/core-js/internals/define-iterator.js");
+var setSpecies = __webpack_require__(/*! ../internals/set-species */ "../../node_modules/core-js/internals/set-species.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
+var fastKey = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/core-js/internals/internal-metadata.js").fastKey;
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/core-js/internals/internal-state.js");
 
 var setInternalState = InternalStateModule.set;
 var internalStateGetterFor = InternalStateModule.getterFor;
@@ -542,24 +565,24 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-weak.js":
-/*!***********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-weak.js ***!
-  \***********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/collection-weak.js":
+/*!****************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/collection-weak.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine-all.js");
-var getWeakData = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-metadata.js").getWeakData;
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-instance.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterate.js");
-var ArrayIterationModule = __webpack_require__(/*! ../internals/array-iteration */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-iteration.js");
-var $has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-state.js");
+var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "../../node_modules/core-js/internals/redefine-all.js");
+var getWeakData = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/core-js/internals/internal-metadata.js").getWeakData;
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "../../node_modules/core-js/internals/an-instance.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/core-js/internals/iterate.js");
+var ArrayIterationModule = __webpack_require__(/*! ../internals/array-iteration */ "../../node_modules/core-js/internals/array-iteration.js");
+var $has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/core-js/internals/internal-state.js");
 
 var setInternalState = InternalStateModule.set;
 var internalStateGetterFor = InternalStateModule.getterFor;
@@ -675,27 +698,27 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection.js":
-/*!******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection.js ***!
-  \******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/collection.js":
+/*!***********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/collection.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-forced.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine.js");
-var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-metadata.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterate.js");
-var anInstance = __webpack_require__(/*! ../internals/an-instance */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-instance.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
-var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/check-correctness-of-iteration.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-to-string-tag.js");
-var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inherit-if-required.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "../../node_modules/core-js/internals/is-forced.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/core-js/internals/redefine.js");
+var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/core-js/internals/internal-metadata.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/core-js/internals/iterate.js");
+var anInstance = __webpack_require__(/*! ../internals/an-instance */ "../../node_modules/core-js/internals/an-instance.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
+var checkCorrectnessOfIteration = __webpack_require__(/*! ../internals/check-correctness-of-iteration */ "../../node_modules/core-js/internals/check-correctness-of-iteration.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "../../node_modules/core-js/internals/set-to-string-tag.js");
+var inheritIfRequired = __webpack_require__(/*! ../internals/inherit-if-required */ "../../node_modules/core-js/internals/inherit-if-required.js");
 
 module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
   var IS_MAP = CONSTRUCTOR_NAME.indexOf('Map') !== -1;
@@ -786,17 +809,17 @@ module.exports = function (CONSTRUCTOR_NAME, wrapper, common) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/copy-constructor-properties.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/copy-constructor-properties.js ***!
-  \***********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/copy-constructor-properties.js":
+/*!****************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/copy-constructor-properties.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/own-keys.js");
-var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-descriptor.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var ownKeys = __webpack_require__(/*! ../internals/own-keys */ "../../node_modules/core-js/internals/own-keys.js");
+var getOwnPropertyDescriptorModule = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "../../node_modules/core-js/internals/object-get-own-property-descriptor.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js");
 
 module.exports = function (target, source) {
   var keys = ownKeys(source);
@@ -811,14 +834,14 @@ module.exports = function (target, source) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/correct-prototype-getter.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/correct-prototype-getter.js ***!
-  \********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/correct-prototype-getter.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/correct-prototype-getter.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
   function F() { /* empty */ }
@@ -829,20 +852,20 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-iterator-constructor.js":
-/*!***********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-iterator-constructor.js ***!
-  \***********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/create-iterator-constructor.js":
+/*!****************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/create-iterator-constructor.js ***!
+  \****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
-var create = __webpack_require__(/*! ../internals/object-create */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-create.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-property-descriptor.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-to-string-tag.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators.js");
+var IteratorPrototype = __webpack_require__(/*! ../internals/iterators-core */ "../../node_modules/core-js/internals/iterators-core.js").IteratorPrototype;
+var create = __webpack_require__(/*! ../internals/object-create */ "../../node_modules/core-js/internals/object-create.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "../../node_modules/core-js/internals/create-property-descriptor.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "../../node_modules/core-js/internals/set-to-string-tag.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/core-js/internals/iterators.js");
 
 var returnThis = function () { return this; };
 
@@ -857,16 +880,16 @@ module.exports = function (IteratorConstructor, NAME, next) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js ***!
-  \**************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/create-non-enumerable-property.js":
+/*!*******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/create-non-enumerable-property.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-property-descriptor.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "../../node_modules/core-js/internals/create-property-descriptor.js");
 
 module.exports = DESCRIPTORS ? function (object, key, value) {
   return definePropertyModule.f(object, key, createPropertyDescriptor(1, value));
@@ -878,10 +901,10 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-property-descriptor.js":
-/*!**********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-property-descriptor.js ***!
-  \**********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/create-property-descriptor.js":
+/*!***************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/create-property-descriptor.js ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -897,26 +920,26 @@ module.exports = function (bitmap, value) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/define-iterator.js":
-/*!***********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/define-iterator.js ***!
-  \***********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/define-iterator.js":
+/*!****************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/define-iterator.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-iterator-constructor.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-set-prototype-of.js");
-var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-to-string-tag.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-pure.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators.js");
-var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators-core.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var createIteratorConstructor = __webpack_require__(/*! ../internals/create-iterator-constructor */ "../../node_modules/core-js/internals/create-iterator-constructor.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/core-js/internals/object-get-prototype-of.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "../../node_modules/core-js/internals/object-set-prototype-of.js");
+var setToStringTag = __webpack_require__(/*! ../internals/set-to-string-tag */ "../../node_modules/core-js/internals/set-to-string-tag.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/core-js/internals/redefine.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "../../node_modules/core-js/internals/is-pure.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/core-js/internals/iterators.js");
+var IteratorsCore = __webpack_require__(/*! ../internals/iterators-core */ "../../node_modules/core-js/internals/iterators-core.js");
 
 var IteratorPrototype = IteratorsCore.IteratorPrototype;
 var BUGGY_SAFARI_ITERATORS = IteratorsCore.BUGGY_SAFARI_ITERATORS;
@@ -999,14 +1022,14 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js ***!
-  \*******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/descriptors.js":
+/*!************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/descriptors.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !fails(function () {
@@ -1016,15 +1039,15 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/document-create-element.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/document-create-element.js ***!
-  \*******************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/document-create-element.js":
+/*!************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/document-create-element.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
 
 var document = global.document;
 // typeof document.createElement is 'object' in old IE
@@ -1037,10 +1060,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/enum-bug-keys.js":
-/*!*********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/enum-bug-keys.js ***!
-  \*********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/enum-bug-keys.js":
+/*!**************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/enum-bug-keys.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1058,20 +1081,20 @@ module.exports = [
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js":
-/*!**************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js ***!
-  \**************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/export.js":
+/*!*******************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/export.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js");
-var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-global.js");
-var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/copy-constructor-properties.js");
-var isForced = __webpack_require__(/*! ../internals/is-forced */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-forced.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var getOwnPropertyDescriptor = __webpack_require__(/*! ../internals/object-get-own-property-descriptor */ "../../node_modules/core-js/internals/object-get-own-property-descriptor.js").f;
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/core-js/internals/create-non-enumerable-property.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/core-js/internals/redefine.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "../../node_modules/core-js/internals/set-global.js");
+var copyConstructorProperties = __webpack_require__(/*! ../internals/copy-constructor-properties */ "../../node_modules/core-js/internals/copy-constructor-properties.js");
+var isForced = __webpack_require__(/*! ../internals/is-forced */ "../../node_modules/core-js/internals/is-forced.js");
 
 /*
   options.target      - name of the target object
@@ -1123,10 +1146,10 @@ module.exports = function (options, source) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js":
-/*!*************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js ***!
-  \*************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/fails.js":
+/*!******************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/fails.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1141,14 +1164,14 @@ module.exports = function (exec) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/freezing.js":
-/*!****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/freezing.js ***!
-  \****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/freezing.js":
+/*!*********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/freezing.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
 
 module.exports = !fails(function () {
   return Object.isExtensible(Object.preventExtensions({}));
@@ -1157,14 +1180,14 @@ module.exports = !fails(function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/function-bind-context.js":
-/*!*****************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/function-bind-context.js ***!
-  \*****************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/function-bind-context.js":
+/*!**********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/function-bind-context.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var aFunction = __webpack_require__(/*! ../internals/a-function */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/a-function.js");
+var aFunction = __webpack_require__(/*! ../internals/a-function */ "../../node_modules/core-js/internals/a-function.js");
 
 // optional / simple context binding
 module.exports = function (fn, that, length) {
@@ -1192,15 +1215,15 @@ module.exports = function (fn, that, length) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-built-in.js":
-/*!********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-built-in.js ***!
-  \********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/get-built-in.js":
+/*!*************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/get-built-in.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var path = __webpack_require__(/*! ../internals/path */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/path.js");
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
+var path = __webpack_require__(/*! ../internals/path */ "../../node_modules/core-js/internals/path.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
 
 var aFunction = function (variable) {
   return typeof variable == 'function' ? variable : undefined;
@@ -1214,16 +1237,16 @@ module.exports = function (namespace, method) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-iterator-method.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-iterator-method.js ***!
-  \***************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/get-iterator-method.js":
+/*!********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/get-iterator-method.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ../internals/classof */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
+var classof = __webpack_require__(/*! ../internals/classof */ "../../node_modules/core-js/internals/classof.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 
@@ -1236,10 +1259,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js":
-/*!**************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js ***!
-  \**************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/global.js":
+/*!*******************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/global.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1260,10 +1283,10 @@ module.exports =
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js":
-/*!***********************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js ***!
-  \***********************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/has.js":
+/*!****************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/has.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1276,10 +1299,10 @@ module.exports = function (it, key) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/hidden-keys.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/hidden-keys.js ***!
-  \*******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/hidden-keys.js":
+/*!************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/hidden-keys.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1288,30 +1311,30 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/html.js":
-/*!************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/html.js ***!
-  \************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/html.js":
+/*!*****************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/html.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-built-in.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "../../node_modules/core-js/internals/get-built-in.js");
 
 module.exports = getBuiltIn('document', 'documentElement');
 
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/ie8-dom-define.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/ie8-dom-define.js ***!
-  \**********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/ie8-dom-define.js":
+/*!***************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/ie8-dom-define.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
-var createElement = __webpack_require__(/*! ../internals/document-create-element */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/document-create-element.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
+var createElement = __webpack_require__(/*! ../internals/document-create-element */ "../../node_modules/core-js/internals/document-create-element.js");
 
 // Thank's IE8 for his funny defineProperty
 module.exports = !DESCRIPTORS && !fails(function () {
@@ -1323,15 +1346,15 @@ module.exports = !DESCRIPTORS && !fails(function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/indexed-object.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/indexed-object.js ***!
-  \**********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/indexed-object.js":
+/*!***************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/indexed-object.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof-raw.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "../../node_modules/core-js/internals/classof-raw.js");
 
 var split = ''.split;
 
@@ -1347,15 +1370,15 @@ module.exports = fails(function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inherit-if-required.js":
-/*!***************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inherit-if-required.js ***!
-  \***************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/inherit-if-required.js":
+/*!********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/inherit-if-required.js ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-set-prototype-of.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var setPrototypeOf = __webpack_require__(/*! ../internals/object-set-prototype-of */ "../../node_modules/core-js/internals/object-set-prototype-of.js");
 
 // makes subclassing work correct for wrapped built-ins
 module.exports = function ($this, dummy, Wrapper) {
@@ -1375,14 +1398,14 @@ module.exports = function ($this, dummy, Wrapper) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inspect-source.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inspect-source.js ***!
-  \**********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/inspect-source.js":
+/*!***************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/inspect-source.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store = __webpack_require__(/*! ../internals/shared-store */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-store.js");
+var store = __webpack_require__(/*! ../internals/shared-store */ "../../node_modules/core-js/internals/shared-store.js");
 
 var functionToString = Function.toString;
 
@@ -1398,19 +1421,19 @@ module.exports = store.inspectSource;
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-metadata.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-metadata.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/internal-metadata.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/internal-metadata.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/hidden-keys.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js").f;
-var uid = __webpack_require__(/*! ../internals/uid */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/uid.js");
-var FREEZING = __webpack_require__(/*! ../internals/freezing */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/freezing.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/core-js/internals/hidden-keys.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js").f;
+var uid = __webpack_require__(/*! ../internals/uid */ "../../node_modules/core-js/internals/uid.js");
+var FREEZING = __webpack_require__(/*! ../internals/freezing */ "../../node_modules/core-js/internals/freezing.js");
 
 var METADATA = uid('meta');
 var id = 0;
@@ -1470,20 +1493,20 @@ hiddenKeys[METADATA] = true;
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-state.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-state.js ***!
-  \**********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/internal-state.js":
+/*!***************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/internal-state.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-weak-map.js");
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js");
-var objectHas = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-key.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/hidden-keys.js");
+var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "../../node_modules/core-js/internals/native-weak-map.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/core-js/internals/create-non-enumerable-property.js");
+var objectHas = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "../../node_modules/core-js/internals/shared-key.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/core-js/internals/hidden-keys.js");
 
 var WeakMap = global.WeakMap;
 var set, get, has;
@@ -1542,15 +1565,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-array-iterator-method.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-array-iterator-method.js ***!
-  \********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/is-array-iterator-method.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/is-array-iterator-method.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
+var Iterators = __webpack_require__(/*! ../internals/iterators */ "../../node_modules/core-js/internals/iterators.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var ArrayPrototype = Array.prototype;
@@ -1563,14 +1586,14 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-array.js":
-/*!****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-array.js ***!
-  \****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/is-array.js":
+/*!*********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/is-array.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof = __webpack_require__(/*! ../internals/classof-raw */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/classof-raw.js");
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "../../node_modules/core-js/internals/classof-raw.js");
 
 // `IsArray` abstract operation
 // https://tc39.github.io/ecma262/#sec-isarray
@@ -1581,14 +1604,14 @@ module.exports = Array.isArray || function isArray(arg) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-forced.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-forced.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/is-forced.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/is-forced.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
 
 var replacement = /#|\.prototype\./;
 
@@ -1613,10 +1636,10 @@ module.exports = isForced;
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/is-object.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/is-object.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1627,10 +1650,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-pure.js":
-/*!***************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-pure.js ***!
-  \***************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/is-pure.js":
+/*!********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/is-pure.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1639,19 +1662,19 @@ module.exports = false;
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterate.js":
-/*!***************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterate.js ***!
-  \***************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/iterate.js":
+/*!********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/iterate.js ***!
+  \********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-array-iterator-method.js");
-var toLength = __webpack_require__(/*! ../internals/to-length */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-length.js");
-var bind = __webpack_require__(/*! ../internals/function-bind-context */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/function-bind-context.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-iterator-method.js");
-var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/call-with-safe-iteration-closing.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "../../node_modules/core-js/internals/is-array-iterator-method.js");
+var toLength = __webpack_require__(/*! ../internals/to-length */ "../../node_modules/core-js/internals/to-length.js");
+var bind = __webpack_require__(/*! ../internals/function-bind-context */ "../../node_modules/core-js/internals/function-bind-context.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "../../node_modules/core-js/internals/get-iterator-method.js");
+var callWithSafeIterationClosing = __webpack_require__(/*! ../internals/call-with-safe-iteration-closing */ "../../node_modules/core-js/internals/call-with-safe-iteration-closing.js");
 
 var Result = function (stopped, result) {
   this.stopped = stopped;
@@ -1693,20 +1716,20 @@ iterate.stop = function (result) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators-core.js":
-/*!**********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators-core.js ***!
-  \**********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/iterators-core.js":
+/*!***************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/iterators-core.js ***!
+  \***************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js");
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-pure.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/core-js/internals/object-get-prototype-of.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "../../node_modules/core-js/internals/is-pure.js");
 
 var ITERATOR = wellKnownSymbol('iterator');
 var BUGGY_SAFARI_ITERATORS = false;
@@ -1742,10 +1765,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterators.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/iterators.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/iterators.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -1754,14 +1777,14 @@ module.exports = {};
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-symbol.js":
-/*!*********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-symbol.js ***!
-  \*********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/native-symbol.js":
+/*!**************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/native-symbol.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/fails.js");
+var fails = __webpack_require__(/*! ../internals/fails */ "../../node_modules/core-js/internals/fails.js");
 
 module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
   // Chrome 38 Symbol has incorrect toString conversion
@@ -1772,15 +1795,15 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-weak-map.js":
-/*!***********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-weak-map.js ***!
-  \***********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/native-weak-map.js":
+/*!****************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/native-weak-map.js ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inspect-source.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "../../node_modules/core-js/internals/inspect-source.js");
 
 var WeakMap = global.WeakMap;
 
@@ -1789,20 +1812,20 @@ module.exports = typeof WeakMap === 'function' && /native code/.test(inspectSour
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-create.js":
-/*!*********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-create.js ***!
-  \*********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-create.js":
+/*!**************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-create.js ***!
+  \**************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-properties.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/enum-bug-keys.js");
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/hidden-keys.js");
-var html = __webpack_require__(/*! ../internals/html */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/html.js");
-var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/document-create-element.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-key.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var defineProperties = __webpack_require__(/*! ../internals/object-define-properties */ "../../node_modules/core-js/internals/object-define-properties.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "../../node_modules/core-js/internals/enum-bug-keys.js");
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/core-js/internals/hidden-keys.js");
+var html = __webpack_require__(/*! ../internals/html */ "../../node_modules/core-js/internals/html.js");
+var documentCreateElement = __webpack_require__(/*! ../internals/document-create-element */ "../../node_modules/core-js/internals/document-create-element.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "../../node_modules/core-js/internals/shared-key.js");
 
 var GT = '>';
 var LT = '<';
@@ -1878,17 +1901,17 @@ module.exports = Object.create || function create(O, Properties) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-properties.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-properties.js ***!
-  \********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-define-properties.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-define-properties.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var objectKeys = __webpack_require__(/*! ../internals/object-keys */ "../../node_modules/core-js/internals/object-keys.js");
 
 // `Object.defineProperties` method
 // https://tc39.github.io/ecma262/#sec-object.defineproperties
@@ -1905,17 +1928,17 @@ module.exports = DESCRIPTORS ? Object.defineProperties : function defineProperti
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js":
-/*!******************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js ***!
-  \******************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-define-property.js":
+/*!***********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-define-property.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/ie8-dom-define.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-primitive.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
+var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "../../node_modules/core-js/internals/ie8-dom-define.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "../../node_modules/core-js/internals/to-primitive.js");
 
 var nativeDefineProperty = Object.defineProperty;
 
@@ -1936,20 +1959,20 @@ exports.f = DESCRIPTORS ? nativeDefineProperty : function defineProperty(O, P, A
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-descriptor.js":
-/*!******************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
-  \******************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-get-own-property-descriptor.js":
+/*!***********************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
-var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-property-is-enumerable.js");
-var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-property-descriptor.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-indexed-object.js");
-var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-primitive.js");
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/ie8-dom-define.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
+var propertyIsEnumerableModule = __webpack_require__(/*! ../internals/object-property-is-enumerable */ "../../node_modules/core-js/internals/object-property-is-enumerable.js");
+var createPropertyDescriptor = __webpack_require__(/*! ../internals/create-property-descriptor */ "../../node_modules/core-js/internals/create-property-descriptor.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "../../node_modules/core-js/internals/to-indexed-object.js");
+var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "../../node_modules/core-js/internals/to-primitive.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var IE8_DOM_DEFINE = __webpack_require__(/*! ../internals/ie8-dom-define */ "../../node_modules/core-js/internals/ie8-dom-define.js");
 
 var nativeGetOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
@@ -1967,15 +1990,15 @@ exports.f = DESCRIPTORS ? nativeGetOwnPropertyDescriptor : function getOwnProper
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-names.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-names.js ***!
-  \*************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-get-own-property-names.js":
+/*!******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-get-own-property-names.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/enum-bug-keys.js");
+var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "../../node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "../../node_modules/core-js/internals/enum-bug-keys.js");
 
 var hiddenKeys = enumBugKeys.concat('length', 'prototype');
 
@@ -1988,10 +2011,10 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-symbols.js":
-/*!***************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
-  \***************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-get-own-property-symbols.js":
+/*!********************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
+  \********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2000,17 +2023,17 @@ exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js ***!
-  \*******************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-get-prototype-of.js":
+/*!************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-get-prototype-of.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var toObject = __webpack_require__(/*! ../internals/to-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-object.js");
-var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-key.js");
-var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/correct-prototype-getter.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var toObject = __webpack_require__(/*! ../internals/to-object */ "../../node_modules/core-js/internals/to-object.js");
+var sharedKey = __webpack_require__(/*! ../internals/shared-key */ "../../node_modules/core-js/internals/shared-key.js");
+var CORRECT_PROTOTYPE_GETTER = __webpack_require__(/*! ../internals/correct-prototype-getter */ "../../node_modules/core-js/internals/correct-prototype-getter.js");
 
 var IE_PROTO = sharedKey('IE_PROTO');
 var ObjectPrototype = Object.prototype;
@@ -2028,17 +2051,17 @@ module.exports = CORRECT_PROTOTYPE_GETTER ? Object.getPrototypeOf : function (O)
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys-internal.js":
-/*!****************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys-internal.js ***!
-  \****************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-keys-internal.js":
+/*!*********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-keys-internal.js ***!
+  \*********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-indexed-object.js");
-var indexOf = __webpack_require__(/*! ../internals/array-includes */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/array-includes.js").indexOf;
-var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/hidden-keys.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "../../node_modules/core-js/internals/to-indexed-object.js");
+var indexOf = __webpack_require__(/*! ../internals/array-includes */ "../../node_modules/core-js/internals/array-includes.js").indexOf;
+var hiddenKeys = __webpack_require__(/*! ../internals/hidden-keys */ "../../node_modules/core-js/internals/hidden-keys.js");
 
 module.exports = function (object, names) {
   var O = toIndexedObject(object);
@@ -2056,15 +2079,15 @@ module.exports = function (object, names) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys.js ***!
-  \*******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-keys.js":
+/*!************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-keys.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-keys-internal.js");
-var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/enum-bug-keys.js");
+var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "../../node_modules/core-js/internals/object-keys-internal.js");
+var enumBugKeys = __webpack_require__(/*! ../internals/enum-bug-keys */ "../../node_modules/core-js/internals/enum-bug-keys.js");
 
 // `Object.keys` method
 // https://tc39.github.io/ecma262/#sec-object.keys
@@ -2075,10 +2098,10 @@ module.exports = Object.keys || function keys(O) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-property-is-enumerable.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-property-is-enumerable.js ***!
-  \*************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-property-is-enumerable.js":
+/*!******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-property-is-enumerable.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2100,15 +2123,15 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-set-prototype-of.js":
-/*!*******************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-set-prototype-of.js ***!
-  \*******************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/object-set-prototype-of.js":
+/*!************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/object-set-prototype-of.js ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/a-possible-prototype.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var aPossiblePrototype = __webpack_require__(/*! ../internals/a-possible-prototype */ "../../node_modules/core-js/internals/a-possible-prototype.js");
 
 // `Object.setPrototypeOf` method
 // https://tc39.github.io/ecma262/#sec-object.setprototypeof
@@ -2135,17 +2158,17 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/own-keys.js":
-/*!****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/own-keys.js ***!
-  \****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/own-keys.js":
+/*!*********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/own-keys.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-built-in.js");
-var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-names.js");
-var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-own-property-symbols.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "../../node_modules/core-js/internals/get-built-in.js");
+var getOwnPropertyNamesModule = __webpack_require__(/*! ../internals/object-get-own-property-names */ "../../node_modules/core-js/internals/object-get-own-property-names.js");
+var getOwnPropertySymbolsModule = __webpack_require__(/*! ../internals/object-get-own-property-symbols */ "../../node_modules/core-js/internals/object-get-own-property-symbols.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 // all object keys, includes non-enumerable and symbols
 module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
@@ -2157,28 +2180,28 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/path.js":
-/*!************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/path.js ***!
-  \************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/path.js":
+/*!*****************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/path.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
 
 module.exports = global;
 
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine-all.js":
-/*!********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine-all.js ***!
-  \********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/redefine-all.js":
+/*!*************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/redefine-all.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine.js");
+var redefine = __webpack_require__(/*! ../internals/redefine */ "../../node_modules/core-js/internals/redefine.js");
 
 module.exports = function (target, src, options) {
   for (var key in src) redefine(target, key, src[key], options);
@@ -2188,19 +2211,19 @@ module.exports = function (target, src, options) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine.js":
-/*!****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine.js ***!
-  \****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/redefine.js":
+/*!*********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/redefine.js ***!
+  \*********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js");
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-global.js");
-var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/inspect-source.js");
-var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-state.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/core-js/internals/create-non-enumerable-property.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "../../node_modules/core-js/internals/set-global.js");
+var inspectSource = __webpack_require__(/*! ../internals/inspect-source */ "../../node_modules/core-js/internals/inspect-source.js");
+var InternalStateModule = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/core-js/internals/internal-state.js");
 
 var getInternalState = InternalStateModule.get;
 var enforceInternalState = InternalStateModule.enforce;
@@ -2233,17 +2256,17 @@ var TEMPLATE = String(String).split('String');
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js":
-/*!************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js ***!
-  \************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/reflect-metadata.js":
+/*!*****************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/reflect-metadata.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // TODO: in core-js@4, move /modules/ dependencies to public entries for better optimization by tools like `preset-env`
-var Map = __webpack_require__(/*! ../modules/es.map */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.map.js");
-var WeakMap = __webpack_require__(/*! ../modules/es.weak-map */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.weak-map.js");
-var shared = __webpack_require__(/*! ../internals/shared */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared.js");
+var Map = __webpack_require__(/*! ../modules/es.map */ "../../node_modules/core-js/modules/es.map.js");
+var WeakMap = __webpack_require__(/*! ../modules/es.weak-map */ "../../node_modules/core-js/modules/es.weak-map.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "../../node_modules/core-js/internals/shared.js");
 
 var metadata = shared('metadata');
 var store = metadata.store || (metadata.store = new WeakMap());
@@ -2299,10 +2322,10 @@ module.exports = {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/require-object-coercible.js":
-/*!********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/require-object-coercible.js ***!
-  \********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/require-object-coercible.js":
+/*!*************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/require-object-coercible.js ***!
+  \*************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2316,15 +2339,15 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-global.js":
-/*!******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-global.js ***!
-  \******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/set-global.js":
+/*!***********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/set-global.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/create-non-enumerable-property.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var createNonEnumerableProperty = __webpack_require__(/*! ../internals/create-non-enumerable-property */ "../../node_modules/core-js/internals/create-non-enumerable-property.js");
 
 module.exports = function (key, value) {
   try {
@@ -2337,19 +2360,19 @@ module.exports = function (key, value) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-species.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-species.js ***!
-  \*******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/set-species.js":
+/*!************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/set-species.js ***!
+  \************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/get-built-in.js");
-var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
-var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/descriptors.js");
+var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "../../node_modules/core-js/internals/get-built-in.js");
+var definePropertyModule = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
+var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "../../node_modules/core-js/internals/descriptors.js");
 
 var SPECIES = wellKnownSymbol('species');
 
@@ -2368,16 +2391,16 @@ module.exports = function (CONSTRUCTOR_NAME) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-to-string-tag.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-to-string-tag.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/set-to-string-tag.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/set-to-string-tag.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-define-property.js").f;
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
+var defineProperty = __webpack_require__(/*! ../internals/object-define-property */ "../../node_modules/core-js/internals/object-define-property.js").f;
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 
@@ -2390,15 +2413,15 @@ module.exports = function (it, TAG, STATIC) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-key.js":
-/*!******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-key.js ***!
-  \******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/shared-key.js":
+/*!***********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/shared-key.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(/*! ../internals/shared */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/uid.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "../../node_modules/core-js/internals/shared.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "../../node_modules/core-js/internals/uid.js");
 
 var keys = shared('keys');
 
@@ -2409,15 +2432,15 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-store.js":
-/*!********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-store.js ***!
-  \********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/shared-store.js":
+/*!*************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/shared-store.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var setGlobal = __webpack_require__(/*! ../internals/set-global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/set-global.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var setGlobal = __webpack_require__(/*! ../internals/set-global */ "../../node_modules/core-js/internals/set-global.js");
 
 var SHARED = '__core-js_shared__';
 var store = global[SHARED] || setGlobal(SHARED, {});
@@ -2427,15 +2450,15 @@ module.exports = store;
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared.js":
-/*!**************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared.js ***!
-  \**************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/shared.js":
+/*!*******************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/shared.js ***!
+  \*******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-pure.js");
-var store = __webpack_require__(/*! ../internals/shared-store */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared-store.js");
+var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "../../node_modules/core-js/internals/is-pure.js");
+var store = __webpack_require__(/*! ../internals/shared-store */ "../../node_modules/core-js/internals/shared-store.js");
 
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
@@ -2448,14 +2471,14 @@ var store = __webpack_require__(/*! ../internals/shared-store */ "../../node_mod
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-absolute-index.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-absolute-index.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-absolute-index.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-absolute-index.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "../../node_modules/core-js/internals/to-integer.js");
 
 var max = Math.max;
 var min = Math.min;
@@ -2471,16 +2494,16 @@ module.exports = function (index, length) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-indexed-object.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-indexed-object.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-indexed-object.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-indexed-object.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 // toObject with fallback for non-array-like ES3 strings
-var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/indexed-object.js");
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/require-object-coercible.js");
+var IndexedObject = __webpack_require__(/*! ../internals/indexed-object */ "../../node_modules/core-js/internals/indexed-object.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "../../node_modules/core-js/internals/require-object-coercible.js");
 
 module.exports = function (it) {
   return IndexedObject(requireObjectCoercible(it));
@@ -2489,10 +2512,10 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-integer.js":
-/*!******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-integer.js ***!
-  \******************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-integer.js":
+/*!***********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-integer.js ***!
+  \***********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2508,14 +2531,14 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-length.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-length.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-length.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-length.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(/*! ../internals/to-integer */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-integer.js");
+var toInteger = __webpack_require__(/*! ../internals/to-integer */ "../../node_modules/core-js/internals/to-integer.js");
 
 var min = Math.min;
 
@@ -2528,14 +2551,14 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-object.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-object.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-object.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-object.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/require-object-coercible.js");
+var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "../../node_modules/core-js/internals/require-object-coercible.js");
 
 // `ToObject` abstract operation
 // https://tc39.github.io/ecma262/#sec-toobject
@@ -2546,14 +2569,14 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-primitive.js":
-/*!********************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-primitive.js ***!
-  \********************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-primitive.js":
+/*!*************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-primitive.js ***!
+  \*************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
 
 // `ToPrimitive` abstract operation
 // https://tc39.github.io/ecma262/#sec-toprimitive
@@ -2571,14 +2594,14 @@ module.exports = function (input, PREFERRED_STRING) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-string-tag-support.js":
-/*!*****************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/to-string-tag-support.js ***!
-  \*****************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/to-string-tag-support.js":
+/*!**********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/to-string-tag-support.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "../../node_modules/core-js/internals/well-known-symbol.js");
 
 var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var test = {};
@@ -2590,10 +2613,10 @@ module.exports = String(test) === '[object z]';
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/uid.js":
-/*!***********************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/uid.js ***!
-  \***********************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/uid.js":
+/*!****************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/uid.js ***!
+  \****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -2607,14 +2630,14 @@ module.exports = function (key) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/use-symbol-as-uid.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/use-symbol-as-uid.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/use-symbol-as-uid.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/use-symbol-as-uid.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-symbol.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "../../node_modules/core-js/internals/native-symbol.js");
 
 module.exports = NATIVE_SYMBOL
   // eslint-disable-next-line no-undef
@@ -2625,19 +2648,19 @@ module.exports = NATIVE_SYMBOL
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js":
-/*!*************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/well-known-symbol.js ***!
-  \*************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/internals/well-known-symbol.js":
+/*!******************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/internals/well-known-symbol.js ***!
+  \******************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var shared = __webpack_require__(/*! ../internals/shared */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/shared.js");
-var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/has.js");
-var uid = __webpack_require__(/*! ../internals/uid */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/uid.js");
-var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-symbol.js");
-var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/use-symbol-as-uid.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var shared = __webpack_require__(/*! ../internals/shared */ "../../node_modules/core-js/internals/shared.js");
+var has = __webpack_require__(/*! ../internals/has */ "../../node_modules/core-js/internals/has.js");
+var uid = __webpack_require__(/*! ../internals/uid */ "../../node_modules/core-js/internals/uid.js");
+var NATIVE_SYMBOL = __webpack_require__(/*! ../internals/native-symbol */ "../../node_modules/core-js/internals/native-symbol.js");
+var USE_SYMBOL_AS_UID = __webpack_require__(/*! ../internals/use-symbol-as-uid */ "../../node_modules/core-js/internals/use-symbol-as-uid.js");
 
 var WellKnownSymbolsStore = shared('wks');
 var Symbol = global.Symbol;
@@ -2653,17 +2676,17 @@ module.exports = function (name) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.map.js":
-/*!************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.map.js ***!
-  \************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/es.map.js":
+/*!*****************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/es.map.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var collection = __webpack_require__(/*! ../internals/collection */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection.js");
-var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-strong.js");
+var collection = __webpack_require__(/*! ../internals/collection */ "../../node_modules/core-js/internals/collection.js");
+var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "../../node_modules/core-js/internals/collection-strong.js");
 
 // `Map` constructor
 // https://tc39.github.io/ecma262/#sec-map-objects
@@ -2674,17 +2697,17 @@ module.exports = collection('Map', function (init) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.set.js":
-/*!************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.set.js ***!
-  \************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/es.set.js":
+/*!*****************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/es.set.js ***!
+  \*****************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var collection = __webpack_require__(/*! ../internals/collection */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection.js");
-var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-strong.js");
+var collection = __webpack_require__(/*! ../internals/collection */ "../../node_modules/core-js/internals/collection.js");
+var collectionStrong = __webpack_require__(/*! ../internals/collection-strong */ "../../node_modules/core-js/internals/collection-strong.js");
 
 // `Set` constructor
 // https://tc39.github.io/ecma262/#sec-set-objects
@@ -2695,23 +2718,23 @@ module.exports = collection('Set', function (init) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.weak-map.js":
-/*!*****************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.weak-map.js ***!
-  \*****************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/es.weak-map.js":
+/*!**********************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/es.weak-map.js ***!
+  \**********************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/global.js");
-var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/redefine-all.js");
-var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-metadata.js");
-var collection = __webpack_require__(/*! ../internals/collection */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection.js");
-var collectionWeak = __webpack_require__(/*! ../internals/collection-weak */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/collection-weak.js");
-var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/is-object.js");
-var enforceIternalState = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/internal-state.js").enforce;
-var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/native-weak-map.js");
+var global = __webpack_require__(/*! ../internals/global */ "../../node_modules/core-js/internals/global.js");
+var redefineAll = __webpack_require__(/*! ../internals/redefine-all */ "../../node_modules/core-js/internals/redefine-all.js");
+var InternalMetadataModule = __webpack_require__(/*! ../internals/internal-metadata */ "../../node_modules/core-js/internals/internal-metadata.js");
+var collection = __webpack_require__(/*! ../internals/collection */ "../../node_modules/core-js/internals/collection.js");
+var collectionWeak = __webpack_require__(/*! ../internals/collection-weak */ "../../node_modules/core-js/internals/collection-weak.js");
+var isObject = __webpack_require__(/*! ../internals/is-object */ "../../node_modules/core-js/internals/is-object.js");
+var enforceIternalState = __webpack_require__(/*! ../internals/internal-state */ "../../node_modules/core-js/internals/internal-state.js").enforce;
+var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/native-weak-map */ "../../node_modules/core-js/internals/native-weak-map.js");
 
 var IS_IE11 = !global.ActiveXObject && 'ActiveXObject' in global;
 var isExtensible = Object.isExtensible;
@@ -2774,16 +2797,16 @@ if (NATIVE_WEAK_MAP && IS_IE11) {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.define-metadata.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.define-metadata.js ***!
-  \************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.define-metadata.js":
+/*!*****************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.define-metadata.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 var toMetadataKey = ReflectMetadataModule.toKey;
 var ordinaryDefineOwnMetadata = ReflectMetadataModule.set;
@@ -2800,16 +2823,16 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.delete-metadata.js":
-/*!************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.delete-metadata.js ***!
-  \************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.delete-metadata.js":
+/*!*****************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.delete-metadata.js ***!
+  \*****************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 var toMetadataKey = ReflectMetadataModule.toKey;
 var getOrCreateMetadataMap = ReflectMetadataModule.getMap;
@@ -2832,20 +2855,20 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js":
-/*!**************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js ***!
-  \**************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js":
+/*!*******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js ***!
+  \*******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
 // TODO: in core-js@4, move /modules/ dependencies to public entries for better optimization by tools like `preset-env`
-var Set = __webpack_require__(/*! ../modules/es.set */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/es.set.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js");
-var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/iterate.js");
+var Set = __webpack_require__(/*! ../modules/es.set */ "../../node_modules/core-js/modules/es.set.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/core-js/internals/object-get-prototype-of.js");
+var iterate = __webpack_require__(/*! ../internals/iterate */ "../../node_modules/core-js/internals/iterate.js");
 
 var ordinaryOwnMetadataKeys = ReflectMetadataModule.keys;
 var toMetadataKey = ReflectMetadataModule.toKey;
@@ -2876,17 +2899,17 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-metadata.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-metadata.js ***!
-  \*********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.get-metadata.js":
+/*!**************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.get-metadata.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/core-js/internals/object-get-prototype-of.js");
 
 var ordinaryHasOwnMetadata = ReflectMetadataModule.has;
 var ordinaryGetOwnMetadata = ReflectMetadataModule.get;
@@ -2911,16 +2934,16 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js":
-/*!******************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js ***!
-  \******************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js":
+/*!***********************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js ***!
+  \***********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 var ordinaryOwnMetadataKeys = ReflectMetadataModule.keys;
 var toMetadataKey = ReflectMetadataModule.toKey;
@@ -2937,16 +2960,16 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-own-metadata.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-own-metadata.js ***!
-  \*************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.get-own-metadata.js":
+/*!******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.get-own-metadata.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 var ordinaryGetOwnMetadata = ReflectMetadataModule.get;
 var toMetadataKey = ReflectMetadataModule.toKey;
@@ -2963,17 +2986,17 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.has-metadata.js":
-/*!*********************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.has-metadata.js ***!
-  \*********************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.has-metadata.js":
+/*!**************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.has-metadata.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
-var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/object-get-prototype-of.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
+var getPrototypeOf = __webpack_require__(/*! ../internals/object-get-prototype-of */ "../../node_modules/core-js/internals/object-get-prototype-of.js");
 
 var ordinaryHasOwnMetadata = ReflectMetadataModule.has;
 var toMetadataKey = ReflectMetadataModule.toKey;
@@ -2997,16 +3020,16 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.has-own-metadata.js":
-/*!*************************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.has-own-metadata.js ***!
-  \*************************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.has-own-metadata.js":
+/*!******************************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.has-own-metadata.js ***!
+  \******************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 var ordinaryHasOwnMetadata = ReflectMetadataModule.has;
 var toMetadataKey = ReflectMetadataModule.toKey;
@@ -3023,16 +3046,16 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.metadata.js":
-/*!*****************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.metadata.js ***!
-  \*****************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/modules/esnext.reflect.metadata.js":
+/*!**********************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/modules/esnext.reflect.metadata.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/export.js");
-var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/reflect-metadata.js");
-var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/internals/an-object.js");
+var $ = __webpack_require__(/*! ../internals/export */ "../../node_modules/core-js/internals/export.js");
+var ReflectMetadataModule = __webpack_require__(/*! ../internals/reflect-metadata */ "../../node_modules/core-js/internals/reflect-metadata.js");
+var anObject = __webpack_require__(/*! ../internals/an-object */ "../../node_modules/core-js/internals/an-object.js");
 
 var toMetadataKey = ReflectMetadataModule.toKey;
 var ordinaryDefineOwnMetadata = ReflectMetadataModule.set;
@@ -3050,45 +3073,22 @@ $({ target: 'Reflect', stat: true }, {
 
 /***/ }),
 
-/***/ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/proposals/reflect-metadata.js":
-/*!************************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/node_modules/core-js/proposals/reflect-metadata.js ***!
-  \************************************************************************************************************************************************/
+/***/ "../../node_modules/core-js/proposals/reflect-metadata.js":
+/*!*****************************************************************************************************!*\
+  !*** /home/travis/build/molgga/jood-file-reader/node_modules/core-js/proposals/reflect-metadata.js ***!
+  \*****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! ../modules/esnext.reflect.define-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.define-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.delete-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.delete-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-metadata-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-own-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-own-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.get-own-metadata-keys */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js");
-__webpack_require__(/*! ../modules/esnext.reflect.has-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.has-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.has-own-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.has-own-metadata.js");
-__webpack_require__(/*! ../modules/esnext.reflect.metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/modules/esnext.reflect.metadata.js");
-
-
-/***/ }),
-
-/***/ "../../node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js":
-/*!*******************************************************************************************************************************************!*\
-  !*** /home/travis/build/molgga/jood-file-reader/node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/jit-polyfills.js ***!
-  \*******************************************************************************************************************************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/proposals/reflect-metadata */ "../../node_modules/@angular-devkit/build-angular/node_modules/core-js/proposals/reflect-metadata.js");
-/* harmony import */ var core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_proposals_reflect_metadata__WEBPACK_IMPORTED_MODULE_0__);
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- */
-
+__webpack_require__(/*! ../modules/esnext.reflect.define-metadata */ "../../node_modules/core-js/modules/esnext.reflect.define-metadata.js");
+__webpack_require__(/*! ../modules/esnext.reflect.delete-metadata */ "../../node_modules/core-js/modules/esnext.reflect.delete-metadata.js");
+__webpack_require__(/*! ../modules/esnext.reflect.get-metadata */ "../../node_modules/core-js/modules/esnext.reflect.get-metadata.js");
+__webpack_require__(/*! ../modules/esnext.reflect.get-metadata-keys */ "../../node_modules/core-js/modules/esnext.reflect.get-metadata-keys.js");
+__webpack_require__(/*! ../modules/esnext.reflect.get-own-metadata */ "../../node_modules/core-js/modules/esnext.reflect.get-own-metadata.js");
+__webpack_require__(/*! ../modules/esnext.reflect.get-own-metadata-keys */ "../../node_modules/core-js/modules/esnext.reflect.get-own-metadata-keys.js");
+__webpack_require__(/*! ../modules/esnext.reflect.has-metadata */ "../../node_modules/core-js/modules/esnext.reflect.has-metadata.js");
+__webpack_require__(/*! ../modules/esnext.reflect.has-own-metadata */ "../../node_modules/core-js/modules/esnext.reflect.has-own-metadata.js");
+__webpack_require__(/*! ../modules/esnext.reflect.metadata */ "../../node_modules/core-js/modules/esnext.reflect.metadata.js");
 
 
 /***/ }),
