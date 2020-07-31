@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>read-stream/FileReadStream.ts - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow-eighties.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BlobImageResize.html">BlobImageResize</a><ul class='methods'><li data-type='method'><a href="BlobImageResize.html#create">create</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToCover">getResizeToCover</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToScale">getResizeToScale</a></li><li data-type='method'><a href="BlobImageResize.html#onImageError">onImageError</a></li><li data-type='method'><a href="BlobImageResize.html#onImageLoaded">onImageLoaded</a></li><li data-type='method'><a href="BlobImageResize.html#onResized">onResized</a></li></ul></li><li><a href="BlobImageResize_BlobImageResize.html">BlobImageResize</a></li><li><a href="FileReadStream.html">FileReadStream</a><ul class='methods'><li data-type='method'><a href="FileReadStream.html#abort">abort</a></li><li data-type='method'><a href="FileReadStream.html#destroy">destroy</a></li><li data-type='method'><a href="FileReadStream.html#getState">getState</a></li><li data-type='method'><a href="FileReadStream.html#next">next</a></li><li data-type='method'><a href="FileReadStream.html#observeState">observeState</a></li><li data-type='method'><a href="FileReadStream.html#onReaderError">onReaderError</a></li><li data-type='method'><a href="FileReadStream.html#onReaderLoaded">onReaderLoaded</a></li><li data-type='method'><a href="FileReadStream.html#resultReject">resultReject</a></li><li data-type='method'><a href="FileReadStream.html#resultResolve">resultResolve</a></li><li data-type='method'><a href="FileReadStream.html#start">start</a></li><li data-type='method'><a href="FileReadStream.html#stateChanged">stateChanged</a></li></ul></li><li><a href="FileReadStream_FileReadStream.html">FileReadStream</a></li></ul><h3>Interfaces</h3><ul><li><a href="DrawBound.html">DrawBound</a></li><li><a href="FileReadConfig.html">FileReadConfig</a></li><li><a href="FileReadEvent.html">FileReadEvent</a></li><li><a href="FileReadState.html">FileReadState</a></li><li><a href="ResizeConfig.html">ResizeConfig</a></li><li><a href="ResizeResult.html">ResizeResult</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FileReadEventType">FileReadEventType</a></li><li><a href="global.html#FileReadResponseType">FileReadResponseType</a></li><li><a href="global.html#ResizeType">ResizeType</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">read-stream/FileReadStream.ts</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable */
+import { Subject, Observable } from 'rxjs';
+import {
+  FileReadEventType,
+  FileReadEvent,
+  FileReadState,
+  FileReadConfig,
+  FileReadResponseType,
+} from './types';
+
+/**
+ * 파일 스트림 읽기.
+ * FileReader 사용시 한번에 못 읽는 용량 끊어서 읽기 용.
+ * @class FileReadStream
+ * @example
+  const onFileInputChange = async (evt: Event) => {
+    const target = evt.target as HTMLInputElement;
+    const file = target.files[0];
+    const reader = new FileReadStream(file, { chunkSize: 1024 * 10 });
+    // reader.observeState().subscribe({ type, state } => console.log(state.readed));
+    const { type, state } = await reader.start();
+    if (type === FileReadEventType.RESOLVE) {
+      console.log(state.blob);
+    } else if (type === FileReadEventType.REJECT) {
+      console.log('error');
+    }
+  }
+ */
+export class FileReadStream {
+  /**
+   * @param {File} file FileReader 로 읽을 파일
+   * @param {FileReadConfig} [config={}] 스트림 옵션
+   */
+  constructor(file: File, config: FileReadConfig = {}) {
+    this.readFile = file;
+    this.reader = new FileReader();
+    this.reader.onload = this.onReaderLoaded.bind(this);
+    this.reader.onerror = this.onReaderError.bind(this);
+    this.subjectState = new Subject();
+    const { chunkSize = 1024 * 1024 * 10, responseType = FileReadResponseType.BLOB } = config;
+    this.readChunkSize = chunkSize;
+    this.responseType = responseType;
+  }
+
+  // 변경사항 알리미 @see https://rxjs-dev.firebaseapp.com
+  protected subjectState: Subject&lt;FileReadEvent>;
+  // 파일 리더
+  protected reader: FileReader;
+  // 읽을 파일
+  protected readFile: File;
+  // 읽기 시작 여부
+  protected readStarted: boolean = false;
+  // 1회 읽을량
+  protected readChunkSize: number;
+  // 현재 읽기 offset
+  protected readOffset: number = 0;
+  // 현재 읽어야할 offset
+  protected readOffsetNext: number = 0;
+  // 현재 읽은량
+  protected readCurrent: number = 0;
+  // 현재 취소 상태인지 확인용
+  protected readStateAbort: boolean = false;
+  // 읽은 버퍼
+  protected buffers: ArrayBuffer[] = [];
+  // 응답시 파일 타입
+  protected responseType: FileReadResponseType;
+  // subjectState 로 진행(완료) 상태를 받을 수 있지만, 편의용 async/await 도 제공
+  protected readPromise: Promise&lt;FileReadEvent>;
+  protected readPromiseResolve: (value: FileReadEvent) => void;
+  protected readPromiseReject: (reason?: any) => void;
+
+  /**
+   * 파일 읽기 1회 완료
+   * @protected
+   * @param {Event} evt
+   */
+  protected onReaderLoaded(evt: Event) {
+    this.readCurrent = this.readOffsetNext;
+    this.readOffset += this.readChunkSize;
+    this.buffers.push(this.reader.result as ArrayBuffer);
+    this.stateChanged();
+    this.next();
+  }
+
+  /**
+   * 파일 읽기 1회 오류
+   * @protected
+   * @param {Event} evt
+   */
+  protected onReaderError(evt: Event) {
+    this.resultReject(new Error('file reader onerror event'));
+  }
+
+  /**
+   * 다음 구간 읽기
+   * @protected
+   */
+  protected next() {
+    if (this.readStateAbort) {
+      return;
+    }
+    try {
+      const maxSize = this.readFile.size;
+      if (maxSize &lt;= this.readOffset) {
+        this.resultResolve();
+        return;
+      }
+      let expectNext = this.readOffset + this.readChunkSize;
+      if (maxSize &lt;= expectNext) expectNext = maxSize;
+      this.readOffsetNext = expectNext;
+      const sliceBlob = this.readFile.slice(this.readOffset, this.readOffsetNext);
+      this.reader.readAsArrayBuffer(sliceBlob);
+    } catch (err) {
+      this.resultReject(err);
+    }
+  }
+
+  /**
+   * state 변경 시 알림
+   * @protected
+   */
+  protected stateChanged() {
+    this.subjectState.next({
+      type: FileReadEventType.CHANGE,
+      state: this.getState(),
+    });
+  }
+
+  /**
+   * 완료 시 알림
+   * @protected
+   */
+  protected resultResolve() {
+    const result: FileReadEvent = {
+      type: FileReadEventType.RESOLVE,
+      state: this.getState(),
+    };
+    this.reader.onload = null;
+    this.reader.onerror = null;
+    this.readPromiseResolve(result);
+    this.subjectState.next(result);
+  }
+
+  /**
+   * 실패 시 알림
+   * @protected
+   * @param {*} reason
+   */
+  protected resultReject(reason: any, type: FileReadEventType = FileReadEventType.REJECT) {
+    const result: FileReadEvent = {
+      type,
+      state: null,
+      error: reason,
+    };
+    this.reader.onload = null;
+    this.reader.onerror = null;
+    this.readPromiseReject(result);
+    this.subjectState.next(result);
+  }
+
+  /**
+   * 읽기 시작
+   * @returns {Promise&lt;FileReadEvent>}
+   */
+  start(): Promise&lt;FileReadEvent> {
+    if (this.readStarted) return;
+    this.readStarted = true;
+    this.readPromise = new Promise((resolve, reject) => {
+      this.readPromiseResolve = resolve;
+      this.readPromiseReject = reject;
+    });
+    this.next();
+    return this.readPromise;
+  }
+
+  /**
+   * 상태변경 옵저버
+   * @returns {Observable&lt;FileReadEvent>}
+   */
+  observeState(): Observable&lt;FileReadEvent> {
+    return this.subjectState.asObservable();
+  }
+
+  /**
+   * 현재 상태
+   * @returns {FileReadState}
+   */
+  getState(): FileReadState {
+    const { name = null, type = null, size = 0, lastModified = Date.now() } = this.readFile || {};
+    const state: FileReadState = {
+      fileName: name,
+      fileType: type,
+      fileSize: size,
+      fileLastModified: lastModified,
+      total: size,
+      readed: this.readCurrent,
+      responseType: this.responseType,
+      chunkSize: this.readChunkSize,
+    };
+    switch (this.responseType) {
+      case FileReadResponseType.BLOB:
+        state.blob = new Blob(this.buffers, { type });
+        break;
+      case FileReadResponseType.BUFFER:
+        state.buffers = this.buffers;
+        break;
+    }
+    return state;
+  }
+
+  /**
+   * 파일 읽기 중단
+   */
+  abort(): void {
+    this.readStateAbort = true;
+    if (this.reader) {
+      this.reader.abort();
+      this.reader.onload = null;
+      this.reader.onerror = null;
+      this.resultReject(new Error('file reader abort event'), FileReadEventType.ABORT);
+    }
+  }
+
+  /**
+   * 파기
+   */
+  destroy() {
+    if (this.reader) {
+      this.reader.abort();
+      this.reader.onload = null;
+      this.reader.onerror = null;
+      this.reader = null;
+    }
+    this.readFile = null;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Fri Jul 31 2020 08:50:18 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

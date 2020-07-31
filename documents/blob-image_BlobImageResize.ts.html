@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>blob-image/BlobImageResize.ts - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow-eighties.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BlobImageResize.html">BlobImageResize</a><ul class='methods'><li data-type='method'><a href="BlobImageResize.html#create">create</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToCover">getResizeToCover</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToScale">getResizeToScale</a></li><li data-type='method'><a href="BlobImageResize.html#onImageError">onImageError</a></li><li data-type='method'><a href="BlobImageResize.html#onImageLoaded">onImageLoaded</a></li><li data-type='method'><a href="BlobImageResize.html#onResized">onResized</a></li></ul></li><li><a href="BlobImageResize_BlobImageResize.html">BlobImageResize</a></li><li><a href="FileReadStream.html">FileReadStream</a><ul class='methods'><li data-type='method'><a href="FileReadStream.html#abort">abort</a></li><li data-type='method'><a href="FileReadStream.html#destroy">destroy</a></li><li data-type='method'><a href="FileReadStream.html#getState">getState</a></li><li data-type='method'><a href="FileReadStream.html#next">next</a></li><li data-type='method'><a href="FileReadStream.html#observeState">observeState</a></li><li data-type='method'><a href="FileReadStream.html#onReaderError">onReaderError</a></li><li data-type='method'><a href="FileReadStream.html#onReaderLoaded">onReaderLoaded</a></li><li data-type='method'><a href="FileReadStream.html#resultReject">resultReject</a></li><li data-type='method'><a href="FileReadStream.html#resultResolve">resultResolve</a></li><li data-type='method'><a href="FileReadStream.html#start">start</a></li><li data-type='method'><a href="FileReadStream.html#stateChanged">stateChanged</a></li></ul></li><li><a href="FileReadStream_FileReadStream.html">FileReadStream</a></li></ul><h3>Interfaces</h3><ul><li><a href="DrawBound.html">DrawBound</a></li><li><a href="FileReadConfig.html">FileReadConfig</a></li><li><a href="FileReadEvent.html">FileReadEvent</a></li><li><a href="FileReadState.html">FileReadState</a></li><li><a href="ResizeConfig.html">ResizeConfig</a></li><li><a href="ResizeResult.html">ResizeResult</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FileReadEventType">FileReadEventType</a></li><li><a href="global.html#FileReadResponseType">FileReadResponseType</a></li><li><a href="global.html#ResizeType">ResizeType</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">blob-image/BlobImageResize.ts</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/* eslint-disable */
+import { ResizeType, ResizeConfig, ResizeResult, DrawBound } from './types';
+
+/**
+ * Blob 이미지 리사이즈 용
+ * Blob -> Canvas&amp;Image resize -> Blob.
+ * @class BlobImageResize
+ * @example
+  const someBlob = new Blob([file], { type: file.type });
+  const resizer = new BlobImageResize(someBlob, {
+    expectWidth: 200,
+    expectHeight: 200,
+    resizeType: ResizeType.COVER
+  });
+  const { blob } = await resizer.create();
+  const url = URL.createObjectURL(blob);
+  const revoke = () => {
+    URL.revokeObjectURL(url);
+  };
+  // ...
+  &lt;img :src="url" @load="revoke" @error="revoke" alt="" />
+ */
+export class BlobImageResize {
+  /**
+   * @param {Blob} blob 변경할 원본 Blob
+   * @param {ResizeConfig} [config={}] 리사이징 옵션
+   */
+  constructor(blob: Blob, config: ResizeConfig = {}) {
+    this.blob = blob;
+    const {
+      expectWidth = 2000,
+      expectHeight = 2000,
+      quality = 0.9,
+      resizeType = ResizeType.SCALE,
+    } = config;
+    this.quality = quality;
+    this.maxWidth = expectWidth;
+    this.maxHeight = expectHeight;
+    this.resizeType = resizeType;
+  }
+
+  // 리사이징 대상 Blob
+  protected blob: Blob;
+  // 리사이징 대상 Blob 의 URL
+  protected blobURL: string;
+  // 리사이징 대상 Blob 을 로드할 이미지
+  protected domImage: HTMLImageElement;
+  // 리사이징 대상 이미지를 그려낼 캔버스
+  protected domCanvas: HTMLCanvasElement;
+  protected domCanvasContext: CanvasRenderingContext2D;
+  // 캔버스에서 만들어낼 이미지 퀄리티
+  protected quality: number;
+  // 리사이징 최대 사이즈
+  protected maxWidth: number;
+  protected maxHeight: number;
+  // 리사이징 할 때 캔버스에 그려낼 사이즈 타입
+  protected resizeType: ResizeType;
+  // 리사이징 완료된 Blob
+  protected resizeBlob: Blob;
+  // 응답용 promize
+  protected promise: Promise&lt;ResizeResult>;
+  protected promiseResolve: (value: ResizeResult) => void;
+  protected promiseReject: (reason?: any) => void;
+
+  /**
+   * 리사이징 타입 - SCALE 형
+   * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤.
+   * @param {number} sw
+   * @param {number} sh
+   * @returns {DrawBound}
+   * @example
+    const resizer = new BlobImageResize(null, { expectWidth: 200, expectHeight: 200 });
+    // dx, dy 모두 0
+    console.log(resizer.getResizeToScale(100, 100)); // 결과이미지: 100x100
+    console.log(resizer.getResizeToScale(100, 200)); // 결과이미지: 100x200
+    console.log(resizer.getResizeToScale(100, 300)); // 결과이미지: 66x200
+    console.log(resizer.getResizeToScale(200, 100)); // 결과이미지: 200x100
+    console.log(resizer.getResizeToScale(200, 200)); // 결과이미지: 200x200
+    console.log(resizer.getResizeToScale(200, 300)); // 결과이미지: 133x200
+    console.log(resizer.getResizeToScale(300, 100)); // 결과이미지: 200x66
+    console.log(resizer.getResizeToScale(300, 200)); // 결과이미지: 200x133
+    console.log(resizer.getResizeToScale(300, 300)); // 결과이미지: 200x200
+   */
+  getResizeToScale(sw: number, sh: number): DrawBound {
+    const dx: number = 0;
+    const dy: number = 0;
+    let dw: number = 0;
+    let dh: number = 0;
+    const isLandscape: boolean = sh &lt;= sw;
+    if (isLandscape) {
+      dw = Math.min(this.maxWidth, sw);
+      dh = Math.floor((dw / sw) * sh);
+    } else {
+      dh = Math.min(this.maxWidth, sh);
+      dw = Math.floor((dh / sh) * sw);
+    }
+    return {
+      dx,
+      dy,
+      dw,
+      dh,
+    };
+  }
+
+  /**
+   * 리사이징 타입 - COVER 형
+   * 정해진 expect 사이즈에 빈 여백 없이 맞춤, 원본 이미지가 작으면 늘리고, 넘치면 잘려나감.
+   * @param {number} sw
+   * @param {number} sh
+   * @returns {DrawBound}
+   * @example
+    const resizer = new BlobImageResize(null, { expectWidth: 200, expectHeight: 200 });
+    // 결과 이미지 모두 200x200
+    console.log(resizer.getResizeToCover(100, 100)); // {dx: 0, dy: 0, dw: 200, dh: 200}
+    console.log(resizer.getResizeToCover(100, 200)); // {dx: 0, dy: -100, dw: 200, dh: 400}
+    console.log(resizer.getResizeToCover(100, 300)); // {dx: 0, dy: -200, dw: 200, dh: 600}
+    console.log(resizer.getResizeToCover(200, 100)); // {dx: -100, dy: 0, dw: 400, dh: 200}
+    console.log(resizer.getResizeToCover(200, 200)); // {dx: 0, dy: 0, dw: 200, dh: 200}
+    console.log(resizer.getResizeToCover(200, 300)); // {dx: 0, dy: -50, dw: 200, dh: 300}
+    console.log(resizer.getResizeToCover(300, 100)); // {dx: -200, dy: 0, dw: 600, dh: 200}
+    console.log(resizer.getResizeToCover(300, 200)); // {dx: -50, dy: 0, dw: 300, dh: 200}
+    console.log(resizer.getResizeToCover(300, 300)); // {dx: 0, dy: 0, dw: 200, dh: 200}
+   */
+  getResizeToCover(sw: number, sh: number): DrawBound {
+    let dx: number = 0;
+    let dy: number = 0;
+    let dw: number = 0;
+    let dh: number = 0;
+    let expectRatio: number = this.maxWidth / this.maxHeight;
+    let contentRatio: number = sw / sh;
+    if (expectRatio &lt; contentRatio) {
+      dh = this.maxHeight;
+      dw = this.maxHeight * contentRatio;
+    } else {
+      dw = this.maxWidth;
+      dh = this.maxWidth / contentRatio;
+    }
+    dx = (this.maxWidth - dw) * 0.5;
+    dy = (this.maxHeight - dh) * 0.5;
+    return {
+      dx,
+      dy,
+      dw,
+      dh,
+    };
+  }
+
+  /**
+   * 이미지 로드 완료
+   * @protected
+   */
+  protected onImageLoaded() {
+    URL.revokeObjectURL(this.blobURL);
+    const imageWidth = this.domImage.naturalWidth;
+    const imageHeight = this.domImage.naturalHeight;
+    let drawBound: DrawBound;
+    if (this.resizeType === ResizeType.COVER) {
+      drawBound = this.getResizeToCover(imageWidth, imageHeight);
+      this.domCanvas.width = this.maxWidth;
+      this.domCanvas.height = this.maxHeight;
+    } else {
+      drawBound = this.getResizeToScale(imageWidth, imageHeight);
+      this.domCanvas.width = drawBound.dw;
+      this.domCanvas.height = drawBound.dh;
+    }
+    const { dx, dy, dw, dh } = drawBound;
+    this.domCanvasContext.drawImage(this.domImage, 0, 0, imageWidth, imageHeight, dx, dy, dw, dh);
+    // this.domCanvas.toBlob(this.onResized.bind(this), this.blob.type, this.quality);
+    this.domCanvas.toBlob(this.onResized.bind(this), 'image/jpeg', this.quality); // type 이 jpeg 로 하지 않는 경우 quality 적용이 안되는듯
+  }
+
+  /**
+   * 이미지 로드 오류
+   * @protected
+   */
+  protected onImageError() {
+    URL.revokeObjectURL(this.blobURL);
+    this.promiseReject({
+      ...this.getState(),
+      error: new Error('image load error'),
+    });
+  }
+
+  /**
+   * 이미지 리사이징 완료
+   * @protected
+   * @param {Blob} resizeBlob
+   */
+  protected onResized(resizeBlob: Blob) {
+    this.resizeBlob = resizeBlob;
+    this.promiseResolve(this.getState());
+  }
+
+  /**
+   * 리사이징 이미지 생성하기
+   * @returns {Promise&lt;ResizeResult>}
+   */
+  create(): Promise&lt;ResizeResult> {
+    this.domCanvas = document.createElement('canvas');
+    this.domCanvasContext = this.domCanvas.getContext('2d');
+    this.domImage = new Image();
+    this.domImage.onload = this.onImageLoaded.bind(this);
+    this.domImage.onerror = this.onImageError.bind(this);
+    this.promise = new Promise((resolve, reject) => {
+      this.promiseResolve = resolve;
+      this.promiseReject = reject;
+      try {
+        this.blobURL = URL.createObjectURL(this.blob);
+        this.domImage.src = this.blobURL;
+      } catch (err) {
+        this.promiseReject({
+          ...this.getState(),
+          error: err,
+        });
+      }
+    });
+    return this.promise;
+  }
+
+  getState(): ResizeResult {
+    const blob = this.resizeBlob || null;
+    const { width = 0, height = 0 } = this.domCanvas || {};
+    return {
+      blob: blob,
+      width: blob ? width : 0,
+      height: blob ? height : 0,
+    };
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Fri Jul 31 2020 08:50:18 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
