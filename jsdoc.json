@@ -1,0 +1,13 @@
+{
+  "plugins": ["node_modules/better-docs/typescript"],
+  "opts": {
+    "readme": "projects/packages/README.md",
+    "encoding": "utf8",
+    "template": "node_modules/@jood/jsdoc-theme"
+  },
+  "source": {
+    "include": ["projects/packages/src"],
+    "exclude": ["node_modules", "public-api.ts", "test.ts"],
+    "includePattern": ".+\\.(j|t)s?$"
+  }
+}

@@ -1,0 +1,76 @@
+:host {
+  display: block;
+}
+.menu-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 13px;
+  color: #797979;
+  padding-right: 8px;
+}
+.menu-item.activate {
+  color: #546e7a;
+}
+.menu-item.activate:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  bottom: 0;
+  width: 6px;
+  height: 2px;
+  margin-top: -2px;
+  background-color: #546e7a;
+}
+.menu-item.activate:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 0;
+  bottom: 10px;
+  width: 2px;
+  background-color: #546e7a;
+}
+
+.menu-item::ng-deep > .mat-button-wrapper {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  align-items: center;
+}
+.menu-item .menu-expand .mat-icon {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+  color: #546e7a;
+}
+.menu-item.is-opened .menu-expand {
+  transform: rotate(-180deg) scale(0.8);
+}
+.menu-item.is-opened .menu-expand .mat-icon {
+  color: #aaaaaa;
+}
+.menu-item.is-opened ~ .panel-expand {
+  height: auto;
+}
+.menu-label {
+  flex: 1 1 auto;
+  margin-right: 10px;
+  line-height: 1.6;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  white-space: normal;
+  word-break: break-word;
+}
+.menu-expand {
+  display: inline-flex;
+  color: #666666;
+  transition: transform 200ms;
+}
+.panel-expand {
+  height: 0;
+  overflow: hidden;
+}

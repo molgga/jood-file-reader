@@ -1,0 +1,27 @@
+{
+  "name": "@jood/file-reader",
+  "version": "0.1.0",
+  "license": "MIT",
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/molgga/jood-file-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/molgga/jood-file-reader/issues",
+    "email": "molgga84@gmail.com"
+  },
+  "homepage": "https://molgga.github.io/jood-file-reader",
+  "keywords": [
+    "javascript",
+    "typescript",
+    "es6",
+    "frontend",
+    "fileReader",
+    "fileChunk"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
+  }
+}
