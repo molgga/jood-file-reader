@@ -94,7 +94,6 @@ export class FileReadStream {
   /**
    * 다음 구간 읽기
    * @protected
-   * @returns
    */
   protected next() {
     if (this.readStateAbort) {
