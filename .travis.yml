@@ -38,7 +38,7 @@ notifications:
 # see: https://docs.travis-ci.com/user/job-lifecycle/#the-job-lifecycle
 
 install:
-  - yarn install
+  - npm install
 
 services:
   - xvfb
@@ -50,8 +50,8 @@ script:
   - echo $TRAVIS_PULL_REQUEST
   - echo $TRAVIS_BUILD_NUMBER
   - echo $TRAVIS_REPO_SLUG
-  - yarn run ci:build
-  - yarn run ci:test
+  - npm run ci:build
+  - npm run ci:test
 
 branches:
   only:
@@ -60,7 +60,7 @@ branches:
 
 # condition https://stackoverflow.com/questions/34591587/travis-conditional-on-branch-after-success
 after_success:
-  - test $TRAVIS_BRANCH = "master" && yarn run ci:after-success
+  - test $TRAVIS_BRANCH = "master" && npm run ci:after-success
 
 deploy:
   # 배포 설정 - npm module
