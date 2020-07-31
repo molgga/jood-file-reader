@@ -46,7 +46,6 @@
     "codelyzer": "^6.0.0",
     "copyfiles": "^2.3.0",
     "custom-event-polyfill": "^1.0.7",
-    "http-server": "^0.12.3",
     "intersection-observer": "^0.11.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.2",
