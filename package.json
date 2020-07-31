@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "ng:dev": "ng serve dev",
-    "packages:build": "ng build packages",
+    "packages:build": "ng build packages --prod",
     "packages:test": "ng test packages --code-coverage",
     "packages:doc": "jsdoc -c jsdoc.json -r -d docs",
     "page:example-dist": "ng build dev",
