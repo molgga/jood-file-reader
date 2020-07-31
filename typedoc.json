@@ -1,0 +1,6 @@
+{
+  "name": "Doc",
+  "mode": "file",
+  "out": "docs",
+  "theme": "./node_modules/typedoc-twilio-theme/bin"
+}
