@@ -1,10 +1,12 @@
 {
   "name": "jood-file-reader",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "ng:dev": "ng serve dev",
-    "packages:build": "ng build packages --prod",
+    "packages:build": "ng build packages",
+    "packages:build-prod": "ng build packages --prod",
     "packages:test": "ng test packages --code-coverage",
     "packages:doc": "jsdoc -c jsdoc.json -r -d docs",
     "page:example-dist": "ng build dev",
@@ -12,11 +14,10 @@
     "page:document-dist": "jsdoc -c jsdoc.json -r -d docs/documents",
     "page:clear": "rm -rf docs",
     "page:expose": "npm run page:example-dist && npm run page:example-make && npm run page:document-dist",
-    "ci:build": "npm run packages:build",
+    "ci:build": "npm run packages:build-prod",
     "ci:test": "ng test packages --watch=false --code-coverage --browsers=ChromeHeadless",
     "ci:after-success": "npm run page:clear && npm run page:expose && codecov"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.6",
     "@angular/common": "~10.0.6",
