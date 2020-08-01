@@ -1,6 +1,7 @@
 {
   "name": "jood-file-reader",
   "version": "0.0.0",
+  "private": true,
   "scripts": {
     "ng": "ng",
     "ng:dev": "ng serve dev",
@@ -16,7 +17,6 @@
     "ci:test": "ng test packages --watch=false --code-coverage --browsers=ChromeHeadless",
     "ci:after-success": "npm run page:clear && npm run page:expose && codecov"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~10.0.6",
     "@angular/common": "~10.0.6",
