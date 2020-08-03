@@ -5,20 +5,6 @@ import { ResizeType, ResizeConfig, ResizeResult, DrawBound } from './types';
  * Blob 이미지 리사이즈 용
  * Blob -> Canvas&Image resize -> Blob.
  * @class BlobImageResize
- * @example
-  const someBlob = new Blob([file], { type: file.type });
-  const resizer = new BlobImageResize(someBlob, {
-    expectWidth: 200,
-    expectHeight: 200,
-    resizeType: ResizeType.COVER
-  });
-  const { blob } = await resizer.create();
-  const url = URL.createObjectURL(blob);
-  const revoke = () => {
-    URL.revokeObjectURL(url);
-  };
-  // ...
-  <img :src="url" @load="revoke" @error="revoke" alt="" />
  */
 export class BlobImageResize {
   /**
@@ -39,7 +25,7 @@ export class BlobImageResize {
     this.maxWidth = expectWidth;
     this.maxHeight = expectHeight;
     this.resizeType = resizeType;
-    this.expectContentType = expectContentType;
+    this.forceContentType = expectContentType;
     this.fillBgColor = fillBgColor;
   }
 
@@ -55,7 +41,7 @@ export class BlobImageResize {
   // 캔버스에서 만들어낼 이미지 퀄리티
   protected quality: number;
   // contentType 강제 지정
-  protected expectContentType: string;
+  protected forceContentType: string;
   // 리사이징 최대 사이즈
   protected maxWidth: number;
   protected maxHeight: number;
@@ -72,7 +58,7 @@ export class BlobImageResize {
 
   /**
    * 리사이징 타입 - SCALE 형
-   * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤.
+   * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
    * @param {number} sw
    * @param {number} sh
    * @returns {DrawBound}
@@ -94,32 +80,41 @@ export class BlobImageResize {
   }
 
   /**
+   * 리사이징 타입 - SCALE 형
+   * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 비율에 맞춰서 늘림.
+   * @param {number} sw
+   * @param {number} sh
+   * @returns {DrawBound}
+   */
+  getResizeToScaleStretch(sw: number, sh: number): DrawBound {
+    const dx: number = 0;
+    const dy: number = 0;
+    let dw: number = 0;
+    let dh: number = 0;
+    let contentRatio: number = 1;
+    const isLandscape: boolean = sh <= sw;
+    if (isLandscape) {
+      contentRatio = sw / sh;
+      contentRatio = 1 < contentRatio ? contentRatio : 1;
+      dw = this.maxWidth * contentRatio;
+      dh = Math.floor((dw / sw) * sh);
+    } else {
+      contentRatio = sh / sw;
+      contentRatio = 1 < contentRatio ? contentRatio : 1;
+      dh = this.maxHeight * contentRatio;
+      dw = Math.floor((dh / sh) * sw);
+    }
+    return { dx, dy, dw, dh, mw: dw, mh: dh };
+  }
+
+  /**
    * 리사이징 타입 - COVER 형
-   * 정해진 expect 사이즈에 빈 여백 없이 맞춤, 원본 이미지가 작으면 늘리고, 넘치면 잘려나감.
+   * 정해진 expect 사이즈에 빈 여백 없이 맞춤. 원본이 작은 경우 늘리지 않으며, cover 처리가 가능한 최대 사이즈로 맞춤.
    * @param {number} sw
    * @param {number} sh
    * @returns {DrawBound}
    */
   getResizeToCover(sw: number, sh: number): DrawBound {
-    let dx: number = 0;
-    let dy: number = 0;
-    let dw: number = 0;
-    let dh: number = 0;
-    let expectRatio: number = this.maxWidth / this.maxHeight;
-    let contentRatio: number = sw / sh;
-    if (expectRatio < contentRatio) {
-      dh = this.maxHeight;
-      dw = this.maxHeight * contentRatio;
-    } else {
-      dw = this.maxWidth;
-      dh = this.maxWidth / contentRatio;
-    }
-    dx = (this.maxWidth - dw) * 0.5;
-    dy = (this.maxHeight - dh) * 0.5;
-    return { dx, dy, dw, dh, mw: this.maxWidth, mh: this.maxHeight };
-  }
-
-  getResizeToCoverNoneStretch(sw: number, sh: number): DrawBound {
     const min = Math.min(sw, sh, this.maxWidth, this.maxHeight);
     const mw = Math.min(min, sw, this.maxWidth);
     const mh = Math.min(min, sh, this.maxHeight);
@@ -142,6 +137,32 @@ export class BlobImageResize {
   }
 
   /**
+   * 리사이징 타입 - COVER 형
+   * 정해진 expect 사이즈에 빈 여백 없이 맞춤. 원본이 작은 경우 늘림.
+   * @param {number} sw
+   * @param {number} sh
+   * @returns {DrawBound}
+   */
+  getResizeToCoverStretch(sw: number, sh: number): DrawBound {
+    let dx: number = 0;
+    let dy: number = 0;
+    let dw: number = 0;
+    let dh: number = 0;
+    let expectRatio: number = this.maxWidth / this.maxHeight;
+    let contentRatio: number = sw / sh;
+    if (expectRatio < contentRatio) {
+      dh = this.maxHeight;
+      dw = this.maxHeight * contentRatio;
+    } else {
+      dw = this.maxWidth;
+      dh = this.maxWidth / contentRatio;
+    }
+    dx = (this.maxWidth - dw) * 0.5;
+    dy = (this.maxHeight - dh) * 0.5;
+    return { dx, dy, dw, dh, mw: this.maxWidth, mh: this.maxHeight };
+  }
+
+  /**
    * 이미지 로드 완료
    * @protected
    */
@@ -152,13 +173,15 @@ export class BlobImageResize {
     let drawBound: DrawBound;
     if (this.resizeType === ResizeType.COVER) {
       drawBound = this.getResizeToCover(imageWidth, imageHeight);
-    } else if (this.resizeType === ResizeType.COVER_NONE_STRETCH) {
-      drawBound = this.getResizeToCoverNoneStretch(imageWidth, imageHeight);
+    } else if (this.resizeType === ResizeType.COVER_STRETCH) {
+      drawBound = this.getResizeToCoverStretch(imageWidth, imageHeight);
+    } else if (this.resizeType === ResizeType.SCALE_STRETCH) {
+      drawBound = this.getResizeToScaleStretch(imageWidth, imageHeight);
     } else {
       drawBound = this.getResizeToScale(imageWidth, imageHeight);
     }
     const { dx, dy, dw, dh, mw, mh } = drawBound;
-    const contentType = this.expectContentType || this.blob.type;
+    const contentType = this.forceContentType || this.blob.type;
     this.domCanvas.width = mw;
     this.domCanvas.height = mh;
     if (this.fillBgColor) {

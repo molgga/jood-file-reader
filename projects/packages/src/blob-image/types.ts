@@ -1,14 +1,17 @@
 /**
  * 리사이즈 타입
- *  - SCALE: 최대 크기에 맞춤, 이미지 비율 유지.
- *  - COVER: 최대 크기에 맞춤, 이미지 넘치면 잘라냄.
+ *  - SCALE: 이미지 비율 유지, 원본이 예상 크기 보다 작은 경우 늘리지 않음.
+ *  - SCALE_STRETCH: 이미지 비율 유지, 원본이 예상 크기 보다 작은 경우 작은것을 기준으로 늘림.
+ *  - COVER: 이미지 넘치면 잘라냄, 원본이 예상 크기 보다 작은 경우 늘리지 않음.
+ *  - COVER_STRETCH: 이미지 넘치면 잘라냄, 원본이 예상 크기 보다 작은 경우 늘림.
  * @export
  * @enum {number}
  */
 export enum ResizeType {
   SCALE,
+  SCALE_STRETCH,
   COVER,
-  COVER_NONE_STRETCH,
+  COVER_STRETCH,
 }
 
 /**
