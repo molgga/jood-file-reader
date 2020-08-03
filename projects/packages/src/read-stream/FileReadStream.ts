@@ -111,7 +111,7 @@ export class FileReadStream {
       const sliceBlob = this.readFile.slice(this.readOffset, this.readOffsetNext);
       this.reader.readAsArrayBuffer(sliceBlob);
     } catch (err) {
-      this.resultReject(err);
+      this.onReaderError(err);
     }
   }
 

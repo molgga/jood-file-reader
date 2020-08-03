@@ -23,7 +23,7 @@ async function createSampleImageBlob(): Promise<Blob> {
 describe('BlobImageResize', () => {
   it('getResizeToCover 확인', () => {
     const blob = createSampleBlob(1024);
-    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200, });
+    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200 });
     let bound: DrawBound;
     bound = resizer.getResizeToCover(100, 300);
     expect(bound).toEqual({ dx: 0, dy: -100, dw: 100, dh: 300, mw: 100, mh: 100 });
@@ -41,7 +41,7 @@ describe('BlobImageResize', () => {
 
   it('getResizeToCoverStretch 확인', () => {
     const blob = createSampleBlob(1024);
-    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200, });
+    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200 });
     let bound: DrawBound;
     bound = resizer.getResizeToCoverStretch(100, 300);
     expect(bound).toEqual({ dx: 0, dy: -200, dw: 200, dh: 600, mw: 200, mh: 200 });
@@ -59,7 +59,7 @@ describe('BlobImageResize', () => {
 
   it('getResizeToScale 확인', () => {
     const blob = createSampleBlob(1024);
-    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200, });
+    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200 });
     let bound: DrawBound;
     bound = resizer.getResizeToScale(100, 300);
     expect(bound).toEqual({ dx: 0, dy: 0, dw: 66, dh: 200, mw: 66, mh: 200 });
@@ -77,7 +77,7 @@ describe('BlobImageResize', () => {
 
   it('getResizeToScaleStretch 확인', () => {
     const blob = createSampleBlob(1024);
-    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200, });
+    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200 });
     let bound: DrawBound;
     bound = resizer.getResizeToScaleStretch(100, 300);
     expect(bound).toEqual({ dx: 0, dy: 0, dw: 200, dh: 600, mw: 200, mh: 600 });
@@ -99,6 +99,7 @@ describe('BlobImageResize', () => {
       expectWidth: 200, // 예상 width
       expectHeight: 200, // 예상 height
       quality: 0.9,
+      fillBgColor: '#ff0000',
       resizeType: ResizeType.SCALE
     });
     const resized = await resizer.create();
@@ -106,7 +107,22 @@ describe('BlobImageResize', () => {
     expect(resized.height).toBe(68);
   });
 
-  it('create, resize COVER 확인', async () => {
+  it('create, resize COVER 확인 - 이미지 원본 사이즈 보다 expect 사이즈가 큰 경우', async () => {
+    const blob = await createSampleImageBlob();
+    const expectWidth = 100;
+    const expectHeight = 100;
+    const resizer = new BlobImageResize(blob, {
+      expectWidth,
+      expectHeight,
+      quality: 0.9,
+      resizeType: ResizeType.COVER
+    });
+    const resized = await resizer.create();
+    expect(resized.width).toBe(Math.min(TEST_REAL_IMAGE_WIDTH, TEST_REAL_IMAGE_HEIGHT));
+    expect(resized.height).toBe(Math.min(TEST_REAL_IMAGE_WIDTH, TEST_REAL_IMAGE_HEIGHT));
+  });
+
+  it('create, resize COVER 확인 - 이미지 원본 사이즈 보다 expect 사이즈가 작은 경우', async () => {
     const blob = await createSampleImageBlob();
     const expectWidth = 50;
     const expectHeight = 50;
@@ -156,6 +172,36 @@ describe('BlobImageResize', () => {
     }
   });
 
+  it('create, resize COVER stretch 확인', async () => {
+    const blob = await createSampleImageBlob();
+    const expectWidth = 100;
+    const expectHeight = 100;
+    const resizer = new BlobImageResize(blob, {
+      expectWidth,
+      expectHeight,
+      quality: 0.9,
+      resizeType: ResizeType.COVER_STRETCH
+    });
+    const resized = await resizer.create();
+    expect(resized.width).toBe(expectWidth);
+    expect(resized.height).toBe(expectHeight);
+  });
+
+  it('create, resize SCALE stretch 확인', async () => {
+    const blob = await createSampleImageBlob();
+    const expectWidth = 100;
+    const expectHeight = 100;
+    const resizer = new BlobImageResize(blob, {
+      expectWidth,
+      expectHeight,
+      quality: 0.9,
+      resizeType: ResizeType.SCALE_STRETCH
+    });
+    const resized = await resizer.create();
+    expect(resized.width).toBe(99);
+    expect(resized.height).toBe(111);
+  });
+
   it('create, none blob error 확인', async (testDone) => {
     const noneBlob = {} as any;
     const expectWidth = 50;
@@ -178,10 +224,7 @@ describe('BlobImageResize', () => {
     const noneImageBlob = createSampleBlob(1024);
     const expectWidth = 50;
     const expectHeight = 50;
-    const resizer = new BlobImageResize(noneImageBlob, {
-      expectWidth,
-      expectHeight,
-    });
+    const resizer = new BlobImageResize(noneImageBlob);
     resizer.create().catch((err: ResizeResult) => {
       expect(err).not.toBeNull();
       expect(err.error).not.toBeNull();
