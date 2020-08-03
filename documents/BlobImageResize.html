@@ -25,7 +25,7 @@
 <label for="nav-trigger" class="overlay"></label>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BlobImageResize.html">BlobImageResize</a><ul class='methods'><li data-type='method'><a href="BlobImageResize.html#create">create</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToCover">getResizeToCover</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToScale">getResizeToScale</a></li><li data-type='method'><a href="BlobImageResize.html#onImageError">onImageError</a></li><li data-type='method'><a href="BlobImageResize.html#onImageLoaded">onImageLoaded</a></li><li data-type='method'><a href="BlobImageResize.html#onResized">onResized</a></li></ul></li><li><a href="BlobImageResize_BlobImageResize.html">BlobImageResize</a></li><li><a href="FileReadStream.html">FileReadStream</a><ul class='methods'><li data-type='method'><a href="FileReadStream.html#abort">abort</a></li><li data-type='method'><a href="FileReadStream.html#destroy">destroy</a></li><li data-type='method'><a href="FileReadStream.html#getState">getState</a></li><li data-type='method'><a href="FileReadStream.html#next">next</a></li><li data-type='method'><a href="FileReadStream.html#observeState">observeState</a></li><li data-type='method'><a href="FileReadStream.html#onReaderError">onReaderError</a></li><li data-type='method'><a href="FileReadStream.html#onReaderLoaded">onReaderLoaded</a></li><li data-type='method'><a href="FileReadStream.html#resultReject">resultReject</a></li><li data-type='method'><a href="FileReadStream.html#resultResolve">resultResolve</a></li><li data-type='method'><a href="FileReadStream.html#start">start</a></li><li data-type='method'><a href="FileReadStream.html#stateChanged">stateChanged</a></li></ul></li><li><a href="FileReadStream_FileReadStream.html">FileReadStream</a></li></ul><h3>Interfaces</h3><ul><li><a href="DrawBound.html">DrawBound</a></li><li><a href="FileReadConfig.html">FileReadConfig</a></li><li><a href="FileReadEvent.html">FileReadEvent</a></li><li><a href="FileReadState.html">FileReadState</a></li><li><a href="ResizeConfig.html">ResizeConfig</a></li><li><a href="ResizeResult.html">ResizeResult</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FileReadEventType">FileReadEventType</a></li><li><a href="global.html#FileReadResponseType">FileReadResponseType</a></li><li><a href="global.html#ResizeType">ResizeType</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="BlobImageResize.html">BlobImageResize</a><ul class='methods'><li data-type='method'><a href="BlobImageResize.html#create">create</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToCover">getResizeToCover</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToCoverStretch">getResizeToCoverStretch</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToScale">getResizeToScale</a></li><li data-type='method'><a href="BlobImageResize.html#getResizeToScaleStretch">getResizeToScaleStretch</a></li><li data-type='method'><a href="BlobImageResize.html#onImageError">onImageError</a></li><li data-type='method'><a href="BlobImageResize.html#onImageLoaded">onImageLoaded</a></li><li data-type='method'><a href="BlobImageResize.html#onResized">onResized</a></li></ul></li><li><a href="BlobImageResize_BlobImageResize.html">BlobImageResize</a></li><li><a href="FileReadStream.html">FileReadStream</a><ul class='methods'><li data-type='method'><a href="FileReadStream.html#abort">abort</a></li><li data-type='method'><a href="FileReadStream.html#destroy">destroy</a></li><li data-type='method'><a href="FileReadStream.html#getState">getState</a></li><li data-type='method'><a href="FileReadStream.html#next">next</a></li><li data-type='method'><a href="FileReadStream.html#observeState">observeState</a></li><li data-type='method'><a href="FileReadStream.html#onReaderError">onReaderError</a></li><li data-type='method'><a href="FileReadStream.html#onReaderLoaded">onReaderLoaded</a></li><li data-type='method'><a href="FileReadStream.html#resultReject">resultReject</a></li><li data-type='method'><a href="FileReadStream.html#resultResolve">resultResolve</a></li><li data-type='method'><a href="FileReadStream.html#start">start</a></li><li data-type='method'><a href="FileReadStream.html#stateChanged">stateChanged</a></li></ul></li><li><a href="FileReadStream_FileReadStream.html">FileReadStream</a></li></ul><h3>Interfaces</h3><ul><li><a href="DrawBound.html">DrawBound</a></li><li><a href="FileReadConfig.html">FileReadConfig</a></li><li><a href="FileReadEvent.html">FileReadEvent</a></li><li><a href="FileReadState.html">FileReadState</a></li><li><a href="ResizeConfig.html">ResizeConfig</a></li><li><a href="ResizeResult.html">ResizeResult</a></li></ul><h3>Global</h3><ul><li><a href="global.html#FileReadEventType">FileReadEventType</a></li><li><a href="global.html#FileReadResponseType">FileReadResponseType</a></li><li><a href="global.html#ResizeType">ResizeType</a></li></ul>
 </nav>
 
 <div id="main">
@@ -133,23 +133,6 @@ Blob -> Canvas&Image resize -> Blob.
 
 
 
-    <h5>Example</h5>
-    
-    <pre class="prettyprint"><code>const someBlob = new Blob([file], { type: file.type });
-  const resizer = new BlobImageResize(someBlob, {
-    expectWidth: 200,
-    expectHeight: 200,
-    resizeType: ResizeType.COVER
-  });
-  const { blob } = await resizer.create();
-  const url = URL.createObjectURL(blob);
-  const revoke = () => {
-    URL.revokeObjectURL(url);
-  };
-  // ...
-  &lt;img :src="url" @load="revoke" @error="revoke" alt="" /></code></pre>
-
-
 
     
     </div>
@@ -232,7 +215,7 @@ Blob -> Canvas&Image resize -> Blob.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line167">line 167</a>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line186">line 186</a>
     </li></ul></dd>
     
 
@@ -289,7 +272,7 @@ Blob -> Canvas&Image resize -> Blob.
 
 <div class="description">
     리사이징 타입 - COVER 형
-정해진 expect 사이즈에 빈 여백 없이 맞춤, 원본 이미지가 작으면 늘리고, 넘치면 잘려나감.
+정해진 expect 사이즈에 빈 여백 없이 맞춤. 원본이 작은 경우 늘리지 않으며, cover 처리가 가능한 최대 사이즈로 맞춤.
 </div>
 
 
@@ -409,7 +392,7 @@ Blob -> Canvas&Image resize -> Blob.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line95">line 95</a>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -452,19 +435,181 @@ Blob -> Canvas&Image resize -> Blob.
     
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>const resizer = new BlobImageResize(null, { expectWidth: 200, expectHeight: 200 });
-      // 결과 이미지 모두 200x200
-      console.log(resizer.getResizeToCover(100, 100)); // {dx: 0, dy: 0, dw: 200, dh: 200}
-      console.log(resizer.getResizeToCover(100, 200)); // {dx: 0, dy: -100, dw: 200, dh: 400}
-      console.log(resizer.getResizeToCover(100, 300)); // {dx: 0, dy: -200, dw: 200, dh: 600}
-      console.log(resizer.getResizeToCover(200, 100)); // {dx: -100, dy: 0, dw: 400, dh: 200}
-      console.log(resizer.getResizeToCover(200, 200)); // {dx: 0, dy: 0, dw: 200, dh: 200}
-      console.log(resizer.getResizeToCover(200, 300)); // {dx: 0, dy: -50, dw: 200, dh: 300}
-      console.log(resizer.getResizeToCover(300, 100)); // {dx: -200, dy: 0, dw: 600, dh: 200}
-      console.log(resizer.getResizeToCover(300, 200)); // {dx: -50, dy: 0, dw: 300, dh: 200}
-      console.log(resizer.getResizeToCover(300, 300)); // {dx: 0, dy: 0, dw: 200, dh: 200}</code></pre>
+
+    <h4 class="name" id="getResizeToCoverStretch"><span class="type-signature"></span>getResizeToCoverStretch<span class="signature">(sw, sh)</span><span class="type-signature"> &rarr; {<a href="DrawBound.html">DrawBound</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    리사이징 타입 - COVER 형
+정해진 expect 사이즈에 빈 여백 없이 맞춤. 원본이 작은 경우 늘림.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>sw</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>sh</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="DrawBound.html">DrawBound</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -481,7 +626,7 @@ Blob -> Canvas&Image resize -> Blob.
 
 <div class="description">
     리사이징 타입 - SCALE 형
-정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤.
+정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
 </div>
 
 
@@ -601,7 +746,7 @@ Blob -> Canvas&Image resize -> Blob.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line55">line 55</a>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -644,19 +789,181 @@ Blob -> Canvas&Image resize -> Blob.
     
 
 
-    <h5>Example</h5>
+
+        
+            
+
     
-    <pre class="prettyprint"><code>const resizer = new BlobImageResize(null, { expectWidth: 200, expectHeight: 200 });
-      // dx, dy 모두 0
-      console.log(resizer.getResizeToScale(100, 100)); // 결과이미지: 100x100
-      console.log(resizer.getResizeToScale(100, 200)); // 결과이미지: 100x200
-      console.log(resizer.getResizeToScale(100, 300)); // 결과이미지: 66x200
-      console.log(resizer.getResizeToScale(200, 100)); // 결과이미지: 200x100
-      console.log(resizer.getResizeToScale(200, 200)); // 결과이미지: 200x200
-      console.log(resizer.getResizeToScale(200, 300)); // 결과이미지: 133x200
-      console.log(resizer.getResizeToScale(300, 100)); // 결과이미지: 200x66
-      console.log(resizer.getResizeToScale(300, 200)); // 결과이미지: 200x133
-      console.log(resizer.getResizeToScale(300, 300)); // 결과이미지: 200x200</code></pre>
+
+    <h4 class="name" id="getResizeToScaleStretch"><span class="type-signature"></span>getResizeToScaleStretch<span class="signature">(sw, sh)</span><span class="type-signature"> &rarr; {<a href="DrawBound.html">DrawBound</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    리사이징 타입 - SCALE 형
+정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 비율에 맞춰서 늘림.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<div class="parameters-wrap">
+  <div class="parameters-inner">
+    <table class="params">
+      <thead>
+      <tr>
+          
+          <th>Name</th>
+          
+
+          <th>Type</th>
+
+          
+
+          
+
+          <th class="last">Description</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      
+
+          <tr>
+              
+                  <td class="name"><code>sw</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+
+          <tr>
+              
+                  <td class="name"><code>sh</code></td>
+              
+
+              <td class="type">
+              
+                  
+<span class="param-type">number</span>
+
+
+              
+              </td>
+
+              
+
+              
+
+              <td class="description last"></td>
+          </tr>
+
+      
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="DrawBound.html">DrawBound</a></span>
+
+
+    </dd>
+</dl>
+
+    
 
 
 
@@ -716,7 +1023,7 @@ Blob -> Canvas&Image resize -> Blob.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line147">line 147</a>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line166">line 166</a>
     </li></ul></dd>
     
 
@@ -798,7 +1105,7 @@ Blob -> Canvas&Image resize -> Blob.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line123">line 123</a>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line134">line 134</a>
     </li></ul></dd>
     
 
@@ -933,7 +1240,7 @@ Blob -> Canvas&Image resize -> Blob.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line159">line 159</a>
+        <a href="blob-image_BlobImageResize.ts.html">blob-image/BlobImageResize.ts</a>, <a href="blob-image_BlobImageResize.ts.html#line178">line 178</a>
     </li></ul></dd>
     
 
@@ -977,7 +1284,7 @@ Blob -> Canvas&Image resize -> Blob.
 <br class="clear">
 
 <footer>
-    Documentation generated at Sun Aug 02 2020 23:26:32 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Mon Aug 03 2020 10:36:06 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>

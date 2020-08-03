@@ -22,7 +22,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<p>\n  @TODO - blob-image works!\n</p>\n";
+      __webpack_exports__["default"] = "<div>\n  <mat-form-field>\n    <mat-label>expectWidth</mat-label>\n    <mat-select [(ngModel)]=\"testWidth\">\n      <mat-option *ngFor=\"let data of optionWidths\" [value]=\"data.value\">{{\n        data.label\n      }}</mat-option>\n    </mat-select>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-label>expectHeight</mat-label>\n    <mat-select [(ngModel)]=\"testHeight\">\n      <mat-option *ngFor=\"let data of optionHeights\" [value]=\"data.value\">{{\n        data.label\n      }}</mat-option>\n    </mat-select>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-label>quality</mat-label>\n    <mat-select [(ngModel)]=\"testQuality\">\n      <mat-option *ngFor=\"let data of optionQualities\" [value]=\"data.value\">{{\n        data.label\n      }}</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <div class=\"my-desc\">\n    (quality: allow only contentType image/jpeg)\n  </div>\n  <mat-form-field>\n    <mat-label>expectContentType</mat-label>\n    <input matInput [(ngModel)]=\"testContentType\" />\n    <mat-hint>ex) image/jpeg</mat-hint>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-label>fillBgColor</mat-label>\n    <input matInput [(ngModel)]=\"testFillBgColor\" />\n    <mat-hint>ex) #ff0000</mat-hint>\n  </mat-form-field>\n</div>\n\n<div class=\"file-wrap\">\n  <input type=\"file\" accept=\"image/*\" (change)=\"onFileChange($event)\" />\n</div>\n\n<div class=\"demo-wrap\">\n  <div *ngFor=\"let demo of demoList\" class=\"demo-item\">\n    <div class=\"panel-canvas\">\n      <div class=\"draw-area\">\n        <canvas #demoCanvasRefs></canvas>\n      </div>\n    </div>\n    <div *ngIf=\"demo.info\" class=\"panel-info\">\n      <em class=\"tit\">{{ demo.info.title }}</em>\n      <dl class=\"dl\">\n        <dt class=\"dt\">size</dt>\n        <dd class=\"dd\">{{ demo.info.size }}bype / {{ (demo.info.size / 1024).toFixed(2) }}kb</dd>\n      </dl>\n      <dl class=\"dl\">\n        <dt class=\"dt\">type</dt>\n        <dd class=\"dd\">{{ demo.info.type }}</dd>\n      </dl>\n      <dl class=\"dl\">\n        <dt class=\"dt\">width</dt>\n        <dd class=\"dd\">{{ demo.info.width }}</dd>\n      </dl>\n      <dl class=\"dl\">\n        <dt class=\"dt\">height</dt>\n        <dd class=\"dd\">{{ demo.info.height }}</dd>\n      </dl>\n    </div>\n  </div>\n</div>\n\n<!-- <div class=\"canvas-wrap\">\n  <div class=\"canvas-item\">\n    <div class=\"display-area\">\n      <div class=\"draw-area\">\n        <canvas #canvasOriginal></canvas>\n      </div>\n    </div>\n  </div>\n  <div class=\"canvas-item\">\n    <div class=\"display-area\">\n      <div class=\"draw-area\">\n        <canvas #canvasCover></canvas>\n      </div>\n    </div>\n  </div>\n  <div class=\"canvas-item\">\n    <div class=\"display-area\">\n      <div class=\"draw-area\">\n        <canvas #canvasCoverNoneStretch></canvas>\n      </div>\n    </div>\n  </div>\n  <div class=\"canvas-item\">\n    <div class=\"display-area\">\n      <div class=\"draw-area\">\n        <canvas #canvasScale></canvas>\n      </div>\n    </div>\n  </div>\n</div>\n\n<div class=\"info-wrap\">\n  <div *ngFor=\"let info of infos\" class=\"info-item\">\n    <em class=\"tit\">{{ info.title }}</em>\n    <dl class=\"dl\">\n      <dt class=\"dt\">size</dt>\n      <dd class=\"dd\">{{ info.size }}bype / {{ (info.size / 1024).toFixed(2) }}kb</dd>\n    </dl>\n    <dl class=\"dl\">\n      <dt class=\"dt\">type</dt>\n      <dd class=\"dd\">{{ info.type }}</dd>\n    </dl>\n    <dl class=\"dl\">\n      <dt class=\"dt\">width</dt>\n      <dd class=\"dd\">{{ info.width }}</dd>\n    </dl>\n    <dl class=\"dl\">\n      <dt class=\"dt\">height</dt>\n      <dd class=\"dd\">{{ info.height }}</dd>\n    </dl>\n  </div>\n</div> -->\n";
       /***/
     },
 
@@ -42,7 +42,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<div>\n  <mat-form-field>\n    <mat-label>test chunk size</mat-label>\n    <mat-select [(ngModel)]=\"testChunkSize\">\n      <mat-option *ngFor=\"let chunk of optionChunkList\" [value]=\"chunk.value\">{{\n        chunk.label\n      }}</mat-option>\n    </mat-select>\n  </mat-form-field>\n\n  <br />\n  <br />\n  @TODO - test option: responseType = BUFFER | BLOB\n  <br />\n  <br />\n  <br />\n</div>\n\n<div>\n  <input type=\"file\" (change)=\"onFileChange($event)\" />\n</div>\n\n<hr class=\"partition\" />\n\n<div class=\"print-stack\">\n  <div class=\"stack-opt\">\n    <button mat-raised-button color=\"warn\" [disabled]=\"!reader\" (click)=\"onFileAbort($event)\">\n      abort\n    </button>\n    <div class=\"spacer\"></div>\n    <div class=\"stack-count\">read count: {{ changeStackCount }}</div>\n  </div>\n  <div class=\"stack-list\">\n    <div *ngFor=\"let fileEvent of changeStack\" class=\"stack-item\">\n      <div class=\"aside\">\n        {{ fileEvent.type }}\n      </div>\n      <div *ngIf=\"fileEvent.state\" class=\"bside\">\n        <span class=\"label\">\n          <span class=\"dt\">readed</span>\n          <span class=\"dd\">{{ fileEvent.state.readed }}</span>\n        </span>\n        <span class=\"label\">\n          <span class=\"dt\">total</span>\n          <span class=\"dd\">{{ fileEvent.state.total }}</span>\n        </span>\n        <span class=\"label\">\n          <span class=\"dt\">percent</span>\n          <span class=\"dd\">{{ (fileEvent.state.readed / fileEvent.state.total).toFixed(2) }}</span>\n        </span>\n      </div>\n    </div>\n  </div>\n</div>\n";
+      __webpack_exports__["default"] = "<div>\n  <mat-form-field>\n    <mat-label>chunk size</mat-label>\n    <mat-select [(ngModel)]=\"testChunk\">\n      <mat-option *ngFor=\"let chunk of optionChunks\" [value]=\"chunk.value\">{{\n        chunk.label\n      }}</mat-option>\n    </mat-select>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-label>response type</mat-label>\n    <mat-select [(ngModel)]=\"testResponseType\">\n      <mat-option *ngFor=\"let chunk of optionResponseTypes\" [value]=\"chunk.value\">{{\n        chunk.label\n      }}</mat-option>\n    </mat-select>\n  </mat-form-field>\n</div>\n\n<div>\n  <input type=\"file\" (change)=\"onFileChange($event)\" />\n</div>\n\n<hr class=\"partition\" />\n\n<div class=\"print-stack\">\n  <div class=\"stack-opt\">\n    <button mat-raised-button color=\"warn\" [disabled]=\"!reader\" (click)=\"onFileAbort($event)\">\n      abort\n    </button>\n    <div class=\"spacer\"></div>\n    <div class=\"stack-count\">read count: {{ changeStackCount }}</div>\n  </div>\n  <div class=\"stack-list\">\n    <div *ngFor=\"let fileEvent of changeStack\" class=\"stack-item\">\n      <div class=\"aside\">\n        {{ fileEvent.type }}\n      </div>\n      <div *ngIf=\"fileEvent.state\" class=\"bside\">\n        <span class=\"label\">\n          <span class=\"dt\">readed</span>\n          <span class=\"dd\">{{ fileEvent.state.readed }}</span>\n        </span>\n        <span class=\"label\">\n          <span class=\"dt\">total</span>\n          <span class=\"dd\">{{ fileEvent.state.total }}</span>\n        </span>\n        <span class=\"label\">\n          <span class=\"dt\">percent</span>\n          <span class=\"dd\">{{ (fileEvent.state.readed / fileEvent.state.total).toFixed(2) }}</span>\n        </span>\n      </div>\n    </div>\n  </div>\n</div>\n";
       /***/
     },
 
@@ -77,20 +77,6 @@
        * Blob 이미지 리사이즈 용
        * Blob -> Canvas&Image resize -> Blob.
        * @class BlobImageResize
-       * @example
-        const someBlob = new Blob([file], { type: file.type });
-        const resizer = new BlobImageResize(someBlob, {
-          expectWidth: 200,
-          expectHeight: 200,
-          resizeType: ResizeType.COVER
-        });
-        const { blob } = await resizer.create();
-        const url = URL.createObjectURL(blob);
-        const revoke = () => {
-          URL.revokeObjectURL(url);
-        };
-        // ...
-        <img :src="url" @load="revoke" @error="revoke" alt="" />
        */
 
 
@@ -112,30 +98,22 @@
               _config$quality = config.quality,
               quality = _config$quality === void 0 ? 0.9 : _config$quality,
               _config$resizeType = config.resizeType,
-              resizeType = _config$resizeType === void 0 ? _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE : _config$resizeType;
+              resizeType = _config$resizeType === void 0 ? _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE : _config$resizeType,
+              expectContentType = config.expectContentType,
+              fillBgColor = config.fillBgColor;
           this.quality = quality;
           this.maxWidth = expectWidth;
           this.maxHeight = expectHeight;
           this.resizeType = resizeType;
+          this.forceContentType = expectContentType;
+          this.fillBgColor = fillBgColor;
         }
         /**
          * 리사이징 타입 - SCALE 형
-         * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤.
+         * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
          * @param {number} sw
          * @param {number} sh
          * @returns {DrawBound}
-         * @example
-          const resizer = new BlobImageResize(null, { expectWidth: 200, expectHeight: 200 });
-          // dx, dy 모두 0
-          console.log(resizer.getResizeToScale(100, 100)); // 결과이미지: 100x100
-          console.log(resizer.getResizeToScale(100, 200)); // 결과이미지: 100x200
-          console.log(resizer.getResizeToScale(100, 300)); // 결과이미지: 66x200
-          console.log(resizer.getResizeToScale(200, 100)); // 결과이미지: 200x100
-          console.log(resizer.getResizeToScale(200, 200)); // 결과이미지: 200x200
-          console.log(resizer.getResizeToScale(200, 300)); // 결과이미지: 133x200
-          console.log(resizer.getResizeToScale(300, 100)); // 결과이미지: 200x66
-          console.log(resizer.getResizeToScale(300, 200)); // 결과이미지: 200x133
-          console.log(resizer.getResizeToScale(300, 300)); // 결과이미지: 200x200
          */
 
 
@@ -160,32 +138,101 @@
               dx: dx,
               dy: dy,
               dw: dw,
-              dh: dh
+              dh: dh,
+              mw: dw,
+              mh: dh
+            };
+          }
+          /**
+           * 리사이징 타입 - SCALE 형
+           * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 비율에 맞춰서 늘림.
+           * @param {number} sw
+           * @param {number} sh
+           * @returns {DrawBound}
+           */
+
+        }, {
+          key: "getResizeToScaleStretch",
+          value: function getResizeToScaleStretch(sw, sh) {
+            var dx = 0;
+            var dy = 0;
+            var dw = 0;
+            var dh = 0;
+            var contentRatio = 1;
+            var isLandscape = sh <= sw;
+
+            if (isLandscape) {
+              contentRatio = sw / sh;
+              contentRatio = 1 < contentRatio ? contentRatio : 1;
+              dw = this.maxWidth * contentRatio;
+              dh = Math.floor(dw / sw * sh);
+            } else {
+              contentRatio = sh / sw;
+              contentRatio = 1 < contentRatio ? contentRatio : 1;
+              dh = this.maxHeight * contentRatio;
+              dw = Math.floor(dh / sh * sw);
+            }
+
+            return {
+              dx: dx,
+              dy: dy,
+              dw: dw,
+              dh: dh,
+              mw: dw,
+              mh: dh
             };
           }
           /**
            * 리사이징 타입 - COVER 형
-           * 정해진 expect 사이즈에 빈 여백 없이 맞춤, 원본 이미지가 작으면 늘리고, 넘치면 잘려나감.
+           * 정해진 expect 사이즈에 빈 여백 없이 맞춤. 원본이 작은 경우 늘리지 않으며, cover 처리가 가능한 최대 사이즈로 맞춤.
            * @param {number} sw
            * @param {number} sh
            * @returns {DrawBound}
-           * @example
-            const resizer = new BlobImageResize(null, { expectWidth: 200, expectHeight: 200 });
-            // 결과 이미지 모두 200x200
-            console.log(resizer.getResizeToCover(100, 100)); // {dx: 0, dy: 0, dw: 200, dh: 200}
-            console.log(resizer.getResizeToCover(100, 200)); // {dx: 0, dy: -100, dw: 200, dh: 400}
-            console.log(resizer.getResizeToCover(100, 300)); // {dx: 0, dy: -200, dw: 200, dh: 600}
-            console.log(resizer.getResizeToCover(200, 100)); // {dx: -100, dy: 0, dw: 400, dh: 200}
-            console.log(resizer.getResizeToCover(200, 200)); // {dx: 0, dy: 0, dw: 200, dh: 200}
-            console.log(resizer.getResizeToCover(200, 300)); // {dx: 0, dy: -50, dw: 200, dh: 300}
-            console.log(resizer.getResizeToCover(300, 100)); // {dx: -200, dy: 0, dw: 600, dh: 200}
-            console.log(resizer.getResizeToCover(300, 200)); // {dx: -50, dy: 0, dw: 300, dh: 200}
-            console.log(resizer.getResizeToCover(300, 300)); // {dx: 0, dy: 0, dw: 200, dh: 200}
            */
 
         }, {
           key: "getResizeToCover",
           value: function getResizeToCover(sw, sh) {
+            var min = Math.min(sw, sh, this.maxWidth, this.maxHeight);
+            var mw = Math.min(min, sw, this.maxWidth);
+            var mh = Math.min(min, sh, this.maxHeight);
+            var dx = 0;
+            var dy = 0;
+            var dw = 0;
+            var dh = 0;
+            var expectRatio = mw / mh;
+            var contentRatio = sw / sh;
+
+            if (expectRatio < contentRatio) {
+              dh = mh;
+              dw = mh * contentRatio;
+            } else {
+              dw = mw;
+              dh = mw / contentRatio;
+            }
+
+            dx = (mw - dw) * 0.5;
+            dy = (mh - dh) * 0.5;
+            return {
+              dx: dx,
+              dy: dy,
+              dw: dw,
+              dh: dh,
+              mw: mw,
+              mh: mh
+            };
+          }
+          /**
+           * 리사이징 타입 - COVER 형
+           * 정해진 expect 사이즈에 빈 여백 없이 맞춤. 원본이 작은 경우 늘림.
+           * @param {number} sw
+           * @param {number} sh
+           * @returns {DrawBound}
+           */
+
+        }, {
+          key: "getResizeToCoverStretch",
+          value: function getResizeToCoverStretch(sw, sh) {
             var dx = 0;
             var dy = 0;
             var dw = 0;
@@ -207,7 +254,9 @@
               dx: dx,
               dy: dy,
               dw: dw,
-              dh: dh
+              dh: dh,
+              mw: this.maxWidth,
+              mh: this.maxHeight
             };
           }
           /**
@@ -225,22 +274,32 @@
 
             if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].COVER) {
               drawBound = this.getResizeToCover(imageWidth, imageHeight);
-              this.domCanvas.width = this.maxWidth;
-              this.domCanvas.height = this.maxHeight;
+            } else if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].COVER_STRETCH) {
+              drawBound = this.getResizeToCoverStretch(imageWidth, imageHeight);
+            } else if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE_STRETCH) {
+              drawBound = this.getResizeToScaleStretch(imageWidth, imageHeight);
             } else {
               drawBound = this.getResizeToScale(imageWidth, imageHeight);
-              this.domCanvas.width = drawBound.dw;
-              this.domCanvas.height = drawBound.dh;
             }
 
             var _drawBound = drawBound,
                 dx = _drawBound.dx,
                 dy = _drawBound.dy,
                 dw = _drawBound.dw,
-                dh = _drawBound.dh;
-            this.domCanvasContext.drawImage(this.domImage, 0, 0, imageWidth, imageHeight, dx, dy, dw, dh); // this.domCanvas.toBlob(this.onResized.bind(this), this.blob.type, this.quality);
+                dh = _drawBound.dh,
+                mw = _drawBound.mw,
+                mh = _drawBound.mh;
+            var contentType = this.forceContentType || this.blob.type;
+            this.domCanvas.width = mw;
+            this.domCanvas.height = mh;
 
-            this.domCanvas.toBlob(this.onResized.bind(this), 'image/jpeg', this.quality); // type 이 jpeg 로 하지 않는 경우 quality 적용이 안되는듯
+            if (this.fillBgColor) {
+              this.domCanvasContext.fillStyle = this.fillBgColor;
+              this.domCanvasContext.fillRect(0, 0, mw, mh);
+            }
+
+            this.domCanvasContext.drawImage(this.domImage, 0, 0, imageWidth, imageHeight, dx, dy, dw, dh);
+            this.domCanvas.toBlob(this.onResized.bind(this), contentType, this.quality); // type 이 jpeg 인 경우만 quality 적용이 됨
           }
           /**
            * 이미지 로드 오류
@@ -384,8 +443,10 @@
       });
       /**
        * 리사이즈 타입
-       *  - SCALE: 최대 크기에 맞춤, 이미지 비율 유지.
-       *  - COVER: 최대 크기에 맞춤, 이미지 넘치면 잘라냄.
+       *  - SCALE: 이미지 비율 유지, 원본이 예상 크기 보다 작은 경우 늘리지 않음.
+       *  - SCALE_STRETCH: 이미지 비율 유지, 원본이 예상 크기 보다 작은 경우 작은것을 기준으로 늘림.
+       *  - COVER: 이미지 넘치면 잘라냄, 원본이 예상 크기 보다 작은 경우 늘리지 않음.
+       *  - COVER_STRETCH: 이미지 넘치면 잘라냄, 원본이 예상 크기 보다 작은 경우 늘림.
        * @export
        * @enum {number}
        */
@@ -395,7 +456,9 @@
 
       (function (ResizeType) {
         ResizeType[ResizeType["SCALE"] = 0] = "SCALE";
-        ResizeType[ResizeType["COVER"] = 1] = "COVER";
+        ResizeType[ResizeType["SCALE_STRETCH"] = 1] = "SCALE_STRETCH";
+        ResizeType[ResizeType["COVER"] = 2] = "COVER";
+        ResizeType[ResizeType["COVER_STRETCH"] = 3] = "COVER_STRETCH";
       })(ResizeType || (ResizeType = {}));
       /***/
 
@@ -600,7 +663,7 @@
               var sliceBlob = this.readFile.slice(this.readOffset, this.readOffsetNext);
               this.reader.readAsArrayBuffer(sliceBlob);
             } catch (err) {
-              this.resultReject(err);
+              this.onReaderError(err);
             }
           }
           /**
@@ -943,7 +1006,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9qZWN0cy9kZXYvc3JjL2FwcC9wYWdlcy9kZW1vL2Jsb2ItaW1hZ2UvYmxvYi1pbWFnZS5jb21wb25lbnQuc2NzcyJ9 */";
+      __webpack_exports__["default"] = ".file-wrap {\n  padding: 30px 0;\n}\n\n.my-desc {\n  padding: 10px 0;\n  color: #999999;\n}\n\n.demo-wrap {\n  display: flex;\n  flex-wrap: wrap;\n}\n\n.demo-wrap .demo-item {\n  padding: 10px;\n  width: 25%;\n  min-width: 280px;\n  box-sizing: border-box;\n}\n\n.demo-wrap .demo-item .panel-info {\n  padding: 10px 10px;\n  font-size: 14px;\n  box-sizing: border-box;\n}\n\n.demo-wrap .demo-item .panel-info .tit {\n  display: block;\n  padding-bottom: 5px;\n  font-size: 16px;\n  font-style: normal;\n  font-weight: bold;\n}\n\n.demo-wrap .demo-item .panel-info .dl {\n  display: flex;\n  padding: 5px 0;\n  align-items: center;\n}\n\n.demo-wrap .demo-item .panel-info .dl .dt {\n  width: 50px;\n  color: #999999;\n}\n\n.demo-wrap .demo-item .panel-info .dl .dd {\n  color: #000000;\n}\n\n.demo-wrap .demo-item .panel-canvas {\n  position: relative;\n  padding-bottom: 100%;\n  box-sizing: border-box;\n}\n\n.demo-wrap .demo-item .panel-canvas .draw-area {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  box-sizing: border-box;\n  border: 1px dashed #000000;\n  background-color: #f9f9f9;\n  background-image: linear-gradient(45deg, #d9d9d9 25%, transparent 25%, transparent 75%, #d9d9d9 75%, #d9d9d9), linear-gradient(45deg, #d9d9d9 25%, transparent 25%, transparent 75%, #d9d9d9 75%, #d9d9d9);\n  background-size: 20px 20px;\n  background-position: 0 0, 10px 10px;\n}\n\n.demo-wrap .demo-item .panel-canvas .draw-area > canvas {\n  display: block;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL2Rldi9zcmMvYXBwL3BhZ2VzL2RlbW8vYmxvYi1pbWFnZS9ibG9iLWltYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsZUFBQTtBQUNGOztBQUNBO0VBQ0UsZUFBQTtFQUNBLGNBQUE7QUFFRjs7QUFBQTtFQUNFLGFBQUE7RUFDQSxlQUFBO0FBR0Y7O0FBRkU7RUFDRSxhQUFBO0VBQ0EsVUFBQTtFQUNBLGdCQUFBO0VBQ0Esc0JBQUE7QUFJSjs7QUFISTtFQUNFLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLHNCQUFBO0FBS047O0FBSk07RUFDRSxjQUFBO0VBQ0EsbUJBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtBQU1SOztBQUpNO0VBQ0UsYUFBQTtFQUNBLGNBQUE7RUFDQSxtQkFBQTtBQU1SOztBQUxRO0VBQ0UsV0FBQTtFQUNBLGNBQUE7QUFPVjs7QUFMUTtFQUNFLGNBQUE7QUFPVjs7QUFGSTtFQUNFLGtCQUFBO0VBQ0Esb0JBQUE7RUFDQSxzQkFBQTtBQUlOOztBQUhNO0VBQ0Usa0JBQUE7RUFDQSxNQUFBO0VBQ0EsT0FBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLHNCQUFBO0VBQ0EsMEJBQUE7RUFDQSx5QkFBQTtFQUNBLDBNQUFBO0VBZ0JBLDBCQUFBO0VBQ0EsbUNBQUE7QUFWUjs7QUFXUTtFQUNFLGNBQUE7QUFUViIsImZpbGUiOiJwcm9qZWN0cy9kZXYvc3JjL2FwcC9wYWdlcy9kZW1vL2Jsb2ItaW1hZ2UvYmxvYi1pbWFnZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5maWxlLXdyYXAge1xuICBwYWRkaW5nOiAzMHB4IDA7XG59XG4ubXktZGVzYyB7XG4gIHBhZGRpbmc6IDEwcHggMDtcbiAgY29sb3I6ICM5OTk5OTk7XG59XG4uZGVtby13cmFwIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICAuZGVtby1pdGVtIHtcbiAgICBwYWRkaW5nOiAxMHB4O1xuICAgIHdpZHRoOiAyNSU7XG4gICAgbWluLXdpZHRoOiAyODBweDtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIC5wYW5lbC1pbmZvIHtcbiAgICAgIHBhZGRpbmc6IDEwcHggMTBweDtcbiAgICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgICAudGl0IHtcbiAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgIHBhZGRpbmctYm90dG9tOiA1cHg7XG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcbiAgICAgICAgZm9udC1zdHlsZTogbm9ybWFsO1xuICAgICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgIH1cbiAgICAgIC5kbCB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIHBhZGRpbmc6IDVweCAwO1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICAuZHQge1xuICAgICAgICAgIHdpZHRoOiA1MHB4O1xuICAgICAgICAgIGNvbG9yOiAjOTk5OTk5O1xuICAgICAgICB9XG4gICAgICAgIC5kZCB7XG4gICAgICAgICAgY29sb3I6ICMwMDAwMDA7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG5cbiAgICAucGFuZWwtY2FudmFzIHtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHBhZGRpbmctYm90dG9tOiAxMDAlO1xuICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICAgIC5kcmF3LWFyZWEge1xuICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICAgIHRvcDogMDtcbiAgICAgICAgbGVmdDogMDtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGhlaWdodDogMTAwJTtcbiAgICAgICAgb3ZlcmZsb3c6IGF1dG87XG4gICAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gICAgICAgIGJvcmRlcjogMXB4IGRhc2hlZCAjMDAwMDAwO1xuICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjlmOWY5O1xuICAgICAgICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQoXG4gICAgICAgICAgICA0NWRlZyxcbiAgICAgICAgICAgICNkOWQ5ZDkgMjUlLFxuICAgICAgICAgICAgdHJhbnNwYXJlbnQgMjUlLFxuICAgICAgICAgICAgdHJhbnNwYXJlbnQgNzUlLFxuICAgICAgICAgICAgI2Q5ZDlkOSA3NSUsXG4gICAgICAgICAgICAjZDlkOWQ5XG4gICAgICAgICAgKSxcbiAgICAgICAgICBsaW5lYXItZ3JhZGllbnQoXG4gICAgICAgICAgICA0NWRlZyxcbiAgICAgICAgICAgICNkOWQ5ZDkgMjUlLFxuICAgICAgICAgICAgdHJhbnNwYXJlbnQgMjUlLFxuICAgICAgICAgICAgdHJhbnNwYXJlbnQgNzUlLFxuICAgICAgICAgICAgI2Q5ZDlkOSA3NSUsXG4gICAgICAgICAgICAjZDlkOWQ5XG4gICAgICAgICAgKTtcbiAgICAgICAgYmFja2dyb3VuZC1zaXplOiAyMHB4IDIwcHg7XG4gICAgICAgIGJhY2tncm91bmQtcG9zaXRpb246IDAgMCwgMTBweCAxMHB4O1xuICAgICAgICA+IGNhbnZhcyB7XG4gICAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */";
       /***/
     },
 
@@ -978,15 +1041,251 @@
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
       "../../node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+      /* harmony import */
+
+
+      var projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! projects/packages/src/public-api */
+      "../packages/src/public-api.ts");
 
       var BlobImageComponent = /*#__PURE__*/function () {
         function BlobImageComponent() {
           _classCallCheck(this, BlobImageComponent);
+
+          this.testWidth = 600;
+          this.testHeight = 600;
+          this.testQuality = 0.9;
+          this.testContentType = '';
+          this.testFillBgColor = '';
         }
 
         _createClass(BlobImageComponent, [{
           key: "ngOnInit",
-          value: function ngOnInit() {}
+          value: function ngOnInit() {
+            this.optionWidths = Array.from(Array(10)).map(function (a, b) {
+              var index = b + 1;
+              var size = 100 * index;
+              return {
+                value: size,
+                label: size.toString()
+              };
+            });
+            this.optionHeights = Array.from(Array(10)).map(function (a, b) {
+              var index = b + 1;
+              var size = 100 * index;
+              return {
+                value: size,
+                label: size.toString()
+              };
+            });
+            this.optionQualities = Array.from(Array(10)).map(function (a, b) {
+              var index = b + 1;
+              var size = parseFloat((0.1 * index).toFixed(1));
+              return {
+                value: size,
+                label: size.toString()
+              };
+            });
+            this.demoList = [{
+              title: 'original',
+              info: null,
+              resizeType: null
+            }, {
+              title: 'resize - scale',
+              info: null,
+              resizeType: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["ResizeType"].SCALE
+            }, {
+              title: 'resize - scale stretch',
+              info: null,
+              resizeType: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["ResizeType"].SCALE_STRETCH
+            }, {
+              title: 'resize - cover',
+              info: null,
+              resizeType: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["ResizeType"].COVER
+            }, {
+              title: 'resize - cover stretch',
+              info: null,
+              resizeType: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["ResizeType"].COVER_STRETCH
+            }];
+          }
+        }, {
+          key: "onFileChange",
+          value: function onFileChange(evt) {
+            var _ref3 = evt && evt.target || {},
+                _ref3$files = _ref3.files,
+                files = _ref3$files === void 0 ? [] : _ref3$files;
+
+            var file = files[0];
+            if (!file) return;
+            this.resizeStart(file);
+            evt.target.value = null;
+          }
+        }, {
+          key: "resizeStart",
+          value: function resizeStart(file) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+              var originalBlob, len, refCanvasList, i, demo, nativeElement, info;
+              return regeneratorRuntime.wrap(function _callee$(_context) {
+                while (1) {
+                  switch (_context.prev = _context.next) {
+                    case 0:
+                      this.infos = [];
+                      originalBlob = new Blob([file], {
+                        type: file.type
+                      });
+                      len = this.demoList.length;
+                      refCanvasList = this.demoCanvasRefs.toArray();
+                      i = 0;
+
+                    case 5:
+                      if (!(i < len)) {
+                        _context.next = 15;
+                        break;
+                      }
+
+                      demo = this.demoList[i];
+                      nativeElement = refCanvasList[i].nativeElement;
+                      _context.next = 10;
+                      return this.drawResizeDemo(nativeElement, originalBlob, demo.resizeType);
+
+                    case 10:
+                      info = _context.sent;
+                      demo.info = Object.assign(Object.assign({}, info), {
+                        title: demo.title
+                      });
+
+                    case 12:
+                      i++;
+                      _context.next = 5;
+                      break;
+
+                    case 15:
+                    case "end":
+                      return _context.stop();
+                  }
+                }
+              }, _callee, this);
+            }));
+          }
+        }, {
+          key: "drawResizeDemo",
+          value: function drawResizeDemo(canvas, blob, resizeType) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+              var expectWidth, expectHeight, expectContentType, quality, fillBgColor, resizeBlob, resizeCanvas, resizeWidth, resizeHeight, resizer, resizeResult;
+              return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                while (1) {
+                  switch (_context2.prev = _context2.next) {
+                    case 0:
+                      expectWidth = this.testWidth;
+                      expectHeight = this.testHeight;
+                      expectContentType = this.testContentType || undefined;
+                      quality = this.testQuality;
+                      fillBgColor = this.testFillBgColor || undefined;
+                      resizeBlob = blob;
+                      resizeWidth = 0;
+                      resizeHeight = 0;
+
+                      if (!projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["ResizeType"][resizeType]) {
+                        _context2.next = 18;
+                        break;
+                      }
+
+                      resizer = new projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["BlobImageResize"](blob, {
+                        expectWidth: expectWidth,
+                        expectHeight: expectHeight,
+                        quality: quality,
+                        resizeType: resizeType,
+                        expectContentType: expectContentType,
+                        fillBgColor: fillBgColor
+                      });
+                      _context2.next = 12;
+                      return resizer.create();
+
+                    case 12:
+                      resizeResult = _context2.sent;
+                      resizeBlob = resizeResult.blob;
+                      resizeWidth = resizeResult.width;
+                      resizeHeight = resizeResult.height;
+                      _context2.next = 22;
+                      break;
+
+                    case 18:
+                      resizeBlob = blob;
+                      _context2.next = 21;
+                      return this.drawToCanvas(canvas, {
+                        blob: resizeBlob,
+                        width: 0,
+                        height: 0
+                      });
+
+                    case 21:
+                      resizeCanvas = _context2.sent;
+
+                    case 22:
+                      _context2.next = 24;
+                      return this.drawToCanvas(canvas, {
+                        blob: resizeBlob,
+                        width: resizeWidth,
+                        height: resizeHeight
+                      });
+
+                    case 24:
+                      resizeCanvas = _context2.sent;
+                      return _context2.abrupt("return", Promise.resolve({
+                        size: resizeBlob.size,
+                        type: resizeBlob.type,
+                        width: resizeCanvas.width,
+                        height: resizeCanvas.height
+                      }));
+
+                    case 26:
+                    case "end":
+                      return _context2.stop();
+                  }
+                }
+              }, _callee2, this);
+            }));
+          }
+        }, {
+          key: "drawToCanvas",
+          value: function drawToCanvas(canvas, draw) {
+            return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+              return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                while (1) {
+                  switch (_context3.prev = _context3.next) {
+                    case 0:
+                      return _context3.abrupt("return", new Promise(function (resolve) {
+                        var blob = draw.blob,
+                            width = draw.width,
+                            height = draw.height;
+                        var context = canvas.getContext('2d');
+                        var image = new Image();
+
+                        image.onload = function () {
+                          canvas.width = width || image.naturalWidth;
+                          canvas.height = height || image.naturalHeight;
+                          context.drawImage(image, 0, 0);
+                          URL.revokeObjectURL(image.src);
+                          resolve(canvas);
+                        };
+
+                        image.onerror = function () {
+                          console.error('image load error');
+                          URL.revokeObjectURL(image.src);
+                          resolve(canvas);
+                        };
+
+                        image.src = URL.createObjectURL(blob);
+                      }));
+
+                    case 1:
+                    case "end":
+                      return _context3.stop();
+                  }
+                }
+              }, _callee3);
+            }));
+          }
         }]);
 
         return BlobImageComponent;
@@ -996,6 +1295,12 @@
         return [];
       };
 
+      BlobImageComponent.propDecorators = {
+        demoCanvasRefs: [{
+          type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChildren"],
+          args: ['demoCanvasRefs']
+        }]
+      };
       BlobImageComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'demo-blob-image',
         template: Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"])(__webpack_require__(
@@ -1224,8 +1529,10 @@
         function ReadStreamComponent() {
           _classCallCheck(this, ReadStreamComponent);
 
-          this.testChunkSize = 1024;
-          this.optionChunkList = [];
+          this.optionChunks = [];
+          this.optionResponseTypes = [];
+          this.testChunk = 1024;
+          this.testResponseType = projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["FileReadResponseType"].BLOB;
           this.changeStack = [];
           this.changeStackCount = 0;
           this.changeStackDisplayMax = 50;
@@ -1234,7 +1541,14 @@
         _createClass(ReadStreamComponent, [{
           key: "ngOnInit",
           value: function ngOnInit() {
-            this.optionChunkList = Array.from(Array(8)).map(function (a, b) {
+            this.optionResponseTypes = [{
+              label: 'BLOB',
+              value: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["FileReadResponseType"].BLOB
+            }, {
+              label: 'BUFFER',
+              value: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["FileReadResponseType"].BUFFER
+            }];
+            this.optionChunks = Array.from(Array(8)).map(function (a, b) {
               var index = b + 1;
 
               var _byte = Math.pow(index * index * 32, 2);
@@ -1247,14 +1561,14 @@
                 label: label
               };
             });
-            this.testChunkSize = this.optionChunkList[3].value;
+            this.testChunk = this.optionChunks[1].value;
           }
         }, {
           key: "onFileChange",
           value: function onFileChange(evt) {
-            var _ref3 = evt && evt.target || {},
-                _ref3$files = _ref3.files,
-                files = _ref3$files === void 0 ? [] : _ref3$files;
+            var _ref4 = evt && evt.target || {},
+                _ref4$files = _ref4.files,
+                files = _ref4$files === void 0 ? [] : _ref4$files;
 
             var file = files[0];
             if (!file) return;
@@ -1284,7 +1598,8 @@
             }
 
             this.reader = new projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["FileReadStream"](file, {
-              chunkSize: this.testChunkSize
+              chunkSize: this.testChunk,
+              responseType: this.testResponseType
             });
             this.reader.observeState().subscribe(function (evt) {
               var type = evt.type,
@@ -1303,6 +1618,8 @@
               switch (type) {
                 case projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["FileReadEventType"].RESOLVE:
                 case projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["FileReadEventType"].REJECT:
+                  console.log(state);
+
                   _this3.reader.destroy();
 
                   _this3.reader = null;
