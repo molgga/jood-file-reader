@@ -8,6 +8,7 @@
 export enum ResizeType {
   SCALE,
   COVER,
+  COVER_NONE_STRETCH,
 }
 
 /**
@@ -27,10 +28,20 @@ export interface ResizeConfig {
    */
   expectHeight?: number;
   /**
-   * 이미지 품질
+   * 이미지 품질 (jpeg type 이 아닌건 quality 적용이 되지 않음)
    * @type {number}
    */
   quality?: number;
+  /**
+   * canvas 에 그려질 contentType 을 강제하려는 경우의 값, 지정하지 않으면 읽어낸 값으로 지정
+   * @type {string}
+   */
+  expectContentType?: string;
+  /**
+   * canvas 의 기본 배경 컬러 지정
+   * @type {string}
+   */
+  fillBgColor?: string;
   /**
    * 리사이즈 타입
    * @type {ResizeType}
@@ -76,4 +87,6 @@ export interface DrawBound {
   dy: number;
   dw: number;
   dh: number;
+  mw: number;
+  mh: number;
 }
