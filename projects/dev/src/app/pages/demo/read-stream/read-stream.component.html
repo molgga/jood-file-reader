@@ -1,19 +1,20 @@
 <div>
   <mat-form-field>
-    <mat-label>test chunk size</mat-label>
-    <mat-select [(ngModel)]="testChunkSize">
-      <mat-option *ngFor="let chunk of optionChunkList" [value]="chunk.value">{{
+    <mat-label>chunk size</mat-label>
+    <mat-select [(ngModel)]="testChunk">
+      <mat-option *ngFor="let chunk of optionChunks" [value]="chunk.value">{{
         chunk.label
       }}</mat-option>
     </mat-select>
   </mat-form-field>
-
-  <br />
-  <br />
-  @TODO - test option: responseType = BUFFER | BLOB
-  <br />
-  <br />
-  <br />
+  <mat-form-field>
+    <mat-label>response type</mat-label>
+    <mat-select [(ngModel)]="testResponseType">
+      <mat-option *ngFor="let chunk of optionResponseTypes" [value]="chunk.value">{{
+        chunk.label
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
 
 <div>

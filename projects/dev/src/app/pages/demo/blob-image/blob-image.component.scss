@@ -1,0 +1,79 @@
+.file-wrap {
+  padding: 30px 0;
+}
+.my-desc {
+  padding: 10px 0;
+  color: #999999;
+}
+.demo-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  .demo-item {
+    padding: 10px;
+    width: 25%;
+    min-width: 280px;
+    box-sizing: border-box;
+    .panel-info {
+      padding: 10px 10px;
+      font-size: 14px;
+      box-sizing: border-box;
+      .tit {
+        display: block;
+        padding-bottom: 5px;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: bold;
+      }
+      .dl {
+        display: flex;
+        padding: 5px 0;
+        align-items: center;
+        .dt {
+          width: 50px;
+          color: #999999;
+        }
+        .dd {
+          color: #000000;
+        }
+      }
+    }
+
+    .panel-canvas {
+      position: relative;
+      padding-bottom: 100%;
+      box-sizing: border-box;
+      .draw-area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        box-sizing: border-box;
+        border: 1px dashed #000000;
+        background-color: #f9f9f9;
+        background-image: linear-gradient(
+            45deg,
+            #d9d9d9 25%,
+            transparent 25%,
+            transparent 75%,
+            #d9d9d9 75%,
+            #d9d9d9
+          ),
+          linear-gradient(
+            45deg,
+            #d9d9d9 25%,
+            transparent 25%,
+            transparent 75%,
+            #d9d9d9 75%,
+            #d9d9d9
+          );
+        background-size: 20px 20px;
+        background-position: 0 0, 10px 10px;
+        > canvas {
+          display: block;
+        }
+      }
+    }
+  }
+}

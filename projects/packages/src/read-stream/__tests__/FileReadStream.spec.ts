@@ -7,6 +7,37 @@ function createSampleFile(byte: number, fileName: string = "sample-file") {
 }
 
 describe('FileReadStream', () => {
+  
+  it("responseType BLOB 확인", async () => {
+    const FILE_NAME = "sample-file-name";
+    const FILE_SIZE = 1024;
+    const CHUNK_SIZE = 256;
+    const file = createSampleFile(FILE_SIZE, FILE_NAME);
+    const stream = new FileReadStream(file, {
+      chunkSize: CHUNK_SIZE,
+      responseType: FileReadResponseType.BLOB,
+    });
+    const { state } = await stream.start();
+    expect(state.responseType).toBe(FileReadResponseType.BLOB);
+    expect(state.blob.constructor).toBe(Blob);
+    expect(state.buffers).toBe(undefined);
+  });
+
+  it("responseType BUFFER 확인", async () => {
+    const FILE_NAME = "sample-file-name";
+    const FILE_SIZE = 1024;
+    const CHUNK_SIZE = 256;
+    const file = createSampleFile(FILE_SIZE, FILE_NAME);
+    const stream = new FileReadStream(file, {
+      chunkSize: CHUNK_SIZE,
+      responseType: FileReadResponseType.BUFFER,
+    });
+    const { state } = await stream.start();
+    expect(state.responseType).toBe(FileReadResponseType.BUFFER);
+    expect(state.blob).toBe(undefined);
+    expect(state.buffers.length).not.toBe(0);
+  });
+
   it("파일 async로 읽기 성공 및 정보 확인", async () => {
     const FILE_NAME = "sample-file-name";
     const FILE_SIZE = 1024;
@@ -198,5 +229,27 @@ describe('FileReadStream', () => {
       stream.start();
     };
     expect(start).toThrowError();
+  });
+
+  it("onReaderError", async () => {
+    const stream = new FileReadStream(null);
+    try {
+      const { state } = await stream.start();
+    } catch(err) {
+      expect(err.error).not.toBeNull();
+    }
+  });
+
+  it("getState", async () => {
+    const stream = new FileReadStream(null, { chunkSize: 10, responseType: FileReadResponseType.BLOB });
+    const state = stream.getState();
+    expect(state.fileName).toBe(null);
+    expect(state.fileType).toBe(null);
+    expect(state.fileSize).toBe(0);
+    expect(state.fileLastModified).not.toBe(null);
+    expect(state.total).toBe(0);
+    expect(state.readed).toBe(0);
+    expect(state.responseType).toBe(FileReadResponseType.BLOB);
+    expect(state.chunkSize).toBe(10);
   });
 });

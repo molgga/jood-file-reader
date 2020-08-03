@@ -1,3 +1,126 @@
-<p>
-  @TODO - blob-image works!
-</p>
+<div>
+  <mat-form-field>
+    <mat-label>expectWidth</mat-label>
+    <mat-select [(ngModel)]="testWidth">
+      <mat-option *ngFor="let data of optionWidths" [value]="data.value">{{
+        data.label
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>expectHeight</mat-label>
+    <mat-select [(ngModel)]="testHeight">
+      <mat-option *ngFor="let data of optionHeights" [value]="data.value">{{
+        data.label
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>quality</mat-label>
+    <mat-select [(ngModel)]="testQuality">
+      <mat-option *ngFor="let data of optionQualities" [value]="data.value">{{
+        data.label
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="my-desc">
+    (quality: allow only contentType image/jpeg)
+  </div>
+  <mat-form-field>
+    <mat-label>expectContentType</mat-label>
+    <input matInput [(ngModel)]="testContentType" />
+    <mat-hint>ex) image/jpeg</mat-hint>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>fillBgColor</mat-label>
+    <input matInput [(ngModel)]="testFillBgColor" />
+    <mat-hint>ex) #ff0000</mat-hint>
+  </mat-form-field>
+</div>
+
+<div class="file-wrap">
+  <input type="file" accept="image/*" (change)="onFileChange($event)" />
+</div>
+
+<div class="demo-wrap">
+  <div *ngFor="let demo of demoList" class="demo-item">
+    <div class="panel-canvas">
+      <div class="draw-area">
+        <canvas #demoCanvasRefs></canvas>
+      </div>
+    </div>
+    <div *ngIf="demo.info" class="panel-info">
+      <em class="tit">{{ demo.info.title }}</em>
+      <dl class="dl">
+        <dt class="dt">size</dt>
+        <dd class="dd">{{ demo.info.size }}bype / {{ (demo.info.size / 1024).toFixed(2) }}kb</dd>
+      </dl>
+      <dl class="dl">
+        <dt class="dt">type</dt>
+        <dd class="dd">{{ demo.info.type }}</dd>
+      </dl>
+      <dl class="dl">
+        <dt class="dt">width</dt>
+        <dd class="dd">{{ demo.info.width }}</dd>
+      </dl>
+      <dl class="dl">
+        <dt class="dt">height</dt>
+        <dd class="dd">{{ demo.info.height }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="canvas-wrap">
+  <div class="canvas-item">
+    <div class="display-area">
+      <div class="draw-area">
+        <canvas #canvasOriginal></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="display-area">
+      <div class="draw-area">
+        <canvas #canvasCover></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="display-area">
+      <div class="draw-area">
+        <canvas #canvasCoverNoneStretch></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="canvas-item">
+    <div class="display-area">
+      <div class="draw-area">
+        <canvas #canvasScale></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="info-wrap">
+  <div *ngFor="let info of infos" class="info-item">
+    <em class="tit">{{ info.title }}</em>
+    <dl class="dl">
+      <dt class="dt">size</dt>
+      <dd class="dd">{{ info.size }}bype / {{ (info.size / 1024).toFixed(2) }}kb</dd>
+    </dl>
+    <dl class="dl">
+      <dt class="dt">type</dt>
+      <dd class="dd">{{ info.type }}</dd>
+    </dl>
+    <dl class="dl">
+      <dt class="dt">width</dt>
+      <dd class="dd">{{ info.width }}</dd>
+    </dl>
+    <dl class="dl">
+      <dt class="dt">height</dt>
+      <dd class="dd">{{ info.height }}</dd>
+    </dl>
+  </div>
+</div> -->

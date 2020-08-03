@@ -1,13 +1,17 @@
 /**
  * 리사이즈 타입
- *  - SCALE: 최대 크기에 맞춤, 이미지 비율 유지.
- *  - COVER: 최대 크기에 맞춤, 이미지 넘치면 잘라냄.
+ *  - SCALE: 이미지 비율 유지, 원본이 예상 크기 보다 작은 경우 늘리지 않음.
+ *  - SCALE_STRETCH: 이미지 비율 유지, 원본이 예상 크기 보다 작은 경우 작은것을 기준으로 늘림.
+ *  - COVER: 이미지 넘치면 잘라냄, 원본이 예상 크기 보다 작은 경우 늘리지 않음.
+ *  - COVER_STRETCH: 이미지 넘치면 잘라냄, 원본이 예상 크기 보다 작은 경우 늘림.
  * @export
  * @enum {number}
  */
 export enum ResizeType {
   SCALE,
+  SCALE_STRETCH,
   COVER,
+  COVER_STRETCH,
 }
 
 /**
@@ -27,10 +31,20 @@ export interface ResizeConfig {
    */
   expectHeight?: number;
   /**
-   * 이미지 품질
+   * 이미지 품질 (jpeg type 이 아닌건 quality 적용이 되지 않음)
    * @type {number}
    */
   quality?: number;
+  /**
+   * canvas 에 그려질 contentType 을 강제하려는 경우의 값, 지정하지 않으면 읽어낸 값으로 지정
+   * @type {string}
+   */
+  expectContentType?: string;
+  /**
+   * canvas 의 기본 배경 컬러 지정
+   * @type {string}
+   */
+  fillBgColor?: string;
   /**
    * 리사이즈 타입
    * @type {ResizeType}
@@ -76,4 +90,6 @@ export interface DrawBound {
   dy: number;
   dw: number;
   dh: number;
+  mw: number;
+  mh: number;
 }

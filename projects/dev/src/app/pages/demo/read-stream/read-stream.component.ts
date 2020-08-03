@@ -1,5 +1,10 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FileReadStream, FileReadEventType, FileReadEvent } from 'projects/packages/src/public-api';
+import { Component, OnInit } from '@angular/core';
+import {
+  FileReadStream,
+  FileReadEventType,
+  FileReadEvent,
+  FileReadResponseType,
+} from 'projects/packages/src/public-api';
 
 @Component({
   selector: 'demo-read-stream',
@@ -10,14 +15,20 @@ export class ReadStreamComponent implements OnInit {
   constructor() {}
 
   reader: FileReadStream;
-  testChunkSize = 1024;
-  optionChunkList = [];
+  optionChunks = [];
+  optionResponseTypes = [];
+  testChunk = 1024;
+  testResponseType = FileReadResponseType.BLOB;
   changeStack: FileReadEvent[] = [];
   changeStackCount: number = 0;
   changeStackDisplayMax: number = 50;
 
   ngOnInit() {
-    this.optionChunkList = Array.from(Array(8)).map((a, b) => {
+    this.optionResponseTypes = [
+      { label: 'BLOB', value: FileReadResponseType.BLOB },
+      { label: 'BUFFER', value: FileReadResponseType.BUFFER },
+    ];
+    this.optionChunks = Array.from(Array(8)).map((a, b) => {
       const index = b + 1;
       const byte = Math.pow(index * index * 32, 2);
       const kb = byte / 1024;
@@ -28,7 +39,7 @@ export class ReadStreamComponent implements OnInit {
         label,
       };
     });
-    this.testChunkSize = this.optionChunkList[3].value;
+    this.testChunk = this.optionChunks[1].value;
   }
 
   onFileChange(evt) {
@@ -55,7 +66,8 @@ export class ReadStreamComponent implements OnInit {
       this.reader = null;
     }
     this.reader = new FileReadStream(file, {
-      chunkSize: this.testChunkSize,
+      chunkSize: this.testChunk,
+      responseType: this.testResponseType,
     });
     this.reader.observeState().subscribe((evt) => {
       const { type, state } = evt;
@@ -67,6 +79,7 @@ export class ReadStreamComponent implements OnInit {
       switch (type) {
         case FileReadEventType.RESOLVE:
         case FileReadEventType.REJECT:
+          console.log(state);
           this.reader.destroy();
           this.reader = null;
           break;
