@@ -12,19 +12,6 @@ import {
  * 파일 스트림 읽기.
  * FileReader 사용시 한번에 못 읽는 용량 끊어서 읽기 용.
  * @class FileReadStream
- * @example
-  const onFileInputChange = async (evt: Event) => {
-    const target = evt.target as HTMLInputElement;
-    const file = target.files[0];
-    const reader = new FileReadStream(file, { chunkSize: 1024 * 10 });
-    // reader.observeState().subscribe({ type, state } => console.log(state.readed));
-    const { type, state } = await reader.start();
-    if (type === FileReadEventType.RESOLVE) {
-      console.log(state.blob);
-    } else if (type === FileReadEventType.REJECT) {
-      console.log('error');
-    }
-  }
  */
 export class FileReadStream {
   /**
