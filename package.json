@@ -13,9 +13,9 @@
     "page:document-dist": "jsdoc -c jsdoc.json -r -d docs/documents",
     "page:clear": "rm -rf docs",
     "page:expose": "npm run page:example-dist && npm run page:example-make && npm run page:document-dist",
-    "ci:build": "npm run packages:build",
     "ci:test": "ng test packages --watch=false --code-coverage --browsers=ChromeHeadless",
-    "ci:after-success": "npm run page:clear && npm run page:expose && codecov"
+    "ci:build": "npm run packages:build",
+    "ci:deploy-before": "npm run ci:build && npm run page:clear && npm run page:expose && codecov"
   },
   "dependencies": {
     "@angular/animations": "~10.0.6",
