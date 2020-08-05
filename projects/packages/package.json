@@ -17,8 +17,12 @@
     "typescript",
     "es6",
     "frontend",
+    "file",
     "fileReader",
-    "fileChunk"
+    "fileChunk",
+    "blob",
+    "image",
+    "resize"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
