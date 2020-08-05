@@ -14,7 +14,7 @@ javascript clientside file reader
 
 ## FileReadStream
 
-(한번에 읽기 어려운)파일을 chunk 사이즈로 나눠서 읽음.
+(한번에 읽기 어려운)파일 읽기
 
 - chunkSize: number (default: 1024 * 1024 * 10) - 파일을 1회 읽을 때 byte 량
 - responseType: FileReadResponseType (BLOB) - 파일을 읽기 완료 시 반환될 결과(Blob || ArrayBuffer[])
@@ -73,7 +73,7 @@ const onFileInputChange = (evt: Event) => {
 
 ## BlobImageResize
 
-이미지 리사이징, quality 처리 함.
+이미지의 리사이징, quality 보정
 
 - expectWidth: number - 리사이징 예상 width
 
@@ -127,12 +127,24 @@ const onFileInputChange = async (evt: Event) => {
     expectHeight: 200,
     quality: 0.9,
   });
-  const { blob, width, height } = await resizer.create();
-  const resizedFile = new File([blob], file.name, {
-    lastModified: file.lastModified || Date.now()
-  });
+  resizer.create().subscribe(evt => {
+    const { blob, width, height, error } = evt;
+    if (!error) {
+      const resizedFile = new File([blob], file.name, {
+        lastModified: file.lastModified || Date.now()
+      });
+    }
+  })
 }
 ```
+
+### See
+
+- [Example(web)](https://molgga.github.io/jood-file-reader).
+- [Example(source)](https://github.com/molgga/jood-file-reader/tree/master/packages/dev/app/pages/demo).
+- [Github](https://github.com/molgga/jood-file-reader).
+- [NPM](https://www.npmjs.com/package/@jood/file-reader).
+- [Doc](https://molgga.github.io/jood-file-reader/documents).
 
 ---
 
