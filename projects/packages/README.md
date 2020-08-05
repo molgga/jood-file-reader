@@ -26,8 +26,11 @@ javascript clientside file reader
 import { FileReadStream, FileReadEvent, FileReadEventType, FileReadResponseType } from '@jood/file-reader';
 
 const onFileInputChange = async (evt: Event) => {
-  const file = evt.target.files[0];
-  const reader = new FileReadStream(file, { chunkSize: 1024 * 10, responseType: FileReadResponseType.BLOB });
+  const file = (evt.target as HTMLInputElement).files[0];
+  const reader = new FileReadStream(file, {
+    chunkSize: 1024 * 10,
+    responseType: FileReadResponseType.BLOB,
+  });
   try {
     const { state } = await reader.start();
     const {
@@ -42,9 +45,9 @@ const onFileInputChange = async (evt: Event) => {
       blob, // if responseType BLOB
       buffers, // if responseType BUFFER
     } = state;
-    console.log('resolve', state.blob);
-  } catch(err) {
-    cosnole.error(err);
+    console.log('resolve', state);
+  } catch (err) {
+    console.error(err);
   }
 }
 ```
@@ -54,18 +57,23 @@ const onFileInputChange = async (evt: Event) => {
 import { FileReadStream, FileReadEvent, FileReadEventType, FileReadResponseType } from '@jood/file-reader';
 
 const onFileInputChange = (evt: Event) => {
-  const file = evt.target.files[0];
-  const reader = new FileReadStream(file, { chunkSize: 1024 * 10, responseType: FileReadResponseType.BLOB });
-  reader.start().subscribe(evt => {
+  const file = (evt.target as HTMLInputElement).files[0];
+  const reader = new FileReadStream(file, {
+    chunkSize: 1024 * 10,
+    responseType: FileReadResponseType.BLOB,
+  });
+  console.log(reader);
+  reader.observeState().subscribe((evt) => {
     const { type, state, error } = evt;
     if (type === FileReadEventType.CHANGE) {
-      console.log('change', state.readed/state.total);
+      console.log('change', state.readed / state.total);
     } else if (type === FileReadEventType.RESOLVE) {
       console.log('resolve', state.blob);
     } else if (type === FileReadEventType.REJECT) {
       console.log('reject', error);
     }
   });
+  reader.start();
 }
 ```
 
@@ -96,45 +104,23 @@ const onFileInputChange = (evt: Event) => {
 ```typescript
 import { BlobImageResize } from '@jood/file-reader';
 const onFileInputChange = async (evt: Event) => {
-  const file = evt.target.files[0];
+  const file = (evt.target as HTMLInputElement).files[0];
   const blob = new Blob([file], { type: file.type });
-  const resizer = new BlobImageResize({ 
-    resizeType: ResizeType.COVER
-    expectWidth: 200, 
+  const resizer = new BlobImageResize(blob, {
+    resizeType: ResizeType.COVER,
+    expectWidth: 200,
     expectHeight: 200,
     quality: 0.9,
   });
   try {
     const { blob, width, height } = await resizer.create();
     const resizedFile = new File([blob], file.name, {
-      lastModified: file.lastModified || Date.now()
+      lastModified: file.lastModified || Date.now(),
     });
-  } catch(err) {
+    console.log(resizedFile);
+  } catch (err) {
     console.error(err);
   }
-}
-```
-
-### Observable
-```typescript
-import { BlobImageResize, ResizeType } from '@jood/file-reader';
-const onFileInputChange = async (evt: Event) => {
-  const file = evt.target.files[0];
-  const blob = new Blob([file], { type: file.type });
-  const resizer = new BlobImageResize({ 
-    resizeType: ResizeType.COVER
-    expectWidth: 200, 
-    expectHeight: 200,
-    quality: 0.9,
-  });
-  resizer.create().subscribe(evt => {
-    const { blob, width, height, error } = evt;
-    if (!error) {
-      const resizedFile = new File([blob], file.name, {
-        lastModified: file.lastModified || Date.now()
-      });
-    }
-  })
 }
 ```
 
