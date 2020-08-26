@@ -44,10 +44,11 @@ branches:
   only:
     - master
     - /^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$/
+    - /^doc[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$/
 
 # condition https://stackoverflow.com/questions/34591587/travis-conditional-on-branch-after-success
 after_success:
-  - if [[ "$TRAVIS_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ ]]; 
+  - if [[ "$TRAVIS_TAG" =~ ^(v|doc)[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$ ]]; 
     then echo "Running build" && npm run ci:deploy-before;
     else echo "Ignore build";
     fi
@@ -61,8 +62,8 @@ deploy:
     local_dir: docs
     github_token: $GITHUB_PAGES_TOKEN
     on:
-      branch: master
-      condition: $TRAVIS_TAG =~ ^v[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$
+      all_branches: true
+      condition: $TRAVIS_TAG =~ ^(v|doc)[0-9]+\.[0-9]+\.[0-9]+(\-[0-9]+)?$
       
   # 배포 설정 - npm module
   - provider: npm
