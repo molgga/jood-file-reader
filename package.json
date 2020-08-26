@@ -15,7 +15,7 @@
     "page:expose": "npm run page:example-dist && npm run page:example-make && npm run page:document-dist",
     "ci:test": "ng test packages --watch=false --code-coverage --browsers=ChromeHeadless && codecov",
     "ci:build": "npm run packages:build",
-    "ci:deploy-before": "npm run page:clear && npm run page:expose && npm run ci:build"
+    "ci:deploy-before": "npm run ci:build && npm run page:clear && npm run page:expose"
   },
   "dependencies": {
     "@angular/animations": "~10.0.6",
