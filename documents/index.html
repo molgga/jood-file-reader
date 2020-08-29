@@ -59,7 +59,7 @@
 <img src="https://img.shields.io/bundlephobia/min/@jood/file-reader" alt="NPM bundle size"></p>
 <hr>
 <h2>FileReadStream</h2>
-<p>(한번에 읽기 어려운)파일을 chunk 사이즈로 나눠서 읽음.</p>
+<p>(한번에 읽기 어려운)파일 읽기</p>
 <ul>
 <li>chunkSize: number (default: 1024 * 1024 * 10) - 파일을 1회 읽을 때 byte 량</li>
 <li>responseType: FileReadResponseType (BLOB) - 파일을 읽기 완료 시 반환될 결과(Blob || ArrayBuffer[])
@@ -73,8 +73,11 @@
 <pre class="prettyprint source lang-typescript"><code>import { FileReadStream, FileReadEvent, FileReadEventType, FileReadResponseType } from '@jood/file-reader';
 
 const onFileInputChange = async (evt: Event) => {
-  const file = evt.target.files[0];
-  const reader = new FileReadStream(file, { chunkSize: 1024 * 10, responseType: FileReadResponseType.BLOB });
+  const file = (evt.target as HTMLInputElement).files[0];
+  const reader = new FileReadStream(file, {
+    chunkSize: 1024 * 10,
+    responseType: FileReadResponseType.BLOB,
+  });
   try {
     const { state } = await reader.start();
     const {
@@ -89,9 +92,9 @@ const onFileInputChange = async (evt: Event) => {
       blob, // if responseType BLOB
       buffers, // if responseType BUFFER
     } = state;
-    console.log('resolve', state.blob);
-  } catch(err) {
-    cosnole.error(err);
+    console.log('resolve', state);
+  } catch (err) {
+    console.error(err);
   }
 }
 </code></pre>
@@ -99,23 +102,28 @@ const onFileInputChange = async (evt: Event) => {
 <pre class="prettyprint source lang-typescript"><code>import { FileReadStream, FileReadEvent, FileReadEventType, FileReadResponseType } from '@jood/file-reader';
 
 const onFileInputChange = (evt: Event) => {
-  const file = evt.target.files[0];
-  const reader = new FileReadStream(file, { chunkSize: 1024 * 10, responseType: FileReadResponseType.BLOB });
-  reader.start().subscribe(evt => {
+  const file = (evt.target as HTMLInputElement).files[0];
+  const reader = new FileReadStream(file, {
+    chunkSize: 1024 * 10,
+    responseType: FileReadResponseType.BLOB,
+  });
+  console.log(reader);
+  reader.observeState().subscribe((evt) => {
     const { type, state, error } = evt;
     if (type === FileReadEventType.CHANGE) {
-      console.log('change', state.readed/state.total);
+      console.log('change', state.readed / state.total);
     } else if (type === FileReadEventType.RESOLVE) {
       console.log('resolve', state.blob);
     } else if (type === FileReadEventType.REJECT) {
       console.log('reject', error);
     }
   });
+  reader.start();
 }
 </code></pre>
 <hr>
 <h2>BlobImageResize</h2>
-<p>이미지 리사이징, quality 처리 함.</p>
+<p>이미지의 리사이징, quality 보정</p>
 <ul>
 <li>
 <p>expectWidth: number - 리사이징 예상 width</p>
@@ -146,41 +154,33 @@ const onFileInputChange = (evt: Event) => {
 <h3>Promise</h3>
 <pre class="prettyprint source lang-typescript"><code>import { BlobImageResize } from '@jood/file-reader';
 const onFileInputChange = async (evt: Event) => {
-  const file = evt.target.files[0];
+  const file = (evt.target as HTMLInputElement).files[0];
   const blob = new Blob([file], { type: file.type });
-  const resizer = new BlobImageResize({ 
-    resizeType: ResizeType.COVER
-    expectWidth: 200, 
+  const resizer = new BlobImageResize(blob, {
+    resizeType: ResizeType.COVER,
+    expectWidth: 200,
     expectHeight: 200,
     quality: 0.9,
   });
   try {
     const { blob, width, height } = await resizer.create();
     const resizedFile = new File([blob], file.name, {
-      lastModified: file.lastModified || Date.now()
+      lastModified: file.lastModified || Date.now(),
     });
-  } catch(err) {
+    console.log(resizedFile);
+  } catch (err) {
     console.error(err);
   }
 }
 </code></pre>
-<h3>Observable</h3>
-<pre class="prettyprint source lang-typescript"><code>import { BlobImageResize, ResizeType } from '@jood/file-reader';
-const onFileInputChange = async (evt: Event) => {
-  const file = evt.target.files[0];
-  const blob = new Blob([file], { type: file.type });
-  const resizer = new BlobImageResize({ 
-    resizeType: ResizeType.COVER
-    expectWidth: 200, 
-    expectHeight: 200,
-    quality: 0.9,
-  });
-  const { blob, width, height } = await resizer.create();
-  const resizedFile = new File([blob], file.name, {
-    lastModified: file.lastModified || Date.now()
-  });
-}
-</code></pre>
+<h3>See</h3>
+<ul>
+<li><a href="https://molgga.github.io/jood-file-reader">Example(web)</a>.</li>
+<li><a href="https://github.com/molgga/jood-file-reader/tree/master/packages/dev/app/pages/demo">Example(source)</a>.</li>
+<li><a href="https://github.com/molgga/jood-file-reader">Github</a>.</li>
+<li><a href="https://www.npmjs.com/package/@jood/file-reader">NPM</a>.</li>
+<li><a href="https://molgga.github.io/jood-file-reader/documents">Doc</a>.</li>
+</ul>
 <hr>
 <p>This library was generated with <a href="https://github.com/angular/angular-cli">Angular CLI</a></p></article>
     </section>
@@ -195,7 +195,7 @@ const onFileInputChange = async (evt: Event) => {
 <br class="clear">
 
 <footer>
-    Documentation generated at Tue Aug 04 2020 01:57:03 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Sat Aug 29 2020 11:27:04 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>
