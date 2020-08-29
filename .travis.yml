@@ -47,7 +47,7 @@ branches:
 
 # condition https://stackoverflow.com/questions/34591587/travis-conditional-on-branch-after-success
 after_success:
-  - ci:deploy-before
+  - npm run ci:deploy-before
 
 deploy:
 
