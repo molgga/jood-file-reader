@@ -66,13 +66,13 @@ export class BlobImageResize {
       if (this.resizeType === ResizeType.SCALE_STRETCH) {
         maxWidth = sw <= sh ? sw * (this.maxHeight / sh) : this.maxHeight;
       } else {
-        maxWidth = sw * (this.maxHeight / sh);
+        maxWidth = maxHeight;
       }
     } else if (this.maxHeight <= 0) {
       if (this.resizeType === ResizeType.SCALE_STRETCH) {
         maxHeight = sh <= sw ? sh * (this.maxWidth / sw) : this.maxWidth;
       } else {
-        maxHeight = sh * (this.maxWidth / sw);
+        maxHeight = maxWidth;
       }
     }
     return {
