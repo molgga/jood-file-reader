@@ -56,6 +56,30 @@ export class BlobImageResize {
   protected promiseResolve: (value: ResizeResult) => void;
   protected promiseReject: (reason?: any) => void;
 
+  protected getMax(sw: number, sh: number) {
+    let maxWidth = this.maxWidth;
+    let maxHeight = this.maxHeight;
+    if (this.maxWidth <= 0 && this.maxHeight <= 0) {
+      maxWidth = sw;
+      maxHeight = sh;
+    } else if (this.maxWidth <= 0) {
+      if (this.resizeType === ResizeType.SCALE_STRETCH) {
+        maxWidth = sw <= sh ? sw * (this.maxHeight / sh) : this.maxHeight;
+      } else {
+        maxWidth = sw * (this.maxHeight / sh);
+      }
+    } else if (this.maxHeight <= 0) {
+      if (this.resizeType === ResizeType.SCALE_STRETCH) {
+        maxHeight = sh <= sw ? sh * (this.maxWidth / sw) : this.maxWidth;
+      } else {
+        maxHeight = sh * (this.maxWidth / sw);
+      }
+    }
+    return {
+      maxWidth: maxWidth,
+      maxHeight: maxHeight,
+    };
+  }
   /**
    * 리사이징 타입 - SCALE 형
    * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
@@ -64,16 +88,17 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToScale(sw: number, sh: number): DrawBound {
+    const { maxWidth, maxHeight } = this.getMax(sw, sh);
     const dx: number = 0;
     const dy: number = 0;
     let dw: number = 0;
     let dh: number = 0;
     const isLandscape: boolean = sh <= sw;
     if (isLandscape) {
-      dw = Math.min(this.maxWidth, sw);
+      dw = Math.min(maxWidth, sw);
       dh = Math.floor((dw / sw) * sh);
     } else {
-      dh = Math.min(this.maxWidth, sh);
+      dh = Math.min(maxHeight, sh);
       dw = Math.floor((dh / sh) * sw);
     }
     return { dx, dy, dw, dh, mw: dw, mh: dh };
@@ -87,6 +112,7 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToScaleStretch(sw: number, sh: number): DrawBound {
+    const { maxWidth, maxHeight } = this.getMax(sw, sh);
     const dx: number = 0;
     const dy: number = 0;
     let dw: number = 0;
@@ -96,12 +122,12 @@ export class BlobImageResize {
     if (isLandscape) {
       contentRatio = sw / sh;
       contentRatio = 1 < contentRatio ? contentRatio : 1;
-      dw = this.maxWidth * contentRatio;
+      dw = maxWidth * contentRatio;
       dh = Math.floor((dw / sw) * sh);
     } else {
       contentRatio = sh / sw;
       contentRatio = 1 < contentRatio ? contentRatio : 1;
-      dh = this.maxHeight * contentRatio;
+      dh = maxHeight * contentRatio;
       dw = Math.floor((dh / sh) * sw);
     }
     return { dx, dy, dw, dh, mw: dw, mh: dh };
@@ -115,9 +141,10 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToCover(sw: number, sh: number): DrawBound {
-    const min = Math.min(sw, sh, this.maxWidth, this.maxHeight);
-    const mw = Math.min(min, sw, this.maxWidth);
-    const mh = Math.min(min, sh, this.maxHeight);
+    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+    const min = Math.min(sw, sh, maxWidth, maxHeight);
+    const mw = Math.min(min, sw, maxWidth);
+    const mh = Math.min(min, sh, maxHeight);
     let dx: number = 0;
     let dy: number = 0;
     let dw: number = 0;
@@ -144,22 +171,44 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToCoverStretch(sw: number, sh: number): DrawBound {
+    const { maxWidth, maxHeight } = this.getMax(sw, sh);
     let dx: number = 0;
     let dy: number = 0;
     let dw: number = 0;
     let dh: number = 0;
-    let expectRatio: number = this.maxWidth / this.maxHeight;
+    let expectRatio: number = maxWidth / maxHeight;
     let contentRatio: number = sw / sh;
     if (expectRatio < contentRatio) {
-      dh = this.maxHeight;
-      dw = this.maxHeight * contentRatio;
+      dh = maxHeight;
+      dw = maxHeight * contentRatio;
     } else {
-      dw = this.maxWidth;
-      dh = this.maxWidth / contentRatio;
+      dw = maxWidth;
+      dh = maxWidth / contentRatio;
     }
-    dx = (this.maxWidth - dw) * 0.5;
-    dy = (this.maxHeight - dh) * 0.5;
-    return { dx, dy, dw, dh, mw: this.maxWidth, mh: this.maxHeight };
+    dx = (maxWidth - dw) * 0.5;
+    dy = (maxHeight - dh) * 0.5;
+    return { dx, dy, dw, dh, mw: maxWidth, mh: maxHeight };
+  }
+
+  /**
+   * 리사이징 타입 - Fixed 형
+   * 정해진 expect 사이즈에 맞춤.
+   * @param {number} sw
+   * @param {number} sh
+   * @returns {DrawBound}
+   */
+  getResizeToFixed(sw: number, sh: number) {
+    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+    let dw: number = maxWidth;
+    let dh: number = maxHeight;
+    return {
+      dx: 0,
+      dy: 0,
+      dw: dw,
+      dh: dh,
+      mw: dw,
+      mh: dh,
+    };
   }
 
   /**
@@ -177,8 +226,10 @@ export class BlobImageResize {
       drawBound = this.getResizeToCoverStretch(imageWidth, imageHeight);
     } else if (this.resizeType === ResizeType.SCALE_STRETCH) {
       drawBound = this.getResizeToScaleStretch(imageWidth, imageHeight);
-    } else {
+    } else if (this.resizeType === ResizeType.SCALE) {
       drawBound = this.getResizeToScale(imageWidth, imageHeight);
+    } else {
+      drawBound = this.getResizeToFixed(imageWidth, imageHeight);
     }
     const { dx, dy, dw, dh, mw, mh } = drawBound;
     const contentType = this.forceContentType || this.blob.type;

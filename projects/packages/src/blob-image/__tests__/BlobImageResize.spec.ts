@@ -93,6 +93,30 @@ describe('BlobImageResize', () => {
     expect(bound).toEqual({ dx: 0, dy: 0, dw: 200, dh: 200, mw: 200, mh: 200 });
   });
 
+  it('getResizeTo expect size', () => {
+    const blob = createSampleBlob(1024);
+    let resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 0 });
+    let bound: DrawBound;
+    bound = resizer.getResizeToCover(100, 300);
+    expect(bound).toEqual({ dx: 0, dy: -100, dw: 100, dh: 300, mw: 100, mh: 100 });
+
+    resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 0, resizeType: ResizeType.SCALE_STRETCH  });
+    bound = resizer.getResizeToScaleStretch(100, 300);
+    expect(bound).toEqual({ dx: 0, dy: 0, dw: 200, dh: 600, mw: 200, mh: 600 });
+    
+    resizer = new BlobImageResize(blob, { expectWidth: 0, expectHeight: 300 });
+    bound = resizer.getResizeToCover(100, 300);
+    expect(bound).toEqual({ dx: 0, dy: -100, dw: 100, dh: 300, mw: 100, mh: 100 });
+
+    resizer = new BlobImageResize(blob, { expectWidth: 0, expectHeight: 300, resizeType: ResizeType.SCALE_STRETCH });
+    bound = resizer.getResizeToScaleStretch(100, 300);
+    expect(bound).toEqual({ dx: 0, dy: 0, dw: 300, dh: 900, mw: 300, mh: 900 });
+
+    resizer = new BlobImageResize(blob, { expectWidth: 0, expectHeight: 0 });
+    bound = resizer.getResizeToCover(100, 300);
+    expect(bound).toEqual({ dx: 0, dy: -100, dw: 100, dh: 300, mw: 100, mh: 100 });
+  });
+
   it('create 확인', async () => {
     const blob = await createSampleImageBlob();
     const resizer = new BlobImageResize(blob, {

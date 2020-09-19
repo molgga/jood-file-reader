@@ -12,6 +12,7 @@ export enum ResizeType {
   SCALE_STRETCH,
   COVER,
   COVER_STRETCH,
+  FIXED,
 }
 
 /**

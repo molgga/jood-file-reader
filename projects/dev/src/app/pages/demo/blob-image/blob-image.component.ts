@@ -22,7 +22,7 @@ export class BlobImageComponent implements OnInit {
   optionHeights: { label: string; value: number }[];
   optionQualities: { label: string; value: number }[];
   testWidth: number = 600;
-  testHeight: number = 600;
+  testHeight: number = 0;
   testQuality: number = 0.9;
   testContentType: string = '';
   testFillBgColor: string = '';
@@ -32,12 +32,12 @@ export class BlobImageComponent implements OnInit {
 
   ngOnInit() {
     this.optionWidths = Array.from(Array(10)).map((a, b) => {
-      const index = b + 1;
+      const index = b; // + 1;
       const size = 100 * index;
       return { value: size, label: size.toString() };
     });
     this.optionHeights = Array.from(Array(10)).map((a, b) => {
-      const index = b + 1;
+      const index = b; // + 1;
       const size = 100 * index;
       return { value: size, label: size.toString() };
     });
@@ -48,6 +48,7 @@ export class BlobImageComponent implements OnInit {
     });
     this.demoList = [
       { title: 'original', info: null, resizeType: null },
+      { title: 'resize - fixed', info: null, resizeType: ResizeType.FIXED },
       { title: 'resize - scale', info: null, resizeType: ResizeType.SCALE },
       { title: 'resize - scale stretch', info: null, resizeType: ResizeType.SCALE_STRETCH },
       { title: 'resize - cover', info: null, resizeType: ResizeType.COVER },

@@ -1,6 +1,6 @@
 {
   "name": "@jood/file-reader",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "license": "MIT",
   "dependencies": {},
   "repository": {
@@ -22,7 +22,8 @@
     "fileChunk",
     "blob",
     "image",
-    "resize"
+    "resize",
+    "quality"
   ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
