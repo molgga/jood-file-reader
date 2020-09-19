@@ -108,18 +108,50 @@
           this.forceContentType = expectContentType;
           this.fillBgColor = fillBgColor;
         }
-        /**
-         * 리사이징 타입 - SCALE 형
-         * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
-         * @param {number} sw
-         * @param {number} sh
-         * @returns {DrawBound}
-         */
-
 
         _createClass(BlobImageResize, [{
+          key: "getMax",
+          value: function getMax(sw, sh) {
+            var maxWidth = this.maxWidth;
+            var maxHeight = this.maxHeight;
+
+            if (this.maxWidth <= 0 && this.maxHeight <= 0) {
+              maxWidth = sw;
+              maxHeight = sh;
+            } else if (this.maxWidth <= 0) {
+              if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE_STRETCH) {
+                maxWidth = sw <= sh ? sw * (this.maxHeight / sh) : this.maxHeight;
+              } else {
+                maxWidth = sw * (this.maxHeight / sh);
+              }
+            } else if (this.maxHeight <= 0) {
+              if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE_STRETCH) {
+                maxHeight = sh <= sw ? sh * (this.maxWidth / sw) : this.maxWidth;
+              } else {
+                maxHeight = sh * (this.maxWidth / sw);
+              }
+            }
+
+            return {
+              maxWidth: maxWidth,
+              maxHeight: maxHeight
+            };
+          }
+          /**
+           * 리사이징 타입 - SCALE 형
+           * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
+           * @param {number} sw
+           * @param {number} sh
+           * @returns {DrawBound}
+           */
+
+        }, {
           key: "getResizeToScale",
           value: function getResizeToScale(sw, sh) {
+            var _this$getMax = this.getMax(sw, sh),
+                maxWidth = _this$getMax.maxWidth,
+                maxHeight = _this$getMax.maxHeight;
+
             var dx = 0;
             var dy = 0;
             var dw = 0;
@@ -127,10 +159,10 @@
             var isLandscape = sh <= sw;
 
             if (isLandscape) {
-              dw = Math.min(this.maxWidth, sw);
+              dw = Math.min(maxWidth, sw);
               dh = Math.floor(dw / sw * sh);
             } else {
-              dh = Math.min(this.maxWidth, sh);
+              dh = Math.min(maxHeight, sh);
               dw = Math.floor(dh / sh * sw);
             }
 
@@ -154,6 +186,10 @@
         }, {
           key: "getResizeToScaleStretch",
           value: function getResizeToScaleStretch(sw, sh) {
+            var _this$getMax2 = this.getMax(sw, sh),
+                maxWidth = _this$getMax2.maxWidth,
+                maxHeight = _this$getMax2.maxHeight;
+
             var dx = 0;
             var dy = 0;
             var dw = 0;
@@ -164,12 +200,12 @@
             if (isLandscape) {
               contentRatio = sw / sh;
               contentRatio = 1 < contentRatio ? contentRatio : 1;
-              dw = this.maxWidth * contentRatio;
+              dw = maxWidth * contentRatio;
               dh = Math.floor(dw / sw * sh);
             } else {
               contentRatio = sh / sw;
               contentRatio = 1 < contentRatio ? contentRatio : 1;
-              dh = this.maxHeight * contentRatio;
+              dh = maxHeight * contentRatio;
               dw = Math.floor(dh / sh * sw);
             }
 
@@ -193,9 +229,13 @@
         }, {
           key: "getResizeToCover",
           value: function getResizeToCover(sw, sh) {
-            var min = Math.min(sw, sh, this.maxWidth, this.maxHeight);
-            var mw = Math.min(min, sw, this.maxWidth);
-            var mh = Math.min(min, sh, this.maxHeight);
+            var _this$getMax3 = this.getMax(sw, sh),
+                maxWidth = _this$getMax3.maxWidth,
+                maxHeight = _this$getMax3.maxHeight;
+
+            var min = Math.min(sw, sh, maxWidth, maxHeight);
+            var mw = Math.min(min, sw, maxWidth);
+            var mh = Math.min(min, sh, maxHeight);
             var dx = 0;
             var dy = 0;
             var dw = 0;
@@ -233,30 +273,60 @@
         }, {
           key: "getResizeToCoverStretch",
           value: function getResizeToCoverStretch(sw, sh) {
+            var _this$getMax4 = this.getMax(sw, sh),
+                maxWidth = _this$getMax4.maxWidth,
+                maxHeight = _this$getMax4.maxHeight;
+
             var dx = 0;
             var dy = 0;
             var dw = 0;
             var dh = 0;
-            var expectRatio = this.maxWidth / this.maxHeight;
+            var expectRatio = maxWidth / maxHeight;
             var contentRatio = sw / sh;
 
             if (expectRatio < contentRatio) {
-              dh = this.maxHeight;
-              dw = this.maxHeight * contentRatio;
+              dh = maxHeight;
+              dw = maxHeight * contentRatio;
             } else {
-              dw = this.maxWidth;
-              dh = this.maxWidth / contentRatio;
+              dw = maxWidth;
+              dh = maxWidth / contentRatio;
             }
 
-            dx = (this.maxWidth - dw) * 0.5;
-            dy = (this.maxHeight - dh) * 0.5;
+            dx = (maxWidth - dw) * 0.5;
+            dy = (maxHeight - dh) * 0.5;
             return {
               dx: dx,
               dy: dy,
               dw: dw,
               dh: dh,
-              mw: this.maxWidth,
-              mh: this.maxHeight
+              mw: maxWidth,
+              mh: maxHeight
+            };
+          }
+          /**
+           * 리사이징 타입 - Fixed 형
+           * 정해진 expect 사이즈에 맞춤.
+           * @param {number} sw
+           * @param {number} sh
+           * @returns {DrawBound}
+           */
+
+        }, {
+          key: "getResizeToFixed",
+          value: function getResizeToFixed(sw, sh) {
+            var _this$getMax5 = this.getMax(sw, sh),
+                maxWidth = _this$getMax5.maxWidth,
+                maxHeight = _this$getMax5.maxHeight;
+
+            var dw = maxWidth;
+            var dh = maxHeight;
+            return {
+              dx: 0,
+              dy: 0,
+              dw: dw,
+              dh: dh,
+              mw: dw,
+              mh: dh
             };
           }
           /**
@@ -278,8 +348,10 @@
               drawBound = this.getResizeToCoverStretch(imageWidth, imageHeight);
             } else if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE_STRETCH) {
               drawBound = this.getResizeToScaleStretch(imageWidth, imageHeight);
-            } else {
+            } else if (this.resizeType === _types__WEBPACK_IMPORTED_MODULE_0__["ResizeType"].SCALE) {
               drawBound = this.getResizeToScale(imageWidth, imageHeight);
+            } else {
+              drawBound = this.getResizeToFixed(imageWidth, imageHeight);
             }
 
             var _drawBound = drawBound,
@@ -459,6 +531,7 @@
         ResizeType[ResizeType["SCALE_STRETCH"] = 1] = "SCALE_STRETCH";
         ResizeType[ResizeType["COVER"] = 2] = "COVER";
         ResizeType[ResizeType["COVER_STRETCH"] = 3] = "COVER_STRETCH";
+        ResizeType[ResizeType["FIXED"] = 4] = "FIXED";
       })(ResizeType || (ResizeType = {}));
       /***/
 
@@ -1040,7 +1113,7 @@
           _classCallCheck(this, BlobImageComponent);
 
           this.testWidth = 600;
-          this.testHeight = 600;
+          this.testHeight = 0;
           this.testQuality = 0.9;
           this.testContentType = '';
           this.testFillBgColor = '';
@@ -1050,7 +1123,8 @@
           key: "ngOnInit",
           value: function ngOnInit() {
             this.optionWidths = Array.from(Array(10)).map(function (a, b) {
-              var index = b + 1;
+              var index = b; // + 1;
+
               var size = 100 * index;
               return {
                 value: size,
@@ -1058,7 +1132,8 @@
               };
             });
             this.optionHeights = Array.from(Array(10)).map(function (a, b) {
-              var index = b + 1;
+              var index = b; // + 1;
+
               var size = 100 * index;
               return {
                 value: size,
@@ -1077,6 +1152,10 @@
               title: 'original',
               info: null,
               resizeType: null
+            }, {
+              title: 'resize - fixed',
+              info: null,
+              resizeType: projects_packages_src_public_api__WEBPACK_IMPORTED_MODULE_2__["ResizeType"].FIXED
             }, {
               title: 'resize - scale',
               info: null,
