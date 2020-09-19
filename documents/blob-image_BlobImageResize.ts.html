@@ -107,12 +107,16 @@ export class BlobImageResize {
     } else if (this.maxWidth &lt;= 0) {
       if (this.resizeType === ResizeType.SCALE_STRETCH) {
         maxWidth = sw &lt;= sh ? sw * (this.maxHeight / sh) : this.maxHeight;
+      } else if (this.resizeType === ResizeType.FIXED) {
+        maxWidth = sw * (this.maxHeight / sh);
       } else {
         maxWidth = maxHeight;
       }
     } else if (this.maxHeight &lt;= 0) {
       if (this.resizeType === ResizeType.SCALE_STRETCH) {
         maxHeight = sh &lt;= sw ? sh * (this.maxWidth / sw) : this.maxWidth;
+      } else if (this.resizeType === ResizeType.FIXED) {
+        maxHeight = sh * (this.maxWidth / sw);
       } else {
         maxHeight = maxWidth;
       }
@@ -355,7 +359,7 @@ export class BlobImageResize {
 <br class="clear">
 
 <footer>
-    Documentation generated at Sat Sep 19 2020 13:59:49 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Sat Sep 19 2020 14:15:06 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>
