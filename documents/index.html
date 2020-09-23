@@ -150,6 +150,11 @@ const onFileInputChange = (evt: Event) => {
 <li>
 <p>fillBgColor: string (default=undefined) - expectContentType 을 지정하는 경우 transparent 처리가 canvas 의 기본색상으로 채워지는데 그때 적용될 color 값.</p>
 </li>
+<li>
+<p>applyOrientation: boolean (default=0) - exif orientation 정보가 있는 경우 orientation 값을 적용하여 resize. <br>
+<a href="https://github.com/recurser/exif-orientation-examples">참고: 이미지 샘플 github</a> <br>
+<a href="https://zpjiang.me/2019/12/28/iphone-image-rotation/">참고: iPhone Photo Orientation/Rotation in Browser</a></p>
+</li>
 </ul>
 <h3>Promise</h3>
 <pre class="prettyprint source lang-typescript"><code>import { BlobImageResize } from '@jood/file-reader';
@@ -195,7 +200,7 @@ const onFileInputChange = async (evt: Event) => {
 <br class="clear">
 
 <footer>
-    Documentation generated at Wed Sep 23 2020 07:26:30 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Wed Sep 23 2020 07:51:20 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>
