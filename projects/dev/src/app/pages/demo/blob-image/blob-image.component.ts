@@ -21,11 +21,12 @@ export class BlobImageComponent implements OnInit {
   optionWidths: { label: string; value: number }[];
   optionHeights: { label: string; value: number }[];
   optionQualities: { label: string; value: number }[];
-  testWidth: number = 600;
+  testWidth: number = 200;
   testHeight: number = 0;
   testQuality: number = 0.9;
   testContentType: string = '';
   testFillBgColor: string = '';
+  testApplyOrientation: boolean = false;
 
   @ViewChildren('demoCanvasRefs') demoCanvasRefs: QueryList<ElementRef<HTMLCanvasElement>>;
   demoList: any[];
@@ -86,6 +87,7 @@ export class BlobImageComponent implements OnInit {
     const expectContentType = this.testContentType || undefined;
     const quality = this.testQuality;
     const fillBgColor = this.testFillBgColor || undefined;
+    const applyOrientation = this.testApplyOrientation || false;
     let resizeBlob: Blob = blob;
     let resizeCanvas: HTMLCanvasElement;
     let resizeWidth: number = 0;
@@ -98,12 +100,20 @@ export class BlobImageComponent implements OnInit {
         resizeType,
         expectContentType,
         fillBgColor,
+        applyOrientation,
       });
       const resizeResult = await resizer.create();
       resizeBlob = resizeResult.blob;
       resizeWidth = resizeResult.width;
       resizeHeight = resizeResult.height;
+      resizeCanvas = await this.drawToCanvas(canvas, {
+        blob: resizeBlob,
+        width: resizeWidth,
+        height: resizeHeight,
+      });
+      console.log(resizeResult);
     } else {
+      // original ...
       resizeBlob = blob;
       resizeCanvas = await this.drawToCanvas(canvas, {
         blob: resizeBlob,
@@ -111,11 +121,6 @@ export class BlobImageComponent implements OnInit {
         height: 0,
       });
     }
-    resizeCanvas = await this.drawToCanvas(canvas, {
-      blob: resizeBlob,
-      width: resizeWidth,
-      height: resizeHeight,
-    });
     return Promise.resolve({
       size: resizeBlob.size,
       type: resizeBlob.type,

@@ -51,6 +51,12 @@ export interface ResizeConfig {
    * @type {ResizeType}
    */
   resizeType?: ResizeType;
+
+  /**
+   * exif orientation 정보가 있는 경우 적용 여부
+   * @type {boolean}
+   */
+  applyOrientation?: boolean;
 }
 
 /**
@@ -74,6 +80,11 @@ export interface ResizeResult {
    * @type {number}
    */
   height: number;
+  /**
+   * allowOrientation 적용시 exif 에서 찾아낸 orientation 값
+   * @type {number}
+   */
+  orientation?: number;
   /**
    * 오류가 있는 경우
    * @type {*}

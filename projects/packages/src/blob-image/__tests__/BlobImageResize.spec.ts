@@ -21,6 +21,16 @@ async function createSampleImageBlob(): Promise<Blob> {
 }
 
 describe('BlobImageResize', () => {
+  it('getResizeToFixed 확인', () => {
+    const blob = createSampleBlob(1024);
+    const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200 });
+    let bound: DrawBound;
+    bound = resizer.getResizeToFixed(100, 300);
+    expect(bound).toEqual({ dx: 0, dy: 0, dw: 200, dh: 200, mw: 200, mh: 200 });
+    bound = resizer.getResizeToFixed(300, 300);
+    expect(bound).toEqual({ dx: 0, dy: 0, dw: 200, dh: 200, mw: 200, mh: 200 });
+  });
+
   it('getResizeToCover 확인', () => {
     const blob = createSampleBlob(1024);
     const resizer = new BlobImageResize(blob, { expectWidth: 200, expectHeight: 200 });
@@ -184,7 +194,7 @@ describe('BlobImageResize', () => {
       expectWidth,
       expectHeight,
       quality: 0.9,
-      resizeType: ResizeType.SCALE
+      resizeType: ResizeType.SCALE,
     });
     const resized = await resizer.create();
     if (TEST_REAL_IMAGE_WIDTH < TEST_REAL_IMAGE_HEIGHT) {
@@ -224,6 +234,29 @@ describe('BlobImageResize', () => {
     const resized = await resizer.create();
     expect(resized.width).toBe(99);
     expect(resized.height).toBe(111);
+  });
+
+
+  it('allowOrientation 확인', async () => {
+    const blob = await createSampleImageBlob();
+    const expectWidth = 100;
+    const expectHeight = 100;
+    const resizer = new BlobImageResize(blob, {
+      expectWidth,
+      expectHeight,
+      quality: 0.9,
+      applyOrientation: true,
+    });
+
+    // @ts-ignore
+    const spy = spyOn(resizer, 'parseDrawMetadata');
+    for (let i = 0; i <= 8; i++) {
+      // @ts-ignore
+      spy.and.returnValue({ sw: 100, sh: 100, orientation: i });
+      await resizer.create();
+      expect(resizer.getState().orientation).toBe(i);
+    }
+    spy.and.callThrough();
   });
 
   it('create, none blob error 확인', async (testDone) => {
