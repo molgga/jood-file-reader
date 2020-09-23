@@ -100,6 +100,10 @@ const onFileInputChange = (evt: Event) => {
 
 - fillBgColor: string (default=undefined) - expectContentType 을 지정하는 경우 transparent 처리가 canvas 의 기본색상으로 채워지는데 그때 적용될 color 값.
 
+- applyOrientation: boolean (default=0) - exif orientation 정보가 있는 경우 orientation 값을 적용하여 resize. \
+  [참고: 이미지 샘플 github](https://github.com/recurser/exif-orientation-examples) \
+  [참고: iPhone Photo Orientation/Rotation in Browser](https://zpjiang.me/2019/12/28/iphone-image-rotation/)
+  
 ### Promise
 ```typescript
 import { BlobImageResize } from '@jood/file-reader';
