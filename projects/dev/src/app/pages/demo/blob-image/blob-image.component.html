@@ -1,42 +1,66 @@
 <div>
-  <mat-form-field>
-    <mat-label>expectWidth</mat-label>
-    <mat-select [(ngModel)]="testWidth">
-      <mat-option *ngFor="let data of optionWidths" [value]="data.value">{{
-        data.label
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>expectHeight</mat-label>
-    <mat-select [(ngModel)]="testHeight">
-      <mat-option *ngFor="let data of optionHeights" [value]="data.value">{{
-        data.label
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>quality</mat-label>
-    <mat-select [(ngModel)]="testQuality">
-      <mat-option *ngFor="let data of optionQualities" [value]="data.value">{{
-        data.label
-      }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <div class="my-desc">
-    (quality: allow only contentType image/jpeg)
+  <div class="fm-box-wrap">
+    <div class="fm-box">
+      <span class="label">expectWidth</span>
+      <div class="box">
+        <mat-select [(ngModel)]="testWidth">
+          <mat-option *ngFor="let data of optionWidths" [value]="data.value">{{
+            data.label
+          }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="fm-box">
+      <span class="label">expectHeight</span>
+      <div class="box">
+        <mat-select [(ngModel)]="testHeight">
+          <mat-option *ngFor="let data of optionHeights" [value]="data.value">{{
+            data.label
+          }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="fm-box">
+      <span class="label">quality</span>
+      <div class="box">
+        <mat-select [(ngModel)]="testQuality">
+          <mat-option *ngFor="let data of optionQualities" [value]="data.value">{{
+            data.label
+          }}</mat-option>
+        </mat-select>
+      </div>
+    </div>
+    <div class="fm-box">
+      <span class="label">applyOrientation</span>
+      <div class="box">
+        <mat-checkbox class="example-margin" [(ngModel)]="testApplyOrientation">
+          apply exif orientation
+        </mat-checkbox>
+      </div>
+    </div>
+    <div class="fm-box">
+      <span class="label">expectContentType</span>
+      <div class="box">
+        <input class="fm-input" [(ngModel)]="testContentType" placeholder="ex) image/jpeg" />
+      </div>
+    </div>
+    <div class="fm-box">
+      <span class="label">fillBgColor</span>
+      <div class="box">
+        <input class="fm-input" [(ngModel)]="testFillBgColor" placeholder="ex) #ff0000" />
+      </div>
+    </div>
   </div>
-  <mat-form-field>
-    <mat-label>expectContentType</mat-label>
-    <input matInput [(ngModel)]="testContentType" />
-    <mat-hint>ex) image/jpeg</mat-hint>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>fillBgColor</mat-label>
-    <input matInput [(ngModel)]="testFillBgColor" />
-    <mat-hint>ex) #ff0000</mat-hint>
-  </mat-form-field>
+
+  <ul class="my-desc">
+    <li class="item">quality: only applies when contentType "image/jpeg"</li>
+    <li class="item">
+      orientation: only applies when image has exif orientation
+      <a target="_blank" href="https://github.com/recurser/exif-orientation-examples"
+        >(github: exif orientation sample image)</a
+      >
+    </li>
+  </ul>
 </div>
 
 <div class="file-wrap">

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Subject, Observable } from 'rxjs';
 import {
   FileReadEventType,

@@ -47,6 +47,7 @@
     "codelyzer": "^6.0.0",
     "copyfiles": "^2.3.0",
     "custom-event-polyfill": "^1.0.7",
+    "exifreader": "^3.12.2",
     "intersection-observer": "^0.11.0",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.2",

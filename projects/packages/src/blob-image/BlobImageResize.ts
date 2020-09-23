@@ -1,5 +1,16 @@
-/* eslint-disable */
+import * as ExifReader from 'exifreader';
 import { ResizeType, ResizeConfig, ResizeResult, DrawBound } from './types';
+
+interface ParseMaxSize {
+  maxWidth: number;
+  maxHeight: number;
+}
+
+interface ParseMetadata {
+  sw: number;
+  sh: number;
+  orientation?: number;
+}
 
 /**
  * Blob 이미지 리사이즈 용
@@ -20,6 +31,7 @@ export class BlobImageResize {
       resizeType = ResizeType.SCALE,
       expectContentType,
       fillBgColor,
+      applyOrientation = false,
     } = config;
     this.quality = quality;
     this.maxWidth = expectWidth;
@@ -27,6 +39,7 @@ export class BlobImageResize {
     this.resizeType = resizeType;
     this.forceContentType = expectContentType;
     this.fillBgColor = fillBgColor;
+    this.applyOrientation = applyOrientation;
   }
 
   // 리사이징 대상 Blob
@@ -51,39 +64,14 @@ export class BlobImageResize {
   protected resizeType: ResizeType;
   // 리사이징 완료된 Blob
   protected resizeBlob: Blob;
+  // orientation 적용 여부
+  protected applyOrientation: boolean;
+  protected detectedOrientation: number;
   // 응답용 promize
   protected promise: Promise<ResizeResult>;
   protected promiseResolve: (value: ResizeResult) => void;
   protected promiseReject: (reason?: any) => void;
 
-  protected getMax(sw: number, sh: number) {
-    let maxWidth = this.maxWidth;
-    let maxHeight = this.maxHeight;
-    if (this.maxWidth <= 0 && this.maxHeight <= 0) {
-      maxWidth = sw;
-      maxHeight = sh;
-    } else if (this.maxWidth <= 0) {
-      if (this.resizeType === ResizeType.SCALE_STRETCH) {
-        maxWidth = sw <= sh ? sw * (this.maxHeight / sh) : this.maxHeight;
-      } else if (this.resizeType === ResizeType.FIXED) {
-        maxWidth = sw * (this.maxHeight / sh);
-      } else {
-        maxWidth = maxHeight;
-      }
-    } else if (this.maxHeight <= 0) {
-      if (this.resizeType === ResizeType.SCALE_STRETCH) {
-        maxHeight = sh <= sw ? sh * (this.maxWidth / sw) : this.maxWidth;
-      } else if (this.resizeType === ResizeType.FIXED) {
-        maxHeight = sh * (this.maxWidth / sw);
-      } else {
-        maxHeight = maxWidth;
-      }
-    }
-    return {
-      maxWidth: maxWidth,
-      maxHeight: maxHeight,
-    };
-  }
   /**
    * 리사이징 타입 - SCALE 형
    * 정해진 expect 사이즈를 최대 사이즈로 비율에 맞춤. 원본이 작은 경우 늘리지 않음.
@@ -92,7 +80,7 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToScale(sw: number, sh: number): DrawBound {
-    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+    const { maxWidth, maxHeight } = this.getMaxSize(sw, sh);
     const dx: number = 0;
     const dy: number = 0;
     let dw: number = 0;
@@ -116,7 +104,7 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToScaleStretch(sw: number, sh: number): DrawBound {
-    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+    const { maxWidth, maxHeight } = this.getMaxSize(sw, sh);
     const dx: number = 0;
     const dy: number = 0;
     let dw: number = 0;
@@ -145,7 +133,7 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToCover(sw: number, sh: number): DrawBound {
-    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+    const { maxWidth, maxHeight } = this.getMaxSize(sw, sh);
     const min = Math.min(sw, sh, maxWidth, maxHeight);
     const mw = Math.min(min, sw, maxWidth);
     const mh = Math.min(min, sh, maxHeight);
@@ -175,7 +163,7 @@ export class BlobImageResize {
    * @returns {DrawBound}
    */
   getResizeToCoverStretch(sw: number, sh: number): DrawBound {
-    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+    const { maxWidth, maxHeight } = this.getMaxSize(sw, sh);
     let dx: number = 0;
     let dy: number = 0;
     let dw: number = 0;
@@ -201,8 +189,8 @@ export class BlobImageResize {
    * @param {number} sh
    * @returns {DrawBound}
    */
-  getResizeToFixed(sw: number, sh: number) {
-    const { maxWidth, maxHeight } = this.getMax(sw, sh);
+  getResizeToFixed(sw: number, sh: number): DrawBound {
+    const { maxWidth, maxHeight } = this.getMaxSize(sw, sh);
     let dw: number = maxWidth;
     let dh: number = maxHeight;
     return {
@@ -216,6 +204,42 @@ export class BlobImageResize {
   }
 
   /**
+   * 이미지 사이즈와 옵션 조합으로 리사이징 가능한 최대 넓이, 높이 반환
+   * @protected
+   * @param {number} sw
+   * @param {number} sh
+   * @returns {ParseMaxSize}
+   */
+  protected getMaxSize(sw: number, sh: number): ParseMaxSize {
+    let maxWidth = this.maxWidth;
+    let maxHeight = this.maxHeight;
+    if (this.maxWidth <= 0 && this.maxHeight <= 0) {
+      maxWidth = sw;
+      maxHeight = sh;
+    } else if (this.maxWidth <= 0) {
+      if (this.resizeType === ResizeType.SCALE_STRETCH) {
+        maxWidth = sw <= sh ? sw * (this.maxHeight / sh) : this.maxHeight;
+      } else if (this.resizeType === ResizeType.FIXED) {
+        maxWidth = sw * (this.maxHeight / sh);
+      } else {
+        maxWidth = maxHeight;
+      }
+    } else if (this.maxHeight <= 0) {
+      if (this.resizeType === ResizeType.SCALE_STRETCH) {
+        maxHeight = sh <= sw ? sh * (this.maxWidth / sw) : this.maxWidth;
+      } else if (this.resizeType === ResizeType.FIXED) {
+        maxHeight = sh * (this.maxWidth / sw);
+      } else {
+        maxHeight = maxWidth;
+      }
+    }
+    return {
+      maxWidth: maxWidth,
+      maxHeight: maxHeight,
+    };
+  }
+
+  /**
    * 이미지 로드 완료
    * @protected
    */
@@ -223,28 +247,130 @@ export class BlobImageResize {
     URL.revokeObjectURL(this.blobURL);
     const imageWidth = this.domImage.naturalWidth;
     const imageHeight = this.domImage.naturalHeight;
+    this.draw(imageWidth, imageHeight);
+  }
+
+  /**
+   * 이미지 orientation 등 설정 정보에 따라 그려져야할 사이즈, 방향 등 반환
+   * @protected
+   * @param {number} imageWidth
+   * @param {number} imageHeight
+   * @returns {Promise<ParseMetadata>}
+   */
+  protected async parseDrawMetadata(
+    imageWidth: number,
+    imageHeight: number
+  ): Promise<ParseMetadata> {
+    let sw = imageWidth;
+    let sh = imageHeight;
+    let orientation = 0;
+    if (this.applyOrientation === true) {
+      try {
+        const buffer = await this.blob.arrayBuffer();
+        const result = ExifReader.load(buffer);
+        if (result.Orientation && result.Orientation.value) {
+          orientation = result.Orientation.value;
+        }
+      } catch (err) {}
+      if (4 < orientation) {
+        sw = imageHeight;
+        sh = imageWidth;
+      }
+    }
+    return { sw, sh, orientation };
+  }
+
+  /**
+   * 이미지가 그려져야할 영역 정보 반환
+   * @protected
+   * @param {number} sw
+   * @param {number} sh
+   * @return {DrawBound}
+   */
+  protected parseDrawBound(sw: number, sh: number): DrawBound {
     let drawBound: DrawBound;
-    if (this.resizeType === ResizeType.COVER) {
-      drawBound = this.getResizeToCover(imageWidth, imageHeight);
-    } else if (this.resizeType === ResizeType.COVER_STRETCH) {
-      drawBound = this.getResizeToCoverStretch(imageWidth, imageHeight);
-    } else if (this.resizeType === ResizeType.SCALE_STRETCH) {
-      drawBound = this.getResizeToScaleStretch(imageWidth, imageHeight);
-    } else if (this.resizeType === ResizeType.SCALE) {
-      drawBound = this.getResizeToScale(imageWidth, imageHeight);
-    } else {
-      drawBound = this.getResizeToFixed(imageWidth, imageHeight);
+    switch (this.resizeType) {
+      case ResizeType.COVER:
+        drawBound = this.getResizeToCover(sw, sh);
+        break;
+      case ResizeType.COVER_STRETCH:
+        drawBound = this.getResizeToCoverStretch(sw, sh);
+        break;
+      case ResizeType.SCALE_STRETCH:
+        drawBound = this.getResizeToScaleStretch(sw, sh);
+        break;
+      case ResizeType.SCALE:
+        drawBound = this.getResizeToScale(sw, sh);
+        break;
+      default:
+        drawBound = this.getResizeToFixed(sw, sh);
+        break;
     }
-    const { dx, dy, dw, dh, mw, mh } = drawBound;
+    return drawBound;
+  }
+
+  /**
+   * 그리기
+   * @protected
+   * @param {number} imageWidth
+   * @param {number} imageHeight
+   * @returns {Promise<void>}
+   */
+  protected async draw(imageWidth: number, imageHeight: number): Promise<void> {
+    const { sw, sh, orientation } = await this.parseDrawMetadata(imageWidth, imageHeight);
+    const { dx, dy, dw, dh, mw, mh } = this.parseDrawBound(sw, sh);
+    const tx = dw + dx * 2;
+    const ty = dh + dy * 2;
     const contentType = this.forceContentType || this.blob.type;
-    this.domCanvas.width = mw;
-    this.domCanvas.height = mh;
+    const canvas = this.domCanvas;
+    const context = this.domCanvasContext;
+    canvas.width = mw;
+    canvas.height = mh;
+
     if (this.fillBgColor) {
-      this.domCanvasContext.fillStyle = this.fillBgColor;
-      this.domCanvasContext.fillRect(0, 0, mw, mh);
+      context.fillStyle = this.fillBgColor;
+      context.fillRect(0, 0, mw, mh);
     }
-    this.domCanvasContext.drawImage(this.domImage, 0, 0, imageWidth, imageHeight, dx, dy, dw, dh);
-    this.domCanvas.toBlob(this.onResized.bind(this), contentType, this.quality); // type 이 jpeg 인 경우만 quality 적용이 됨
+    switch (orientation) {
+      case 2:
+        context.translate(tx, 0);
+        context.scale(-1, 1);
+        break;
+      case 3:
+        context.translate(tx, ty);
+        context.rotate(Math.PI);
+        break;
+      case 4:
+        context.translate(0, ty);
+        context.scale(1, -1);
+        break;
+      case 5:
+        context.rotate(Math.PI * 0.5);
+        context.scale(1, -1);
+        break;
+      case 6:
+        context.rotate(Math.PI * 0.5);
+        context.translate(0, -tx);
+        break;
+      case 7:
+        context.rotate(Math.PI * 0.5);
+        context.translate(ty, -tx);
+        context.scale(-1, 1);
+        break;
+      case 8:
+        context.rotate(Math.PI * -0.5);
+        context.translate(-ty, 0);
+        break;
+    }
+    if (4 < orientation) {
+      context.drawImage(this.domImage, 0, 0, sh, sw, dy, dx, dh, dw);
+    } else {
+      context.drawImage(this.domImage, 0, 0, sw, sh, dx, dy, dw, dh);
+    }
+
+    this.detectedOrientation = orientation;
+    // 그리기 완료 (type 이 jpeg 인 경우만 quality 적용이 됨)
+    canvas.toBlob(this.onResized.bind(this), contentType, this.quality);
   }
 
   /**
@@ -298,10 +424,12 @@ export class BlobImageResize {
   getState(): ResizeResult {
     const blob = this.resizeBlob || null;
     const { width = 0, height = 0 } = this.domCanvas || {};
+    const orientation = this.detectedOrientation || 0;
     return {
       blob: blob,
       width: blob ? width : 0,
       height: blob ? height : 0,
+      orientation,
     };
   }
 }
