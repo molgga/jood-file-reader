@@ -1,4 +1,5 @@
 import * as ExifReader from 'exifreader';
+import { toBufferByBlob } from '../utils/toBuffer';
 import { ResizeType, ResizeConfig, ResizeResult, DrawBound } from './types';
 
 interface ParseMaxSize {
@@ -250,6 +251,10 @@ export class BlobImageResize {
     this.draw(imageWidth, imageHeight);
   }
 
+  async toBufferByBlob(blob: Blob) {
+    return await toBufferByBlob(blob);
+  }
+
   /**
    * 이미지 orientation 등 설정 정보에 따라 그려져야할 사이즈, 방향 등 반환
    * @protected
@@ -266,12 +271,15 @@ export class BlobImageResize {
     let orientation = 0;
     if (this.applyOrientation === true) {
       try {
-        const buffer = await this.blob.arrayBuffer();
+        // const buffer = await this.blob.arrayBuffer();
+        const buffer = await this.toBufferByBlob(this.blob);
         const result = ExifReader.load(buffer);
         if (result.Orientation && result.Orientation.value) {
           orientation = result.Orientation.value;
         }
-      } catch (err) {}
+      } catch (err) {
+        console.error(err);
+      }
       if (4 < orientation) {
         sw = imageHeight;
         sh = imageWidth;
