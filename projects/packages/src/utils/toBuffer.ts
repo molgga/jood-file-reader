@@ -7,6 +7,7 @@ export async function toBufferByBlob(blob: Blob): Promise<ArrayBuffer> {
       reader.onload = null;
       reader.onerror = null;
       try {
+        // @ts-ignore
         const buffer = Buffer.from(reader.result);
         resolve(buffer);
       } catch (err) {
