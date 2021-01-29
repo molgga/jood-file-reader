@@ -35,7 +35,7 @@ const LAYOUT_SERVICE_TOKEN = "LAYOUT_SERVICE_TOKEN";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/travis/build/molgga/jood-file-reader/projects/dev/src/main.ts */"dNSM");
+module.exports = __webpack_require__(/*! /home/runner/work/jood-file-reader/jood-file-reader/projects/dev/src/main.ts */"dNSM");
 
 
 /***/ }),
@@ -570,7 +570,7 @@ let AppRoutingModule = class AppRoutingModule {
 };
 AppRoutingModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-        imports: [_dev_app_modules_layout_layout_module__WEBPACK_IMPORTED_MODULE_3__["LayoutModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+        imports: [_dev_app_modules_layout_layout_module__WEBPACK_IMPORTED_MODULE_3__["LayoutModule"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes, { relativeLinkResolution: 'legacy' })],
         providers: [
             { provide: _dev_app_modules_layout_service_token__WEBPACK_IMPORTED_MODULE_5__["LAYOUT_SERVICE_TOKEN"], useClass: _dev_app_service_example_layout_service__WEBPACK_IMPORTED_MODULE_6__["ExampleLayoutService"] },
         ],

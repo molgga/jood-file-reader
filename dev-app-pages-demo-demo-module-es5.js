@@ -558,6 +558,7 @@
             iptcDataOffset = _image_header_js__WEB.iptcDataOffset,
             xmpChunks = _image_header_js__WEB.xmpChunks,
             iccChunks = _image_header_js__WEB.iccChunks,
+            mpfDataOffset = _image_header_js__WEB.mpfDataOffset,
             pngHeaderOffset = _image_header_js__WEB.pngHeaderOffset;
 
         if (_constants_js__WEBPACK_IMPORTED_MODULE_2__["default"].USE_JPEG && _constants_js__WEBPACK_IMPORTED_MODULE_2__["default"].USE_FILE && hasFileData(fileDataOffset)) {
@@ -661,6 +662,18 @@
           }
         }
 
+        if (_constants_js__WEBPACK_IMPORTED_MODULE_2__["default"].USE_MPF && hasMpfData(mpfDataOffset)) {
+          foundMetaData = true;
+
+          var readMpfTags = _tags_js__WEBPACK_IMPORTED_MODULE_5__["default"].readMpf(dataView, mpfDataOffset);
+
+          if (options.expanded) {
+            tags.mpf = readMpfTags;
+          } else {
+            tags = Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["objectAssign"])({}, tags, readMpfTags);
+          }
+        }
+
         if (_constants_js__WEBPACK_IMPORTED_MODULE_2__["default"].USE_PNG && _constants_js__WEBPACK_IMPORTED_MODULE_2__["default"].USE_PNG_FILE && hasPngFileData(pngHeaderOffset)) {
           foundMetaData = true;
 
@@ -700,29 +713,38 @@
       function addGpsGroup(tags) {
         if (tags.exif) {
           if (tags.exif.GPSLatitude && tags.exif.GPSLatitudeRef) {
-            tags.gps = tags.gps || {};
-            tags.gps.Latitude = Object(_tag_names_utils_js__WEBPACK_IMPORTED_MODULE_3__["getCalculatedGpsValue"])(tags.exif.GPSLatitude.value);
+            try {
+              tags.gps = tags.gps || {};
+              tags.gps.Latitude = Object(_tag_names_utils_js__WEBPACK_IMPORTED_MODULE_3__["getCalculatedGpsValue"])(tags.exif.GPSLatitude.value);
 
-            if (tags.exif.GPSLatitudeRef.value.join('') === 'S') {
-              tags.gps.Latitude = -tags.gps.Latitude;
+              if (tags.exif.GPSLatitudeRef.value.join('') === 'S') {
+                tags.gps.Latitude = -tags.gps.Latitude;
+              }
+            } catch (error) {// Ignore.
             }
           }
 
           if (tags.exif.GPSLongitude && tags.exif.GPSLongitudeRef) {
-            tags.gps = tags.gps || {};
-            tags.gps.Longitude = Object(_tag_names_utils_js__WEBPACK_IMPORTED_MODULE_3__["getCalculatedGpsValue"])(tags.exif.GPSLongitude.value);
+            try {
+              tags.gps = tags.gps || {};
+              tags.gps.Longitude = Object(_tag_names_utils_js__WEBPACK_IMPORTED_MODULE_3__["getCalculatedGpsValue"])(tags.exif.GPSLongitude.value);
 
-            if (tags.exif.GPSLongitudeRef.value.join('') === 'W') {
-              tags.gps.Longitude = -tags.gps.Longitude;
+              if (tags.exif.GPSLongitudeRef.value.join('') === 'W') {
+                tags.gps.Longitude = -tags.gps.Longitude;
+              }
+            } catch (error) {// Ignore.
             }
           }
 
           if (tags.exif.GPSAltitude && tags.exif.GPSAltitudeRef) {
-            tags.gps = tags.gps || {};
-            tags.gps.Altitude = tags.exif.GPSAltitude.value[0] / tags.exif.GPSAltitude.value[1];
+            try {
+              tags.gps = tags.gps || {};
+              tags.gps.Altitude = tags.exif.GPSAltitude.value[0] / tags.exif.GPSAltitude.value[1];
 
-            if (tags.exif.GPSAltitudeRef.value === 1) {
-              tags.gps.Altitude = -tags.gps.Altitude;
+              if (tags.exif.GPSAltitudeRef.value === 1) {
+                tags.gps.Altitude = -tags.gps.Altitude;
+              }
+            } catch (error) {// Ignore.
             }
           }
         }
@@ -738,6 +760,10 @@
 
       function hasIccData(iccDataOffsets) {
         return Array.isArray(iccDataOffsets) && iccDataOffsets.length > 0;
+      }
+
+      function hasMpfData(mpfDataOffset) {
+        return mpfDataOffset !== undefined;
       }
 
       function hasPngFileData(pngFileDataOffset) {
@@ -797,12 +823,15 @@
                       reader.onerror = null;
 
                       try {
+                        // @ts-ignore
                         var buffer = buffer__WEBPACK_IMPORTED_MODULE_1__["Buffer"].from(reader.result);
                         resolve(buffer);
                       } catch (err) {
                         reject(err);
                       }
                     };
+                    /* istanbul ignore next */
+
 
                     reader.onerror = function (evt) {
                       reader.onload = null;
@@ -810,7 +839,11 @@
                       reject(evt.error);
                     };
 
-                    reader.readAsArrayBuffer(blob);
+                    try {
+                      reader.readAsArrayBuffer(blob);
+                    } catch (err) {
+                      reject(err);
+                    }
                   }));
 
                 case 1:
@@ -876,9 +909,11 @@
 
       var APP2_ICC_DATA_OFFSET = 18; // From start of APP2 marker including marker and chunk/chunk total numbers.
 
+      var MPF_DATA_OFFSET = 8;
       var APP2_ICC_IDENTIFIER = 'ICC_PROFILE\0';
       var ICC_CHUNK_NUMBER_OFFSET = APP_ID_OFFSET + APP2_ICC_IDENTIFIER.length;
       var ICC_TOTAL_CHUNKS_OFFSET = ICC_CHUNK_NUMBER_OFFSET + 1;
+      var APP2_MPF_IDENTIFIER = 'MPF\0';
       var SOF0_MARKER = 0xffc0;
       var SOF2_MARKER = 0xffc2;
       var DHT_MARKER = 0xffc4;
@@ -909,6 +944,7 @@
         var iptcDataOffset;
         var xmpChunks;
         var iccChunks;
+        var mpfDataOffset;
 
         while (appMarkerPosition + APP_ID_OFFSET + 5 <= dataView.byteLength) {
           if (_constants_js__WEBPACK_IMPORTED_MODULE_1__["default"].USE_FILE && isSOF0Marker(dataView, appMarkerPosition)) {
@@ -952,6 +988,9 @@
               chunkNumber: iccChunkNumber,
               chunksTotal: iccChunksTotal
             });
+          } else if (_constants_js__WEBPACK_IMPORTED_MODULE_1__["default"].USE_MPF && isApp2MPFMarker(dataView, appMarkerPosition)) {
+            fieldLength = dataView.getUint16(appMarkerPosition + APP_MARKER_SIZE);
+            mpfDataOffset = appMarkerPosition + MPF_DATA_OFFSET;
           } else if (isAppMarker(dataView, appMarkerPosition)) {
             fieldLength = dataView.getUint16(appMarkerPosition + APP_MARKER_SIZE);
           } else {
@@ -967,7 +1006,8 @@
           tiffHeaderOffset: tiffHeaderOffset,
           iptcDataOffset: iptcDataOffset,
           xmpChunks: xmpChunks,
-          iccChunks: iccChunks
+          iccChunks: iccChunks,
+          mpfDataOffset: mpfDataOffset
         };
       }
 
@@ -982,6 +1022,11 @@
       function isApp2ICCMarker(dataView, appMarkerPosition) {
         var markerIdLength = APP2_ICC_IDENTIFIER.length;
         return dataView.getUint16(appMarkerPosition) === APP2_MARKER && Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["getStringFromDataView"])(dataView, appMarkerPosition + APP_ID_OFFSET, markerIdLength) === APP2_ICC_IDENTIFIER;
+      }
+
+      function isApp2MPFMarker(dataView, appMarkerPosition) {
+        var markerIdLength = APP2_MPF_IDENTIFIER.length;
+        return dataView.getUint16(appMarkerPosition) === APP2_MARKER && Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["getStringFromDataView"])(dataView, appMarkerPosition + APP_ID_OFFSET, markerIdLength) === APP2_MPF_IDENTIFIER;
       }
 
       function isApp1ExifMarker(dataView, appMarkerPosition) {
@@ -2670,6 +2715,7 @@
         USE_IPTC: true,
         USE_XMP: true,
         USE_ICC: true,
+        USE_MPF: true,
         USE_THUMBNAIL: true,
         USE_TIFF: true,
         USE_JPEG: true,
@@ -3006,6 +3052,47 @@
       })(ResizeType || (ResizeType = {}));
       /***/
 
+    },
+
+    /***/
+    "KJ3Q":
+    /*!**********************************************************!*\
+      !*** ./node_modules/exifreader/src/tag-names-mpf-ifd.js ***!
+      \**********************************************************/
+
+    /*! exports provided: default */
+
+    /***/
+    function KJ3Q(module, __webpack_exports__, __webpack_require__) {
+      "use strict";
+
+      __webpack_require__.r(__webpack_exports__);
+      /* harmony import */
+
+
+      var _tag_names_utils_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+      /*! ./tag-names-utils.js */
+      "dyR6");
+      /* This Source Code Form is subject to the terms of the Mozilla Public
+       * License, v. 2.0. If a copy of the MPL was not distributed with this
+       * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
+
+      /* harmony default export */
+
+
+      __webpack_exports__["default"] = {
+        0xb000: {
+          'name': 'MPFVersion',
+          'description': function description(value) {
+            return Object(_tag_names_utils_js__WEBPACK_IMPORTED_MODULE_0__["getStringValue"])(value);
+          }
+        },
+        0xb001: 'NumberOfImages',
+        0xb002: 'MPEntry',
+        0xb003: 'ImageUIDList',
+        0xb004: 'TotalFrames'
+      };
+      /***/
     },
 
     /***/
@@ -5184,7 +5271,8 @@
       /* harmony default export */
 
       __webpack_exports__["default"] = {
-        read: read
+        read: read,
+        readMpf: readMpf
       };
 
       function read(dataView, tiffHeaderOffset) {
@@ -5227,6 +5315,129 @@
         }
 
         return tags;
+      }
+
+      function readMpf(dataView, dataOffset) {
+        var byteOrder = _byte_order_js__WEBPACK_IMPORTED_MODULE_2__["default"].getByteOrder(dataView, dataOffset);
+
+        var tags = readIfd(dataView, 'mpf', dataOffset, get0thIfdOffset(dataView, dataOffset, byteOrder), byteOrder);
+        return addMpfImages(dataView, dataOffset, tags, byteOrder);
+      }
+
+      function addMpfImages(dataView, dataOffset, tags, byteOrder) {
+        var ENTRY_SIZE = 16;
+
+        if (!tags['MPEntry']) {
+          return tags;
+        }
+
+        var images = [];
+
+        for (var i = 0; i < Math.ceil(tags['MPEntry'].value.length / ENTRY_SIZE); i++) {
+          images[i] = {};
+          var attributes = getImageNumberValue(tags['MPEntry'].value, i * ENTRY_SIZE, _types_js__WEBPACK_IMPORTED_MODULE_3__["default"].getTypeSize('LONG'), byteOrder);
+          images[i]['ImageFlags'] = getImageFlags(attributes);
+          images[i]['ImageFormat'] = getImageFormat(attributes);
+          images[i]['ImageType'] = getImageType(attributes);
+          var imageSize = getImageNumberValue(tags['MPEntry'].value, i * ENTRY_SIZE + 4, _types_js__WEBPACK_IMPORTED_MODULE_3__["default"].getTypeSize('LONG'), byteOrder);
+          images[i]['ImageSize'] = {
+            value: imageSize,
+            description: '' + imageSize
+          };
+          var imageOffset = isFirstIndividualImage(i) ? 0 : getImageNumberValue(tags['MPEntry'].value, i * ENTRY_SIZE + 8, _types_js__WEBPACK_IMPORTED_MODULE_3__["default"].getTypeSize('LONG'), byteOrder) + dataOffset;
+          images[i]['ImageOffset'] = {
+            value: imageOffset,
+            description: '' + imageOffset
+          };
+          var dependentImage1EntryNumber = getImageNumberValue(tags['MPEntry'].value, i * ENTRY_SIZE + 12, _types_js__WEBPACK_IMPORTED_MODULE_3__["default"].getTypeSize('SHORT'), byteOrder);
+          images[i]['DependentImage1EntryNumber'] = {
+            value: dependentImage1EntryNumber,
+            description: '' + dependentImage1EntryNumber
+          };
+          var dependentImage2EntryNumber = getImageNumberValue(tags['MPEntry'].value, i * ENTRY_SIZE + 14, _types_js__WEBPACK_IMPORTED_MODULE_3__["default"].getTypeSize('SHORT'), byteOrder);
+          images[i]['DependentImage2EntryNumber'] = {
+            value: dependentImage2EntryNumber,
+            description: '' + dependentImage2EntryNumber
+          };
+          images[i].image = dataView.buffer.slice(imageOffset, imageOffset + imageSize);
+          Object(_utils_js__WEBPACK_IMPORTED_MODULE_1__["deferInit"])(images[i], 'base64', function () {
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_1__["getBase64Image"])(this.image);
+          });
+        }
+
+        tags['Images'] = images;
+        return tags;
+      }
+
+      function getImageNumberValue(entries, offset, size, byteOrder) {
+        if (byteOrder === _byte_order_js__WEBPACK_IMPORTED_MODULE_2__["default"].LITTLE_ENDIAN) {
+          var _value = 0;
+
+          for (var i = 0; i < size; i++) {
+            _value += entries[offset + i] << 8 * i;
+          }
+
+          return _value;
+        }
+
+        var value = 0;
+
+        for (var _i3 = 0; _i3 < size; _i3++) {
+          value += entries[offset + _i3] << 8 * (size - 1 - _i3);
+        }
+
+        return value;
+      }
+
+      function getImageFlags(attributes) {
+        var flags = [attributes >> 31 & 0x1, attributes >> 30 & 0x1, attributes >> 29 & 0x1];
+        var flagsDescription = [];
+
+        if (flags[0]) {
+          flagsDescription.push('Dependent Parent Image');
+        }
+
+        if (flags[1]) {
+          flagsDescription.push('Dependent Child Image');
+        }
+
+        if (flags[2]) {
+          flagsDescription.push('Representative Image');
+        }
+
+        return {
+          value: flags,
+          description: flagsDescription.join(', ') || 'None'
+        };
+      }
+
+      function getImageFormat(attributes) {
+        var imageFormat = attributes >> 24 & 0x7;
+        return {
+          value: imageFormat,
+          description: imageFormat === 0 ? 'JPEG' : 'Unknown'
+        };
+      }
+
+      function getImageType(attributes) {
+        var type = attributes & 0xffffff;
+        var descriptions = {
+          0x30000: 'Baseline MP Primary Image',
+          0x10001: 'Large Thumbnail (VGA equivalent)',
+          0x10002: 'Large Thumbnail (Full HD equivalent)',
+          0x20001: 'Multi-Frame Image (Panorama)',
+          0x20002: 'Multi-Frame Image (Disparity)',
+          0x20003: 'Multi-Frame Image (Multi-Angle)',
+          0x0: 'Undefined'
+        };
+        return {
+          value: type,
+          description: descriptions[type] || 'Unknown'
+        };
+      }
+
+      function isFirstIndividualImage(i) {
+        return i === 0;
       }
 
       function readIfd(dataView, ifdType, tiffHeaderOffset, offset, byteOrder) {
@@ -6206,40 +6417,53 @@
       /* harmony import */
 
 
-      var _tag_names_0th_ifd_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      var _constants_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+      /*! ./constants.js */
+      "GCSp");
+      /* harmony import */
+
+
+      var _tag_names_0th_ifd_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
       /*! ./tag-names-0th-ifd.js */
       "XIL1");
       /* harmony import */
 
 
-      var _tag_names_exif_ifd_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      var _tag_names_exif_ifd_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
       /*! ./tag-names-exif-ifd.js */
       "BR4b");
       /* harmony import */
 
 
-      var _tag_names_gps_ifd_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var _tag_names_gps_ifd_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ./tag-names-gps-ifd.js */
       "2NhH");
       /* harmony import */
 
 
-      var _tag_names_interoperability_ifd_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _tag_names_interoperability_ifd_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! ./tag-names-interoperability-ifd.js */
       "XrKV");
+      /* harmony import */
+
+
+      var _tag_names_mpf_ifd_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ./tag-names-mpf-ifd.js */
+      "KJ3Q");
       /* This Source Code Form is subject to the terms of the Mozilla Public
        * License, v. 2.0. If a copy of the MPL was not distributed with this
        * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 
-      var tagNames0thExifIfds = Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["objectAssign"])({}, _tag_names_0th_ifd_js__WEBPACK_IMPORTED_MODULE_1__["default"], _tag_names_exif_ifd_js__WEBPACK_IMPORTED_MODULE_2__["default"]);
+      var tagNames0thExifIfds = Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["objectAssign"])({}, _tag_names_0th_ifd_js__WEBPACK_IMPORTED_MODULE_2__["default"], _tag_names_exif_ifd_js__WEBPACK_IMPORTED_MODULE_3__["default"]);
       /* harmony default export */
 
       __webpack_exports__["default"] = {
         '0th': tagNames0thExifIfds,
         'exif': tagNames0thExifIfds,
-        'gps': _tag_names_gps_ifd_js__WEBPACK_IMPORTED_MODULE_3__["default"],
-        'interoperability': _tag_names_interoperability_ifd_js__WEBPACK_IMPORTED_MODULE_4__["default"]
+        'gps': _tag_names_gps_ifd_js__WEBPACK_IMPORTED_MODULE_4__["default"],
+        'interoperability': _tag_names_interoperability_ifd_js__WEBPACK_IMPORTED_MODULE_5__["default"],
+        'mpf': _constants_js__WEBPACK_IMPORTED_MODULE_1__["default"].USE_MPF ? _tag_names_mpf_ifd_js__WEBPACK_IMPORTED_MODULE_6__["default"] : {}
       };
       /***/
     },
@@ -6695,7 +6919,7 @@
           var offset = tiffHeaderOffset + thumbnailTags.JPEGInterchangeFormat.value;
           thumbnailTags.image = dataView.buffer.slice(offset, offset + thumbnailTags.JPEGInterchangeFormatLength.value);
           Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["deferInit"])(thumbnailTags, 'base64', function () {
-            return getBase64Image(this.image);
+            return Object(_utils_js__WEBPACK_IMPORTED_MODULE_0__["getBase64Image"])(this.image);
           });
         } // There is a small possibility of thumbnails in TIFF format but they are
         // not stored as a self-contained image file and would be much more
@@ -6708,26 +6932,6 @@
 
       function hasJpegThumbnail(tags) {
         return tags && (tags.Compression === undefined || COMPRESSION_JPEG.includes(tags.Compression.value)) && tags.JPEGInterchangeFormat && tags.JPEGInterchangeFormat.value && tags.JPEGInterchangeFormatLength && tags.JPEGInterchangeFormatLength.value;
-      }
-
-      function getBase64Image(image) {
-        if (typeof btoa !== 'undefined') {
-          // IE11- does not implement reduce on the Uint8Array prototype.
-          return btoa(Array.prototype.reduce.call(new Uint8Array(image), function (data, _byte2) {
-            return data + String.fromCharCode(_byte2);
-          }, ''));
-        }
-
-        if (typeof Buffer === 'undefined') {
-          return undefined;
-        }
-
-        if (typeof Buffer.from !== undefined) {
-          // eslint-disable-line no-undef
-          return Buffer.from(image).toString('base64'); // eslint-disable-line no-undef
-        }
-
-        return new Buffer(image).toString('base64'); // eslint-disable-line no-undef
       }
       /***/
 
@@ -6913,7 +7117,7 @@
       !*** ./node_modules/exifreader/src/utils.js ***!
       \**********************************************/
 
-    /*! exports provided: getStringFromDataView, getUnicodeStringFromDataView, getStringValueFromArray, getCharacterArray, objectAssign, deferInit */
+    /*! exports provided: getStringFromDataView, getUnicodeStringFromDataView, getStringValueFromArray, getCharacterArray, objectAssign, deferInit, getBase64Image */
 
     /***/
     function rAM(module, __webpack_exports__, __webpack_require__) {
@@ -6955,6 +7159,12 @@
 
       __webpack_require__.d(__webpack_exports__, "deferInit", function () {
         return deferInit;
+      });
+      /* harmony export (binding) */
+
+
+      __webpack_require__.d(__webpack_exports__, "getBase64Image", function () {
+        return getBase64Image;
       });
       /* This Source Code Form is subject to the terms of the Mozilla Public
        * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -7022,6 +7232,26 @@
           configurable: true,
           enumerable: true
         });
+      }
+
+      function getBase64Image(image) {
+        if (typeof btoa !== 'undefined') {
+          // IE11- does not implement reduce on the Uint8Array prototype.
+          return btoa(Array.prototype.reduce.call(new Uint8Array(image), function (data, _byte2) {
+            return data + String.fromCharCode(_byte2);
+          }, ''));
+        }
+
+        if (typeof Buffer === 'undefined') {
+          return undefined;
+        }
+
+        if (typeof Buffer.from !== undefined) {
+          // eslint-disable-line no-undef
+          return Buffer.from(image).toString('base64'); // eslint-disable-line no-undef
+        }
+
+        return new Buffer(image).toString('base64'); // eslint-disable-line no-undef
       }
       /***/
 
