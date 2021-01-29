@@ -13,11 +13,16 @@ export async function toBufferByBlob(blob: Blob): Promise<ArrayBuffer> {
         reject(err);
       }
     };
+    /* istanbul ignore next */
     reader.onerror = (evt: any) => {
       reader.onload = null;
       reader.onerror = null;
       reject(evt.error);
     };
-    reader.readAsArrayBuffer(blob);
+    try {
+      reader.readAsArrayBuffer(blob);
+    } catch (err) {
+      reject(err);
+    }
   });
 }

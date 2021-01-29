@@ -7,6 +7,7 @@
     "ng:dev": "ng serve dev",
     "packages:build": "ng build packages --prod",
     "packages:test": "ng test packages --code-coverage",
+    "packages:test-watch": "ng test packages --code-coverage --watch=true",
     "packages:doc": "jsdoc -c jsdoc.json -r -d docs",
     "page:example-dist": "ng build dev",
     "page:example-make": "copyfiles -u 2 ./dist/dev/* ./dist/dev/**/* ./docs",
