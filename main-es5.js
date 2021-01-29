@@ -348,7 +348,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhc2lkZS5jb21wb25lbnQuc2NzcyJ9 */";
+      __webpack_exports__["default"] = ".foot-desc {\n  padding: 20px;\n}\n.foot-desc .desc-box {\n  display: flex;\n  align-items: center;\n  font-size: 13px;\n  color: #888888;\n}\n.foot-desc .desc-box .icon {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 28px;\n  font-size: 28px;\n}\n.foot-desc .desc-box .desc {\n  margin-left: 8px;\n}\n.foot-desc .desc-box .link {\n  color: #3f51b5;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uLy4uL2FzaWRlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtBQUNGO0FBQUU7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQUVKO0FBREk7RUFDRSxhQUFBO0VBQ0EsbUJBQUE7RUFDQSx1QkFBQTtFQUNBLFdBQUE7RUFDQSxlQUFBO0FBR047QUFESTtFQUNFLGdCQUFBO0FBR047QUFESTtFQUNFLGNBQUE7QUFHTiIsImZpbGUiOiJhc2lkZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb290LWRlc2Mge1xuICBwYWRkaW5nOiAyMHB4O1xuICAuZGVzYy1ib3gge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBmb250LXNpemU6IDEzcHg7XG4gICAgY29sb3I6ICM4ODg4ODg7XG4gICAgLmljb24ge1xuICAgICAgZGlzcGxheTogZmxleDtcbiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIHdpZHRoOiAyOHB4O1xuICAgICAgZm9udC1zaXplOiAyOHB4O1xuICAgIH1cbiAgICAuZGVzYyB7XG4gICAgICBtYXJnaW4tbGVmdDogOHB4O1xuICAgIH1cbiAgICAubGluayB7XG4gICAgICBjb2xvcjogIzNmNTFiNTtcbiAgICB9XG4gIH1cbn1cbiJdfQ== */";
       /***/
     },
 
@@ -482,7 +482,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "<nav class=\"menu-list\">\n  <menu-list [menuList]=\"menuList\"></menu-list>\n</nav>\n";
+      __webpack_exports__["default"] = "<nav class=\"menu-list\">\n  <menu-list [menuList]=\"menuList\"></menu-list>\n  <div class=\"foot-desc\">\n    <div class=\"desc-box\">\n      <i class=\"icon material-icons\">tag_faces</i>\n      <p class=\"desc\">\n        It is being used by\n        <br />\n        <a class=\"link\" href=\"https://jood-lab.web.app/\" target=\"_blank\"> jood-lab.web.app </a>\n      </p>\n    </div>\n  </div>\n</nav>\n";
       /***/
     },
 
