@@ -25,7 +25,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [LayoutModule, RouterModule.forRoot(routes)],
+  imports: [LayoutModule, RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
   providers: [
     { provide: LAYOUT_SERVICE_TOKEN, useClass: ExampleLayoutService },
   ],
