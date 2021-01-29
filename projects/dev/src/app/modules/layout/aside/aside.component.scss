@@ -1,0 +1,22 @@
+.foot-desc {
+  padding: 20px;
+  .desc-box {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #888888;
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      font-size: 28px;
+    }
+    .desc {
+      margin-left: 8px;
+    }
+    .link {
+      color: #3f51b5;
+    }
+  }
+}
